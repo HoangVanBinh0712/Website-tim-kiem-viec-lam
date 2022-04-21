@@ -1,0 +1,95 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "jim",
+    "password": "jim"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "henry",
+    "password": "henry"
+}
+
+
+### Create all post
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYwMWU4YmYyNDVkYTU1Y2QwNzk3ZjUiLCJpYXQiOjE2NTA0NjY0NDN9.VezVbXPkIlI_TZSKjpsF2Qtk7IsOZAErB5YVTDraiw0
+
+{
+    "title": "React",
+    "description": "React",
+    "url": "react.com"
+}
+
+### Get all post
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYwMTcxYzQ0ZjZhMmM2M2Q2NzNmZWMiLCJpYXQiOjE2NTA0NjY3NDd9.HNs6wZsPuyYfy0YzLJh9pR1r7S9dz84Oy5dQ0wjX4js
+
+### Modify
+PUT http://localhost:5000/api/posts/62601c06c9a1ebfb0ed6596e
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYwMTcxYzQ0ZjZhMmM2M2Q2NzNmZWMiLCJpYXQiOjE2NTA0NjY3NDd9.HNs6wZsPuyYfy0YzLJh9pR1r7S9dz84Oy5dQ0wjX4js
+
+{
+    "title":"Vue",
+    "description": "VUEEEEE",
+    "url": "vuejs.org",
+    "status": "Learning"
+
+}
+
+###Delete
+DELETE http://localhost:5000/api/posts/62601e5d8d5da2cd255f10b1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYwMTcxYzQ0ZjZhMmM2M2Q2NzNmZWMiLCJpYXQiOjE2NTA0NjY3NDd9.HNs6wZsPuyYfy0YzLJh9pR1r7S9dz84Oy5dQ0wjX4js
+//Code tham khao o tren
+//-----------------------------------------
+### Register Jobseeker// User co mat khau auto: 12345
+POST http://localhost:5000/api/auth/jobseeker/register
+Content-Type: application/json
+
+{
+    "email": "thebest11448@gmail.com",
+    "phonenumber": "0337445566",
+    "password": "12345",
+    "address": "18 duong binh thung",
+    "name": "Hoang Van Binh",
+    "birthday": "2011-12-07"
+}
+### Register Emp // Emp co mat khau auto la: 123456789 (Admin too)
+POST http://localhost:5000/api/auth/employer/register
+Content-Type: application/json
+
+{
+    "email": "thebest11445@gmail.com",
+    "phonenumber": "0979918915",
+    "password": "123456789",
+    "address": "Số 1 võ văn ngân thành phố Hồ chí minh",
+    "companyname": "Cong Ty TNHH MTV BHQ",
+    "description": "Chuyên chạy deadline"
+}
+
+### Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "mode" : 2,
+    "email": "19110170@student.hcmute.edu.vn",
+    "password": "123456789"
+}
+
+### Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "mode" : 1,
+    "email": "thebest11446@gmail.com",
+    "password": "123456789"
+}
