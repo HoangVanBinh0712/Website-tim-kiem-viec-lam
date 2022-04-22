@@ -79,8 +79,10 @@ class RegisterController {
             //check exits email or phone
             const jobsk_email = await JobSeeker.findOne({ email: email })
             const jsbsk_phone = await JobSeeker.findOne({ phonenumber: phonenumber })
+
             const emp_email = await Employer.findOne({ email: email })
             const emp_phone = await Employer.findOne({ phonenumber: phonenumber })
+            
             const admin_email = await Admin.findOne({ email: email })
             const admin_phone = await Admin.findOne({ phonenumber: phonenumber })
             if (jsbsk_phone != null || jobsk_email != null ||

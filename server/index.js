@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const postRouter =  require('./routes/auth')
+const cateRouter = require('./routes/category')
+
 const connectDB = async ()=>{
     try {
         await mongoose.connect(`mongodb+srv://cnpm:1234@timkiemvieclam.fzlnj.mongodb.net/timkiemvieclam?retryWrites=true&w=majority`,
@@ -21,6 +23,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
 app.use('/api/auth',postRouter)
+app.use('/api/category',cateRouter)
 
 app.use(express.json)
 const PORT = 5000;
