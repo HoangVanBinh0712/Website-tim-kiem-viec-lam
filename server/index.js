@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const postRouter =  require('./routes/auth')
 const cateRouter = require('./routes/category')
+const userInfoRouter = require('./routes/user_info')
 
 const connectDB = async ()=>{
     try {
@@ -24,6 +25,7 @@ app.use(bodyparser.urlencoded({extended: true}));
 
 app.use('/api/auth',postRouter)
 app.use('/api/category',cateRouter)
+app.use('/api/info',userInfoRouter)
 
 app.use(express.json)
 const PORT = 5000;

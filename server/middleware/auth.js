@@ -8,6 +8,7 @@ const verifyToken = (req,res,next)=>{
     try {
         const decode = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
         req.userId = decode.userId
+        //Móc db kiểm tra giống nhau nếu giống thì mới qua 
         next()
     } catch (error) {
         console.log(error.message)

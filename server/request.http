@@ -96,3 +96,51 @@ Content-Type: application/json
 
 ### Get category
 GET  http://localhost:5000/api/category
+
+
+### Get info Emp
+
+GET  http://localhost:5000/api/info/employer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTA5NjA2ODV9.m86f89FosJhDQg03NqqHKvE1j06ZedFhtC324MmlFFs
+
+
+###Get info  JobSeeker
+
+GET  http://localhost:5000/api/info/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTA5NjE2ODN9.azUG6vqAZb2p-e1Bd46WM7oqVm2riLU3-IppvRlFf4k
+
+### Get info Admin
+
+GET  http://localhost:5000/api/info/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNThkMzI2MjAwNzc1NGEyY2UyYTgiLCJpYXQiOjE2NTA5NjE4ODJ9.FSjU25yViAzfVXceyHNdN478hJmusBieW0h_tltNn-Y
+
+
+### Adjust info JobSeeker
+
+PUT  http://localhost:5000/api/info/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTA5NjI5NzB9.JqH6ks8w9ZbIInIfo2h82ISKY1vFIj0nqrJTwdImCvg
+Content-Type: application/json
+
+{
+    "email": "thebest11447@gmail.com",
+    "phonenumber": "0337445596",
+    "address": "18 duong binh thung",
+    "name": "Hoang Van Bình",
+    "birthday": "2001-12-07"
+}
+
+
+### Adjust info JobSeeker
+
+PUT  http://localhost:5000/api/info/employer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTA5NjM0MzF9.lr4Ogtwjbbhdk058Th92zvXUgY8EyOD7W2wIErcKFdI
+Content-Type: application/json
+
+{
+    "email": "thebest11446@gmail.com",
+    "phonenumber": "0918535413",
+    "address": "Số 1 võ văn ngân thành phố Hồ chí minh",
+    "companyname": "Trường Đại Học SPKT TP Hồ Chí Minh",
+    "description": "Đào tạo tất cả các ngành Kỹ thuật"
+}
+
