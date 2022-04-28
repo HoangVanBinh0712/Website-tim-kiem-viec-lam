@@ -48,5 +48,7 @@ const AdminSchema = new Schema({
         default: Date.now
     }
 })
-
+AdminSchema.statics.viewInfo = function(userId){
+    return this.findOne({_id: userId}, { _id: 0, password: 0, lastesttoken: 0, role: 0, createAt: 0 })
+}
 module.exports = mongoose.model('admin', AdminSchema)

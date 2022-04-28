@@ -6,7 +6,7 @@ const Admin = require('../model/Admin')
 class GetAndAdjustInfo {
     async getInforAdmin(req, res) {
         try {
-            const admin = await Admin.findOne({ _id: req.userId }, { _id: 0, password: 0, lastesttoken: 0, role: 0, createAt: 0 })
+            const admin = await Admin.viewInfo(req.userId)
             res.json({ message: "Successfull", success: true, admin: admin })
         } catch (error) {
             console.log(error.message)
@@ -16,7 +16,7 @@ class GetAndAdjustInfo {
     }
     async getInforJobSeeker(req, res) {
         try {
-            const jobseeker = await JobSeeker.findOne({ _id: req.userId }, { _id: 0, password: 0, lastesttoken: 0, role: 0, createAt: 0, __v: 0 })
+            const jobseeker = await JobSeeker.viewInfo(req.userId)
             res.json({ message: "Successfull", success: true, jobseeker: jobseeker })
         } catch (error) {
             console.log(error.message)
@@ -26,7 +26,7 @@ class GetAndAdjustInfo {
     }
     async getInforEmployer(req, res) {
         try {
-            const employer = await Employer.findOne({ _id: req.userId }, { _id: 0, password: 0, lastesttoken: 0, role: 0, createAt: 0, __v: 0 })
+            const employer = await Employer.viewInfo(req.userId)
             res.json({ message: "Successfull", success: true, employer: employer })
         } catch (error) {
             console.log(error.message)
