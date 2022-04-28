@@ -7,7 +7,7 @@ Load some item from category (Example) and wait for Post.
 Completed Functions on table user, admin
 
 <h2>NOTICE <h2>
-this is a deployed code on heroku. if you do want to run it locally do the following step:
-+ Client
-+ Server:
-  To run nodemon (auto restart server every time changed in file .js). Press **nodemon index** in the command at server
+<p>this is a deployed code on heroku. if you do want to run it locally do the following step:</p>
+<p>+ Client</p>
+<p>+ Server:</p>
+<p>  To run nodemon (auto restart server every time changed in file .js). Press **nodemon index** in the command at server </p>
