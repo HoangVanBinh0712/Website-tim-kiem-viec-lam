@@ -97,6 +97,16 @@ Content-Type: application/json
 ### Get category
 GET  http://localhost:5000/api/category
 
+### delete 626ab2621919bf702d5e8054
+DELETE   http://localhost:5000/api/category/626ab2621919bf702d5e8054
+### PUT 626ab2621919bf702d5e8054
+PUT   http://localhost:5000/api/category/626ab91973e2db7d871b216f
+Content-Type: application/json
+
+{
+    "name": "aaacascas@gmail.com",
+    "description": "123456789"
+}
 
 ### Get info Emp
 
