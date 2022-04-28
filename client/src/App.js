@@ -7,28 +7,32 @@ import RegisterForm from './component/auth/registerForm';
 import ProtectedRoute from './routing/ProtectedRoute'
 import EmpRegisterForm from './component/auth/EmpRegisterForm'
 import About from './views/About';
+import PostContextProvider from './contexts/PostContext';
 //Protected Route là để chuyển trang private sang login đăng nhập mới cho xài
 function App() {
   return (
     <AuthContextProvider>
-      <Routes>
+      <PostContextProvider>
 
-        <Route exact path='/dashboard' element={<ProtectedRoute component={DashBoard}/>} />
-        <Route
-          exact
-          path='/login'
-          element={<LoginForm />} />
-        <Route
-          exact
-          path='/register'
-          element={<RegisterForm />}
-        />
-        <Route exact path='/registerEmp'
-        element={<EmpRegisterForm/>}/>
-        <Route exac path='/about' element={<ProtectedRoute component={About}/>}/>
-        <Route exact path='/' element={<Navigate to='/login' replace />} />
+        <Routes>
 
-      </Routes>
+          <Route exact path='/dashboard' element={<ProtectedRoute component={DashBoard} />} />
+          <Route
+            exact
+            path='/login'
+            element={<LoginForm />} />
+          <Route
+            exact
+            path='/register'
+            element={<RegisterForm />}
+          />
+          <Route exact path='/registerEmp'
+            element={<EmpRegisterForm />} />
+          <Route exac path='/about' element={<ProtectedRoute component={About} />} />
+          <Route exact path='/' element={<Navigate to='/login' replace />} />
+
+        </Routes>
+      </PostContextProvider>
     </AuthContextProvider>
   );
 }
