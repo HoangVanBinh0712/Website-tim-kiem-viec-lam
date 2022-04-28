@@ -1,6 +1,6 @@
 # Website-tim-kiem-viec-lam
 
-Làm được: 
-+ (Model)
-+ Chức năng: Register, Login (cấp token)
-+ Sử dụng file request.http để truy xuất dữ liệu
+<h3> Client: </h3>
+Login Logout Register completed (Both user and Admin). Must login to use service (27/4)
+<h3> Server </h3>
+Completed Functions on table user, admin
