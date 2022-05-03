@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect } from "react"
+import { useState,createContext, useReducer, useEffect } from "react"
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./constant"
 import { authReducer } from "../reducers/authReducer"
 import axios from 'axios'
@@ -10,6 +10,11 @@ const AuthContextProvider = ({ children }) => {
         authLoading: true,
         isAuthenticated: false,
         user: null
+    })
+    const [showToast, setShowToast] = useState({
+        show: false,
+        message: '',
+        type: null
     })
     //Check Authenticated 
     const loadUser = async () => {
@@ -25,7 +30,6 @@ const AuthContextProvider = ({ children }) => {
                     payload: { isAuthenticated: true, user: response.data.user }
                 })
             }
-            console.log(response.data.user)
         } catch (error) {
             localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
             setAuthToken(null)
@@ -82,7 +86,6 @@ const AuthContextProvider = ({ children }) => {
             var response
             if (userForm.mode === '0') {
                 response = await axios.post(`${apiUrl}/auth/jobseeker/register`, userForm)
-                console.log(response.data)
 
             } else {
                 response = await axios.post(`${apiUrl}/auth/employer/register`, userForm)
@@ -104,7 +107,29 @@ const AuthContextProvider = ({ children }) => {
             payload: { isAuthenticated: false, user: null }
         })
     }
-    const authContextData = { loginUser, registerUser, logoutUser, authState }
+
+
+    //
+    const adjustUser = async updatedUser =>{
+        try {
+            let type
+            if(updatedUser.role == 0)
+                type = "jobseeker"
+            else if(updatedUser.role == 1)
+                type = "employer"
+            else type = "admin"
+            const response = await axios.put(`${apiUrl}/info/${type}`,updatedUser)
+            if(response.data.success){
+                dispatch({ type: "USER_UPDATED_SUCCESS", 
+                payload: { isAuthenticated: true, user: response.data.user }})
+            }
+            return response.data
+
+        } catch (error) {
+            console.log("Error: " + error)
+        }
+    }
+    const authContextData = { loginUser, registerUser, logoutUser, authState, adjustUser,showToast,setShowToast }
     return (
         <AuthContext.Provider value={authContextData}>
             {children}

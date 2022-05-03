@@ -16,7 +16,6 @@ router.post('/employer/register', RegisterController.employerRegister)
 
 //jobseeker register
 router.post('/jobseeker/register', RegisterController.JobSeekerRegister)
-//-----------------------------------------------------------------------------------------------------------
 //Code tham khao
 router.get('/', verifyToken, async (req, res) => {
     try {
@@ -37,6 +36,7 @@ router.get('/', verifyToken, async (req, res) => {
         res.status(500).json({ success: false, message: "Internal server error" })
     }
 })
+//-----------------------------------------------------------------------------------------------------------
 
 //Create
 router.post('/', verifyToken, async (req, res) => {

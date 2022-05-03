@@ -15,13 +15,13 @@ import Toast from 'react-bootstrap/Toast'
 import UpdatePostModal from "../component/category/UpdatePostModal"
 
 const DashBoard = () => {
-    const { postState: {post, posts, postsLoading }, getPosts,
-        setShowAddPostModal, showToast: {show,message,type}, setShowToast } = useContext(PostContext)
+    const { postState: { post, posts, postsLoading }, getPosts,
+        setShowAddPostModal, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
     const { authState: { user: { name, companyname } } } = useContext(AuthContext)
     var username = name
     if (!name)
         username = companyname
-    useEffect(() => getPosts,[])
+    useEffect(() => getPosts, [])
     let body = null
     if (postsLoading) {
         body = (
@@ -54,10 +54,10 @@ const DashBoard = () => {
             </Row>
             {/*Open Add , show text when put on button */}
             <OverlayTrigger placement='left'
-					overlay={<Tooltip>Add category</Tooltip>}>
-            <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
-                <img src={addIcon} alt="add post" width="60" height="60" />
-            </Button>
+                overlay={<Tooltip>Add category</Tooltip>}>
+                <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
+                    <img src={addIcon} alt="add post" width="60" height="60" />
+                </Button>
             </OverlayTrigger>
 
         </>)
@@ -66,24 +66,25 @@ const DashBoard = () => {
     return <>
         {body}
         <AddPostModal />
-        {post !== null &&<UpdatePostModal />}
-			{/* After post is added, show toast */}
-			<Toast
-				show={show}
-				style={{ position: 'fixed', top: '20%', right: '10px' }}
-				className={`bg-${type} text-white`}
-				onClose={setShowToast.bind(this, {
-					show: false,
-					message: '',
-					type: null
-				})}
-				delay={3000}
-				autohide
-			>
-				<Toast.Body>
-					<strong>{message}</strong>
-				</Toast.Body>
-			</Toast>
+        <Toast
+            show={show}
+            style={{ position: 'fixed', top: '20%', right: '10px' }}
+            className={`bg-${type} text-white`}
+            onClose={setShowToast.bind(this, {
+                show: false,
+                message: '',
+                type: null
+            })}
+            delay={3000}
+            autohide
+        >
+            <Toast.Body>
+                <strong>{message}</strong>
+            </Toast.Body>
+        </Toast>
+        {post !== null && <UpdatePostModal />}
+        {/* After post is added, show toast */}
+
 
     </>
 }

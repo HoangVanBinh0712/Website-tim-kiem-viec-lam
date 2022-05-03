@@ -8,7 +8,7 @@ const About = () => {
 			<Col className='text-center'>
 				<Button
 					variant='primary'
-					href='https://www.youtube.com/c/HenryWebDev'
+					href='https://www.facebook.com/hoang.binh.58958343'
 					size='lg'
 				>
 					Visit my channel for more tutorials

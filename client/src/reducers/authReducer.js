@@ -8,6 +8,12 @@ export const authReducer = (state, action) => {
                 isAuthenticated,
                 user,
             }
+        case 'USER_UPDATED_SUCCESS':
+            return {
+                ...state,
+                user,
+                postsLoading: false,
+            }
         default:
             return state
     }

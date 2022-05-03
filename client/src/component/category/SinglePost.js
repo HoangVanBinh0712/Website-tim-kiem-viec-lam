@@ -17,7 +17,7 @@ const SinglePost = ({ post: { _id, name, description } }) => (
 					</Col>
                 </Row>
             </Card.Title>
-            <Card.Text >{description}</Card.Text>
+            <Card.Text className='card-text'>{description}</Card.Text>
         </Card.Body>
     </Card>
 )

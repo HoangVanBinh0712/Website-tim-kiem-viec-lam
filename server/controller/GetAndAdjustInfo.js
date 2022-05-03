@@ -4,6 +4,22 @@ const Employer = require('../model/Employer')
 const Admin = require('../model/Admin')
 
 class GetAndAdjustInfo {
+    async getRoleUser(req, res) {
+        try {
+            const jobseeker = await JobSeeker.findById(req.userId)
+            if (jobseeker)
+                return res.json({ message: "Successfull", success: true, role: jobseeker.role })
+            const employer = await Employer.findById(req.userId)
+            if (employer)
+                return res.json({ message: "Successfull", success: true, role: employer.role })
+            const admin = await Admin.findById(req.userId)
+            if (admin)
+                res.json({ message: "Successfull", success: true, role: admin.role })
+        } catch (error) {
+            console.log(error.message)
+            res.status(500).json({ success: false, message: "Internal server error" })
+        }
+    }
     async getInforAdmin(req, res) {
         try {
             const admin = await Admin.viewInfo(req.userId)
@@ -39,9 +55,8 @@ class GetAndAdjustInfo {
     //ADJUST
     async adjustJobSeeker(req, res) {
         let { email, phonenumber, address, name, birthday } = req.body
-        console.log(req.userId)
         if (!email || !phonenumber || !address || !name || !birthday)
-            return res.status(400)
+            return res
                 .json({ success: false, message: 'missing information' })
         try {
             email = email.trim()
@@ -50,13 +65,13 @@ class GetAndAdjustInfo {
             name = name.trim()
             //Check phone 10 nums
             if (phonenumber.length != 10)
-                return res.status(400)
+                return res
                     .json({ success: false, message: "Phone number invalid" })
             //check birth day
             var now = new Date()
             var birth = new Date(birthday)
             if (birth > now)
-                return res.status(400).json({ success: false, message: 'birth day invalid' })
+                return res.json({ success: false, message: 'birth day invalid' })
 
             //check exits email or phone
             const jobsk_email = await JobSeeker.findOne({ email: email })
@@ -72,8 +87,7 @@ class GetAndAdjustInfo {
             if (jsbsk_phone && jsbsk_phone._id != req.userId || jobsk_email && jobsk_email._id != req.userId ||
                 emp_email && emp_email._id != req.userId || emp_phone && emp_phone._id != req.userId
                 || admin_email && admin_email._id != req.userId || admin_phone && admin_phone._id != req.userId) {
-                return res.status(400)
-                    .json({ success: false, message: "email or phone number already taken" })
+                return res.json({ success: false, message: "email or phone number already taken" })
             }
 
             let jobseeker = await JobSeeker.findOne({ _id: req.userId })
@@ -87,7 +101,7 @@ class GetAndAdjustInfo {
             if (!jobseeker)
                 return res.status(500).json({ success: false, message: "Internal server error" })
 
-            return res.json({ success: true, message: "Changed successfully" })
+            return res.json({ success: true, message: "Changed successfully", user: jobseeker })
 
         } catch (error) {
             console.log(error.message)
@@ -96,9 +110,8 @@ class GetAndAdjustInfo {
     }
     async adjustEmployer(req, res) {
         let { email, phonenumber, address, companyname, description } = req.body
-        console.log(req.userId)
         if (!email || !phonenumber || !address || !companyname || !description)
-            return res.status(400)
+            return res
                 .json({ success: false, message: 'missing information' })
         try {
             email = email.trim()
@@ -108,7 +121,7 @@ class GetAndAdjustInfo {
             description = description.trim()
             //Check phone 10 nums
             if (phonenumber.length != 10)
-                return res.status(400)
+                return res
                     .json({ success: false, message: "Phone number invalid" })
 
             //check exits email or phone
@@ -125,7 +138,7 @@ class GetAndAdjustInfo {
             if (jsbsk_phone && jsbsk_phone._id != req.userId || jobsk_email && jobsk_email._id != req.userId ||
                 emp_email && emp_email._id != req.userId || emp_phone && emp_phone._id != req.userId
                 || admin_email && admin_email._id != req.userId || admin_phone && admin_phone._id != req.userId) {
-                return res.status(400)
+                return res
                     .json({ success: false, message: "email or phone number already taken" })
             }
 
@@ -140,8 +153,49 @@ class GetAndAdjustInfo {
             if (!employer)
                 return res.status(500).json({ success: false, message: "Internal server error" })
 
-            return res.json({ success: true, message: "Changed successfully" })
+            return res.json({ success: true, message: "Changed successfully", user: employer })
 
+        } catch (error) {
+            console.log(error.message)
+            res.status(500).json({ success: false, message: "Internal server error" })
+        }
+    }
+
+    //Change Password
+    async changPassword(req, res) {
+        const { oldpassword, newpassword, confirmnewpassword, role } = req.body
+        try {
+            if (!oldpassword.trim() || !newpassword.trim() || !confirmnewpassword.trim())
+                return res.json({ success: false, message: "Invalid Password!" })
+            if (newpassword !== (confirmnewpassword))
+                return res.json({ success: false, message: "Password not match !" })
+            const hashedPassword = await argon2.hash(newpassword)
+
+            if (role == 0) {
+                let jsk = await JobSeeker.findById(req.userId)
+                const passwordvalid = await argon2.verify(jsk.password, oldpassword)
+                if (!passwordvalid)
+                    return res.json({ success: false, message: "Incorrect old password" })
+                jsk.password = hashedPassword
+                jsk = await JobSeeker.findOneAndUpdate({_id: req.userId},jsk, {new: true})
+                if (!jsk)
+                    return res
+                        .json({ success: false, message: "Internal server error" })
+                return res.json({ success: true, message: "Change Password Succesfully" })
+            } else if (role == 1) {
+                let jsk = await Employer.findById(req.userId)
+                const passwordvalid = await argon2.verify(jsk.password, oldpassword)
+                if (!passwordvalid)
+                    return res.json({ success: false, message: "Incorrect old password" })
+                jsk.password = hashedPassword
+                jsk = await Employer.findOneAndUpdate({_id: req.userId},jsk, {new: true})
+                if (!jsk)
+                    return res
+                        .json({ success: false, message: "Internal server error" })
+                return res.json({ success: true, message: "Change Password Succesfully" })
+         
+            }
+            return res.status(500).json({ success: false, message: "Internal server error" })
         } catch (error) {
             console.log(error.message)
             res.status(500).json({ success: false, message: "Internal server error" })

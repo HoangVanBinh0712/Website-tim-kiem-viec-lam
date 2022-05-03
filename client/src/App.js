@@ -8,11 +8,14 @@ import ProtectedRoute from './routing/ProtectedRoute'
 import EmpRegisterForm from './component/auth/EmpRegisterForm'
 import About from './views/About';
 import PostContextProvider from './contexts/PostContext';
+import InforMation from './views/Information';
+import UserContextProvider from './contexts/UserContext';
 //Protected Route là để chuyển trang private sang login đăng nhập mới cho xài
 function App() {
   return (
     <AuthContextProvider>
       <PostContextProvider>
+        <UserContextProvider>
 
         <Routes>
 
@@ -29,9 +32,12 @@ function App() {
           <Route exact path='/registerEmp'
             element={<EmpRegisterForm />} />
           <Route exac path='/about' element={<ProtectedRoute component={About} />} />
+          <Route exac path='/information' element={<ProtectedRoute component={InforMation}/>}/>
           <Route exact path='/' element={<Navigate to='/login' replace />} />
 
         </Routes>
+        </UserContextProvider>
+
       </PostContextProvider>
     </AuthContextProvider>
   );

@@ -13,6 +13,9 @@ router.get("/jobseeker", verifyToken, GetAndAdjustInfo.getInforJobSeeker)
 
 router.get("/employer", verifyToken, GetAndAdjustInfo.getInforEmployer)
 
+router.get("/role",verifyToken,GetAndAdjustInfo.getRoleUser)
+
+router.put("/changepassword",verifyToken,GetAndAdjustInfo.changPassword)
 //-----PUT
 
 //Note: đẩy cái token, trong cái token được mã hóa theo userId chính là _id của user >> find theo là ra user đó

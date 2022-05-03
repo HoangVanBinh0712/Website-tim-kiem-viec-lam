@@ -110,3 +110,12 @@ button.post-button.btn:active {
 .post-title {
 	margin-bottom: 0.5rem;
 }
+
+
+.card-text{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}

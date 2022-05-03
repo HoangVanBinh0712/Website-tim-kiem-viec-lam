@@ -154,3 +154,17 @@ Content-Type: application/json
     "description": "Đào tạo tất cả các ngành Kỹ thuật"
 }
 
+###
+GET http://localhost:5000/api/auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTE1NjQ1NzR9.zJYkBHi1R3dD2N38CAAxOCNoFY9E9gWXoGU1nQGds1o
+###
+PUT  http://localhost:5000/api/info/changepassword
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTE1NjQ1NzR9.zJYkBHi1R3dD2N38CAAxOCNoFY9E9gWXoGU1nQGds1o
+Content-Type: application/json
+
+{
+    "oldpassword": "123456789",
+    "newpassword": "12345678",
+    "confirmnewpassword": "12345678",
+    "role": 1
+}
