@@ -168,3 +168,20 @@ Content-Type: application/json
     "confirmnewpassword": "12345678",
     "role": 1
 }
+### view
+GET http://localhost:5000/api/post
+
+### Delete
+DELETE  http://localhost:5000/api/post/32423423432432
+###
+POST  http://localhost:5000/api/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTE2Mjk5MjJ9.Oyprym-UOZvdF2pO1KZO2yIeeD_fSHlcj_ytHczOTEg
+Content-Type: application/json
+
+{
+            "category": "626129e3ba08c523d264991a",
+            "title": "Cưỡi ngựa",
+            "content":"Cưỡi ngựa trên các quốc lộ",
+            "status":"false",
+            "dateEnd":"2022-12-07T00:00:00.000+00:00"
+}
