@@ -1,9 +1,6 @@
 const express = require("express")
 const router = express.Router()
 const verifyToken = require('../middleware/auth')
-const JobSeeker = require('../model/JobSeeker')
-const Employer = require('../model/Employer')
-const Admin = require('../model/Admin')
 const GetAndAdjustInfo = require('../controller/GetAndAdjustInfo')
 
 //Get

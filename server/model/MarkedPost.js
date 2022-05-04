@@ -13,7 +13,7 @@ const MarkedPostSchema = new Schema({
     },
     postId: {
         type: Schema.Types.ObjectId,
-        ref: 'wpost'
+        ref: 'post'
     }
 
 })

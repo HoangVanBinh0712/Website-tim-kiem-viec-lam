@@ -15,11 +15,11 @@ const SubmittedSchema = new Schema({
         type: Date,
         default: Date.now()
     }
-    //Ref WPost
+    //Ref Post
     ,
-    wpost:{
+    post:{
         type: Schema.Types.ObjectId,
-        ref: 'wpost'
+        ref: 'post'
     }
 })
 

@@ -1,9 +1,5 @@
 const express = require("express")
 const router = express.Router()
-const Post = require('../model/Post')
-const verifyToken = require('../middleware/auth')
-const LoginController = require('../controller/LoginController')
-const RegisterController = require('../controller/RegisterController')
 const Category = require('../model/Category')
 
 router.get('/', async (req, res) => {
