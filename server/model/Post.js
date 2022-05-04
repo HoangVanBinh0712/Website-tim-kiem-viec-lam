@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
     category:{
-        type: Schema.type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'category'
     },    
     title:{
@@ -36,8 +36,7 @@ const PostSchema = new Schema({
         ref: 'employer'
     },
     censor:{
-        type: Schema.Types.ObjectId,
-        ref: 'admin'
+        type: String
     }
     
 })
