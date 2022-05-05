@@ -185,3 +185,15 @@ Content-Type: application/json
             "status":"false",
             "dateEnd":"2022-12-07T00:00:00.000+00:00"
 }
+
+###
+
+PUT http://localhost:5000/api/post/6271e3b829174de1542b12b6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTE2Mjk5MjJ9.Oyprym-UOZvdF2pO1KZO2yIeeD_fSHlcj_ytHczOTEg
+Content-Type: application/json
+
+{
+    "category": "626130a62f2155f28b353cab",
+    "title":"Cưỡi ngựa giao hàng",
+    "content":"Giao Hàng nhanh 24/7"
+}

@@ -10,10 +10,13 @@ import About from './views/About';
 import PostContextProvider from './contexts/PostContext';
 import InforMation from './views/Information';
 import UserContextProvider from './contexts/UserContext';
+import CategoryContextProvider from './contexts/CategoryContext';
 //Protected Route là để chuyển trang private sang login đăng nhập mới cho xài
 function App() {
   return (
     <AuthContextProvider>
+      <CategoryContextProvider>
+
       <PostContextProvider>
         <UserContextProvider>
 
@@ -39,6 +42,8 @@ function App() {
         </UserContextProvider>
 
       </PostContextProvider>
+      </CategoryContextProvider>
+
     </AuthContextProvider>
   );
 }

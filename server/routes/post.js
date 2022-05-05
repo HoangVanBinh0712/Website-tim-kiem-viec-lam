@@ -54,4 +54,29 @@ router.post('/', verifyToken,async (req, res) => {
         res.status(500).json({ success: false, message: "Internal server error" })
     }
 })
+
+router.put('/:id', verifyToken,async (req, res) => {
+    const { category, title, content,dateEnd} = req.body
+    const post_id = req.params.id
+
+    try {
+        let post = await Post.findById({_id: post_id})
+        if(!post){
+            return res.json({success: false, message: "Post not found"})
+        }
+        post.category = category;
+        post.title = title;
+        post.content = content
+        post.dateEnd = dateEnd
+        post = await Post.findByIdAndUpdate({_id: post._id},post,{new: true})
+        if(!post)
+        {
+            return res.json({success: false, message: "Error"})
+        }
+        return res.json({ success: true, message: "Updated Post successfully", post: post })
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({ success: false, message: "Internal server error" })
+    }
+})
 module.exports = router

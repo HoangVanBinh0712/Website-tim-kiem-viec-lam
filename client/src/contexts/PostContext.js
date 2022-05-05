@@ -22,9 +22,9 @@ const PostContextProvider = ({ children }) => {
 
     const getPosts = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/category`)
+            const response = await axios.get(`${apiUrl}/post`)
             if (response.data.success) {
-                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.category })
+                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
             }
         } catch (error) {
             dispatch({ type: "POSTS_LOADED_FAIL" })
@@ -65,10 +65,10 @@ const PostContextProvider = ({ children }) => {
     //Update
     const updatePost = async updatedPost => {
         try {
-            const response = await axios.put(`${apiUrl}/category/${updatedPost._id}`,updatedPost)
+            const response = await axios.put(`${apiUrl}/post/${updatedPost._id}`,updatedPost)
             if(response.data.success)
             {
-                dispatch({ type: "UPDATE_POST", payload: response.data.category })
+                dispatch({ type: "UPDATE_POST", payload: response.data.post })
                 return response.data
             }
         } catch (error) {

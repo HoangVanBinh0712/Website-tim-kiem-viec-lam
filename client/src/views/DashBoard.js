@@ -12,16 +12,20 @@ import addIcon from '../assets/plus-circle-fill.svg'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Toast from 'react-bootstrap/Toast'
+import Form from 'react-bootstrap/Form'
 import UpdatePostModal from "../component/category/UpdatePostModal"
+import { CategoryContext } from "../contexts/CategoryContext"
 
 const DashBoard = () => {
     const { postState: { post, posts, postsLoading }, getPosts,
         setShowAddPostModal, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
     const { authState: { user: { name, companyname } } } = useContext(AuthContext)
+    const { categoryState: { categoryLoading, categories }, getCategory } = useContext(CategoryContext)
+
     var username = name
     if (!name)
         username = companyname
-    useEffect(() => getPosts, [])
+    useEffect(() => { getPosts(); getCategory(); }, [])
     let body = null
     if (postsLoading) {
         body = (
@@ -48,7 +52,7 @@ const DashBoard = () => {
             <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
                 {posts.map(post => (
                     <Col key={post._id} className='my-2'>
-                        <SinglePost post={post} />
+                        <SinglePost post={post}     />
                     </Col>
                 ))}
             </Row>
