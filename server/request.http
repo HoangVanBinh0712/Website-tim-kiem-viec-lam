@@ -255,3 +255,13 @@ Content-Type: application/json
 {
     
 }
+
+### Get post
+GET http://localhost:5000/api/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTE3NDA1NjF9.UJKXyVS9pvaHdMwUV2Ol696vV76TzMP7T-ixZnNl-Ks
+Content-Type: application/json
+
+{
+    "cate":"626130a62f2155f28b353cab",
+    "title":"Cưỡi"
+}

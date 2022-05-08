@@ -3,9 +3,32 @@ const router = express.Router()
 const Post = require('../model/Post')
 const verifyToken = require('../middleware/auth')
 
-router.get('/', async (req, res) => {
+router.get('/', verifyToken,async (req, res) => {
+    const {cate,title} = req.body
+        let posts
     try {
-        const posts = await Post.find()
+        if(!cate&!title){
+            posts = await Post.find()
+            return res.json({ success: true, post: posts })
+        }
+        if(!title){
+            posts = await Post.find({category: cate })
+            return res.json({success: true, post: posts})
+        }
+        if(!cate){
+            posts = await Post.find({title:{'$regex': title, '$options' : 'i'}})
+            return res.json({success: true, post: posts})
+        }
+        posts = await Post.find({title:{'$regex': title, '$options' : 'i'}})
+
+        var i = 0
+        posts.forEach(async post=> {
+            if(post.category != cate){
+                posts.splice(i, 1);
+                i--
+            }
+            i++
+        })
         res.json({ success: true, post: posts })
     } catch (error) {
         console.log(error.message)
