@@ -5,6 +5,8 @@ const postRouter =  require('./routes/auth')
 const cateRouter = require('./routes/category')
 const userInfoRouter = require('./routes/user_info')
 const postsRouter = require('./routes/post')
+const profileRouter = require('./routes/profile')
+const noticeRouter = require('./routes/notice')
 const cors = require('cors')
 const connectDB = async ()=>{
     try {
@@ -28,6 +30,8 @@ app.use('/api/auth',postRouter)
 app.use('/api/category',cateRouter)
 app.use('/api/info',userInfoRouter)
 app.use('/api/post',postsRouter)
+app.use('/api/profile',profileRouter)
+app.use('/api/notice',noticeRouter)
 app.use(express.json)
 const PORT = process.env.PORT || 5000;
 

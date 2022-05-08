@@ -197,3 +197,61 @@ Content-Type: application/json
     "title":"Cưỡi ngựa giao hàng",
     "content":"Giao Hàng nhanh 24/7"
 }
+
+### view profile
+GET http://localhost:5000/api/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTE2MjkyNzJ9.BYNC9su0Crq1Xj2WqwwiULqa5XHVPFTlXMIn6zG9urE
+
+###creat profile
+POST  http://localhost:5000/api/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTE2MjkyNzJ9.BYNC9su0Crq1Xj2WqwwiULqa5XHVPFTlXMIn6zG9urE
+Content-Type: application/json
+
+{
+            "owner_email": "thebest11447@gmail",
+            "phonenumber": "0337445596",
+            "name":"Hoàng Văn Bình",
+            "birthday":"2001-12-07T00:00:00.000+00:00",
+            "introduce": "Student",
+            "experience":"Nodejs",
+            "degree":"Student"
+}
+
+
+### AdjustProfile
+PUT  http://localhost:5000/api/profile/62737feeca9a9ece8460cf94
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTE2MjkyNzJ9.BYNC9su0Crq1Xj2WqwwiULqa5XHVPFTlXMIn6zG9urE
+Content-Type: application/json
+
+{
+        "owner_email":"thebest11447@gmail",
+        "phonenumber":"0337445596",
+        "name":"Hoàng Văn Bình",
+        "birthday":"2001-12-07T00:00:00.000Z",
+        "introduce":"Student",
+        "experience":"Nodejs",
+        "degree":"Student"
+}
+
+### Get notice
+GET http://localhost:5000/api/notice
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTE3NDA1NjF9.UJKXyVS9pvaHdMwUV2Ol696vV76TzMP7T-ixZnNl-Ks
+
+
+
+###
+post http://localhost:5000/api/notice/62612ea48758079c38c4acf1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTE3NDA1NjF9.UJKXyVS9pvaHdMwUV2Ol696vV76TzMP7T-ixZnNl-Ks
+Content-Type: application/json
+
+{
+    "title":"...."
+}
+### MarkViewAll
+PUT http://localhost:5000/api/notice
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTE3NDA1NjF9.UJKXyVS9pvaHdMwUV2Ol696vV76TzMP7T-ixZnNl-Ks
+Content-Type: application/json
+
+{
+    
+}
