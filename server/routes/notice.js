@@ -12,9 +12,9 @@ const Employer = require("../model/Employer")
 
 router.get('/', verifyToken ,async (req, res) => {
     const user_id = req.userId
-    let thisUser = await JobSeeker.findById({_id:user_id})
+    let thisUser = await Employer.findById({_id:user_id})
     if(!thisUser)
-        thisUser = await Employer.findById({_id:user_id})
+        thisUser = await JobSeeker.findById({_id:user_id})
     if(!thisUser)
         return res.status(401).json({ success: false, message: "Not found User" })
 
@@ -33,9 +33,9 @@ router.post('/:id', verifyToken,async (req, res) => {
     
     //jobseeker ID
     const user_id = req.params.id
-    let thisUser = await JobSeeker.findById({_id:user_id})
+    let thisUser = await Employer.findById({_id:user_id})
     if(!thisUser)
-        thisUser = await Employer.findById({_id:user_id})
+        thisUser = await JobSeeker.findById({_id:user_id})
     if(!thisUser)
         return res.status(401).json({ success: false, message: "Not found User" })
 
@@ -62,9 +62,9 @@ router.post('/:id', verifyToken,async (req, res) => {
 // Danh dau da xem het tat car thong bao
 router.put('/', verifyToken,async (req, res) => {
     const user_id = req.userId
-    let thisUser = await JobSeeker.findById({_id:user_id})
+    let thisUser = await Employer.findById({_id:user_id})
     if(!thisUser)
-        thisUser = await Employer.findById({_id:user_id})
+        thisUser = await JobSeeker.findById({_id:user_id})
     if(!thisUser)
         return res.status(401).json({ success: false, message: "Not found User" })
 
