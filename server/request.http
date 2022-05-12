@@ -209,3 +209,8 @@ Content-Type: application/json
 ###
 GET http://localhost:5000/api/submitted
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
+
+
+###
+GET http://localhost:5000/api/postDetail/6271e3b829174de1542b12b6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q

@@ -19,54 +19,94 @@ import { CategoryContext } from "../contexts/CategoryContext"
 const DashBoard = () => {
     const { postState: { post, posts, postsLoading }, getPosts,
         setShowAddPostModal, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
-    const { authState: { user: { name, companyname, role } } } = useContext(AuthContext)
+    const { authState: { user } } = useContext(AuthContext)
     const { categoryState: { categoryLoading, categories }, getCategory } = useContext(CategoryContext)
     const [cateState, setCateState] = useState("")
-
-    var username = name
-    if (!name)
-        username = companyname
     useEffect(() => { getPosts(); getCategory(); }, [])
+
     let body = null
-    if (postsLoading) {
-        body = (
-            <div className="spinner-container"><Spinner animation="border" variant="info" /></div>
-        )
-    } else if (posts.length === 0) {
-        body = (
-            <>
-                <Card className='text-center mx-5 my-5'>
-                    <Card.Header as='h1'>Hi {username}</Card.Header>
-                    <Card.Body>
-                        <Card.Title>Wellcome</Card.Title>
-                        <Card.Text>
-                            Click the button below to do ST
-                        </Card.Text>
-                        <Button variant="primary" onClick={setShowAddPostModal.bind(this, true)}>Add</Button>
-                    </Card.Body>
-                </Card>
-            </>
-        )
+
+    if (!user) {
+        if (postsLoading) {
+            body = (
+                <div className="spinner-container"><Spinner animation="border" variant="info" /></div>
+            )
+        } else if (posts.length === 0) {
+            body = (
+                <>
+                    <Card className='text-center mx-5 my-5'>
+                        <Card.Header as='h1'>Wellcome</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Wellcome</Card.Title>
+                            <Card.Text>
+                                Click the button below to do ST
+                            </Card.Text>
+                            <Button variant="primary" onClick={setShowAddPostModal.bind(this, true)}>Add</Button>
+                        </Card.Body>
+                    </Card>
+                </>
+            )
+        } else {
+            body = (<>
+                <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
+                    {posts.map(post => (
+                        <Col key={post._id} className='my-2'>
+                            <SinglePost post={post} role={0} />
+                        </Col>
+                    ))}
+                </Row>
+                {/*Open Add , show text when put on button */}
+                <OverlayTrigger placement='left'
+                    overlay={<Tooltip>Add category</Tooltip>}>
+                    <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
+                        <img src={addIcon} alt="add post" width="60" height="60" />
+                    </Button>
+                </OverlayTrigger>
+    
+            </>)
+        }
+    
     } else {
+        var username = user.name ? user.name : user.companyname
+        if (postsLoading) {
+            body = (
+                <div className="spinner-container"><Spinner animation="border" variant="info" /></div>
+            )
+        } else if (posts.length === 0) {
+            body = (
+                <>
+                    <Card className='text-center mx-5 my-5'>
+                        <Card.Header as='h1'>Hi {username}</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Wellcome</Card.Title>
+                            <Card.Text>
+                                Click the button below to do ST
+                            </Card.Text>
+                            <Button variant="primary" onClick={setShowAddPostModal.bind(this, true)}>Add</Button>
+                        </Card.Body>
+                    </Card>
+                </>
+            )
+        } else {
+            body = (<>
+                <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
+                    {posts.map(post => (
+                        <Col key={post._id} className='my-2'>
+                            <SinglePost post={post} role={user.role} />
+                        </Col>
+                    ))}
+                </Row>
+                {/*Open Add , show text when put on button */}
+                <OverlayTrigger placement='left'
+                    overlay={<Tooltip>Add category</Tooltip>}>
+                    <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
+                        <img src={addIcon} alt="add post" width="60" height="60" />
+                    </Button>
+                </OverlayTrigger>
 
+            </>)
+        }
 
-        body = (<>
-            <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-                {posts.map(post => (
-                    <Col key={post._id} className='my-2'>
-                        <SinglePost post={post} role={role} />
-                    </Col>
-                ))}
-            </Row>
-            {/*Open Add , show text when put on button */}
-            <OverlayTrigger placement='left'
-                overlay={<Tooltip>Add category</Tooltip>}>
-                <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
-                    <img src={addIcon} alt="add post" width="60" height="60" />
-                </Button>
-            </OverlayTrigger>
-
-        </>)
     }
 
     return <>
@@ -81,7 +121,8 @@ const DashBoard = () => {
                         <Col>
                             <div><Form.Text> Ngành nghề </Form.Text></div>
                             <div>      <select name='category' onChange={(e) => {
-                                const selected = e.target.value; setCateState(selected);}} required>
+                                const selected = e.target.value; setCateState(selected);
+                            }} required>
                                 {categories.map(category => (<option value={category._id} >  {category.name}</option>))}
                             </select>
                             </div>

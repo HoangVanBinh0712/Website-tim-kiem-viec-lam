@@ -12,6 +12,7 @@ import InforMation from './views/Information';
 import UserContextProvider from './contexts/UserContext';
 import CategoryContextProvider from './contexts/CategoryContext';
 import PostDetail from './component/category/PostDetail';
+import NavbarMenu from './layouts/NavBarMenu';
 //Protected Route là để chuyển trang private sang login đăng nhập mới cho xài
 function App() {
   return (
@@ -23,7 +24,10 @@ function App() {
 
         <Routes>
 
-          <Route exact path='/dashboard' element={<ProtectedRoute component={DashBoard} />} />
+          {/* <Route exact path='/dashboard' element={<ProtectedRoute component={DashBoard} />} /> */}
+          <Route exact path='/dashboard' element={<><NavbarMenu> </NavbarMenu> <DashBoard/></>} />
+          {/* <Route exac path='/postDetail/:id' element={<ProtectedRoute component={PostDetail}/>}/> */}
+          <Route exact path='/postDetail/:id' element={<><NavbarMenu> </NavbarMenu> <PostDetail/></>} />
           <Route
             exact
             path='/login'
@@ -37,8 +41,6 @@ function App() {
             element={<EmpRegisterForm />} />
           <Route exac path='/about' element={<ProtectedRoute component={About} />} />
           <Route exac path='/information' element={<ProtectedRoute component={InforMation}/>}/>
-          <Route exac path='/postDetail/:id' element={<ProtectedRoute component={PostDetail}/>}/>
-
           <Route exact path='/' element={<Navigate to='/login' replace />} />
 
         </Routes>

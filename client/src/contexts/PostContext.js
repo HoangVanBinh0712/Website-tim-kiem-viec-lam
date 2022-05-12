@@ -59,21 +59,23 @@ const PostContextProvider = ({ children }) => {
     }
     const findPostById = async postId => {
         try{
-            const response = await axios.get(`${apiUrl}/post/${postId}`)
+            const response = await axios.get(`${apiUrl}/postDetail/${postId}`)
             if (response.data.success) {
                 dispatch({ type: "FIND_POST", payload: response.data.post })
             }
-            console.log(response.data)
         }catch(error){
             console.log(error)
         }
 
     }
+    
     //findPost when user is Updating Post
     const findPost = postId =>{
+        console.log(postState.posts)
         const post = postState.posts.find(post => post._id === postId)
         dispatch({type: "FIND_POST",payload: post}  )
     }
+
     //Update
     const updatePost = async updatedPost => {
         try {
