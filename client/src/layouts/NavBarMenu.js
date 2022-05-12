@@ -61,8 +61,8 @@ const NavbarMenu = () => {
 				</Nav>
 
 				<Nav>
-					<Nav.Link className='font-weight-bolder text-white'>
-						Welcome {username}
+					<Nav.Link className='font-weight-bolder text-white' >
+						{username}
 					</Nav.Link>
 				</Nav>
 				<Nav>

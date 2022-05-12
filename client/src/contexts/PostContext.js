@@ -34,9 +34,9 @@ const PostContextProvider = ({ children }) => {
     //Add post
     const addPost = async newPost => {
         try {
-            const response = await axios.post(`${apiUrl}/category`, newPost)
+            const response = await axios.post(`${apiUrl}/post`, newPost)
             if (response.data.success) {
-                dispatch({ type: "ADD_POST", payload: response.data.category })
+                dispatch({ type: "ADD_POST", payload: response.data.post })
                 return response.data
             }
 
@@ -49,13 +49,25 @@ const PostContextProvider = ({ children }) => {
     //Delete
     const deletePost = async postId => {
         try {
-            const response = await axios.delete(`${apiUrl}/category/${postId}`)
+            const response = await axios.delete(`${apiUrl}/post/${postId}`)
             if (response.data.success) {
                 dispatch({ type: "DELETE_POST", payload: postId })
             }
         } catch (error) {
             console.log(error)
         }
+    }
+    const findPostById = async postId => {
+        try{
+            const response = await axios.get(`${apiUrl}/post/${postId}`)
+            if (response.data.success) {
+                dispatch({ type: "FIND_POST", payload: response.data.post })
+            }
+            console.log(response.data)
+        }catch(error){
+            console.log(error)
+        }
+
     }
     //findPost when user is Updating Post
     const findPost = postId =>{
@@ -90,7 +102,8 @@ const PostContextProvider = ({ children }) => {
         setShowToast, 
         deletePost,
         updatePost,
-        findPost
+        findPost,
+        findPostById
     }
     return (
         <PostContext.Provider value={PostContextData}>

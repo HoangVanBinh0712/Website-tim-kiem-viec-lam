@@ -1,5 +1,5 @@
 import { PostContext } from "../contexts/PostContext"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import Spinner from "react-bootstrap/esm/Spinner"
 import { AuthContext } from "../contexts/AuthContext"
 import Card from 'react-bootstrap/Card'
@@ -19,8 +19,9 @@ import { CategoryContext } from "../contexts/CategoryContext"
 const DashBoard = () => {
     const { postState: { post, posts, postsLoading }, getPosts,
         setShowAddPostModal, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
-    const { authState: { user: { name, companyname } } } = useContext(AuthContext)
+    const { authState: { user: { name, companyname, role } } } = useContext(AuthContext)
     const { categoryState: { categoryLoading, categories }, getCategory } = useContext(CategoryContext)
+    const [cateState, setCateState] = useState("")
 
     var username = name
     if (!name)
@@ -48,11 +49,12 @@ const DashBoard = () => {
         )
     } else {
 
+
         body = (<>
             <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
                 {posts.map(post => (
                     <Col key={post._id} className='my-2'>
-                        <SinglePost post={post}     />
+                        <SinglePost post={post} role={role} />
                     </Col>
                 ))}
             </Row>
@@ -68,6 +70,31 @@ const DashBoard = () => {
     }
 
     return <>
+        <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
+
+            <Form className='white-space: nowrap' border='success'>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control type="text" placeholder="Nhập thông tin tìm kiếm" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Row>
+                        <Col>
+                            <div><Form.Text> Ngành nghề </Form.Text></div>
+                            <div>      <select name='category' onChange={(e) => {
+                                const selected = e.target.value; setCateState(selected);}} required>
+                                {categories.map(category => (<option value={category._id} >  {category.name}</option>))}
+                            </select>
+                            </div>
+                        </Col>
+                        <Col>
+                        </Col>
+                    </Row>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </Row>
         {body}
         <AddPostModal />
         <Toast

@@ -106,10 +106,6 @@ button.post-button.btn:active {
 	border-width: 2px;
 }
 
-/* Post title */
-.post-title {
-	margin-bottom: 0.5rem;
-}
 
 
 .card-text{
@@ -118,4 +114,14 @@ button.post-button.btn:active {
 	display: -webkit-box;
 	-webkit-line-clamp: 1; /* number of lines to show */
 	-webkit-box-orient: vertical;
+}
+
+.post-title{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-box-orient: vertical;
+	margin-bottom: 0.5rem;
+
 }

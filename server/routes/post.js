@@ -24,16 +24,15 @@ router.delete('/:id', async (req, res) => {
     }
 })
 router.post('/', verifyToken,async (req, res) => {
-    const { category, title, content, status, dateEnd} = req.body
+    const { category, title, content, dateEnd} = req.body
     //, dateAcepted, author, censor
     //date req
     const author = req.userId
-    const censor=""
     const dateAcepted=""
     const dateRequest = new Date()
-    console.log(req.userId)
+    const status = false
     
-    if (!category||!title||!content||!status||!dateRequest||!dateEnd ||!author)
+    if (!category||!title||!content||!dateEnd ||!author)
         return res.status(401).json({ success: false, message: "Missing information" })
     try {
         const post = new Post({
@@ -45,7 +44,7 @@ router.post('/', verifyToken,async (req, res) => {
             dateEnd:dateEnd,
             dateAcepted:dateAcepted,
             author:author,
-            censor:"626158d3262007754a2ce2a8"
+            censor:""
         })
         post.save()
         return res.json({ success: true, message: "Add new Post successfully", post: post })

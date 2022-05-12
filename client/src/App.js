@@ -11,6 +11,7 @@ import PostContextProvider from './contexts/PostContext';
 import InforMation from './views/Information';
 import UserContextProvider from './contexts/UserContext';
 import CategoryContextProvider from './contexts/CategoryContext';
+import PostDetail from './component/category/PostDetail';
 //Protected Route là để chuyển trang private sang login đăng nhập mới cho xài
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
             element={<EmpRegisterForm />} />
           <Route exac path='/about' element={<ProtectedRoute component={About} />} />
           <Route exac path='/information' element={<ProtectedRoute component={InforMation}/>}/>
+          <Route exac path='/postDetail/:id' element={<ProtectedRoute component={PostDetail}/>}/>
+
           <Route exact path='/' element={<Navigate to='/login' replace />} />
 
         </Routes>

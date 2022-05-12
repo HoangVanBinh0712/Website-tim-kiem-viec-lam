@@ -182,7 +182,6 @@ Content-Type: application/json
             "category": "626129e3ba08c523d264991a",
             "title": "Cưỡi ngựa",
             "content":"Cưỡi ngựa trên các quốc lộ",
-            "status":"false",
             "dateEnd":"2022-12-07T00:00:00.000+00:00"
 }
 
@@ -197,3 +196,16 @@ Content-Type: application/json
     "title":"Cưỡi ngựa giao hàng",
     "content":"Giao Hàng nhanh 24/7"
 }
+
+###
+PUT http://localhost:5000/api/submitted
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
+Content-Type: application/json
+
+{
+    "postId": "6271e3b829174de1542b12b6"
+}
+
+###
+GET http://localhost:5000/api/submitted
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q

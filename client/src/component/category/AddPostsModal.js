@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useContext, useState } from 'react'
 import { PostContext } from '../../contexts/PostContext'
+import { CategoryContext } from '../../contexts/CategoryContext'
 const AddPostModal = () => {
     // Contexts
 
@@ -10,58 +11,86 @@ const AddPostModal = () => {
 
     // State
     const [newPost, setNewPost] = useState({
-        name: '',
-        description: ''
+        title: '',
+        content: '',
+        category: '',
+        dateEnd: ''
     })
+    const [cateState, setCateState] = useState("")
+    const { categoryState: { categoryLoading, categories } } = useContext(CategoryContext)
 
-    const { name, description } = newPost
+    const { title, content, dateEnd } = newPost
     const onChangeNewPostForm = event =>
         setNewPost({ ...newPost, [event.target.name]: event.target.value })
 
     const closeDialog = () => {
-        setNewPost({ name: '', description: '' })
+        setNewPost({ title: '', content: '', dateEnd: '' })
         setShowAddPostModal(false)
     }
 
     const onSubmit = async event => {
         event.preventDefault()
-        const {success,message} = await addPost(newPost)
-        setShowToast({show: true, message: message,type: success ? 'success' : 'danger'})
-        setNewPost({ name: '', description: '' })
+        newPost.category = cateState
+        console.log(newPost)
+        const { success, message } = await addPost(newPost)
+        setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
+        setNewPost({ title: '', content: '', dateEnd: '' })
         setShowAddPostModal(false)
     }
 
     return (
         <Modal show={showAddPostModal} onHide={closeDialog} >
             <Modal.Header closeButton>
-                <Modal.Title>What do you want to learn?</Modal.Title>
+                <Modal.Title>Add new Post</Modal.Title>
             </Modal.Header>
             <Form onSubmit={onSubmit}>
                 <Modal.Body>
                     <Form.Group className="mb-3">
-                        <Form.Text id='title-help' muted> Name  </Form.Text>
+                        <Form.Text id='title-help' muted> Title  </Form.Text>
                         <Form.Control
                             type='text'
-                            placeholder='name'
-                            name='name'
+                            placeholder='Title'
+                            name='title'
                             required
                             aria-describedby='title-help'
-                            value={name}
+                            value={title}
                             onChange={onChangeNewPostForm}
                         />
                     </Form.Group >
-                    <Form.Text id='title-help' muted> Description  </Form.Text>
+                    <Form.Text id='title-help' muted> Content  </Form.Text>
 
                     <Form.Group className="mb-3">
                         <Form.Control
                             as='textarea'
                             rows={3}
-                            placeholder='Description'
-                            name='description'
-                            value={description}
+                            placeholder='Content'
+                            name='content'
+                            value={content}
                             onChange={onChangeNewPostForm}
                         />
                     </Form.Group>
+                    <Form.Text id='title-help' muted> Date End  </Form.Text>
+
+                    <Form.Group className="mb-3">
+                        <Form.Control
+                            type='text'
+                            placeholder='dateEnd'
+                            name='dateEnd'
+                            required
+                            aria-describedby='title-help'
+                            value={dateEnd}
+                            onChange={onChangeNewPostForm}
+                        />
+                    </Form.Group>
+                    <select name='category' onChange={(e) => {
+                        const selected = e.target.value;
+                        setCateState(selected);
+                    }} required>
+                        {categories.map(category => (
+                            <option value={category._id} >  {category.name}</option>
+                        ))}
+
+                    </select>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={closeDialog}>

@@ -2,14 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema
 
 const SubmittedSchema = new Schema({
-    currentSubmitted: {
-        type:Number,
-        default: 0
-    },
     submitterEmail: {
-        type: Number,
-        require: true,
-        unique: true,
+        type: String,
+        require: true
     },
     dateSubmitted: {
         type: Date,
