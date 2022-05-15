@@ -43,11 +43,11 @@ router.delete('/:id', async (req, res) => {
         if (deleted_post)
             res.json({ success: true, message: "Delete post successfully", post: deleted_post })
     } catch (error) {
-        res.status(500).json({ success: false, message: "Internal server error" })
+        res.status(500).json({ success: false, message: "Post Not Found" })
     }
 })
 router.post('/', verifyToken,async (req, res) => {
-    const { category, title, content, dateEnd} = req.body
+    const { category, title, description,requirement,salary,location, dateEnd} = req.body
     //, dateAcepted, author, censor
     //date req
     const author = req.userId
@@ -55,13 +55,16 @@ router.post('/', verifyToken,async (req, res) => {
     const dateRequest = new Date()
     const status = false
     
-    if (!category||!title||!content||!dateEnd ||!author)
+    if (!category||!title||!description || !requirement || !salary ||!location||!dateEnd ||!author)
         return res.status(401).json({ success: false, message: "Missing information" })
     try {
         const post = new Post({
             category: category,
             title: title,
-            content:content,
+            description:description,
+            requirement: requirement,
+            salary: salary,
+            location: location,
             status:status,
             dateRequest: dateRequest,
             dateEnd:dateEnd,
@@ -78,7 +81,7 @@ router.post('/', verifyToken,async (req, res) => {
 })
 
 router.put('/:id', verifyToken,async (req, res) => {
-    const { category, title, content,dateEnd} = req.body
+    const { category, title, description,requirement,salary,location, dateEnd} = req.body
     const post_id = req.params.id
 
     try {
@@ -88,7 +91,10 @@ router.put('/:id', verifyToken,async (req, res) => {
         }
         post.category = category;
         post.title = title;
-        post.content = content
+        post.description = description
+        post.requirement = requirement
+        post.salary = salary
+        post.location = location
         post.dateEnd = dateEnd
         post = await Post.findByIdAndUpdate({_id: post._id},post,{new: true})
         if(!post)

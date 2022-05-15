@@ -27,8 +27,7 @@ router.put('/', verifyToken, async (req, res) => {
         const jsk = await jobseeker.findById(req.userId)
         if(!jsk)
         return res.json({success: false, message: "User not found !"})
-        const email = jsk.email
-        const sbmt = await Submitted.findOne({submitterEmail: email, post: postId})
+        const sbmt = await Submitted.findOne({submitterId: req.userId, post: postId})
         if(sbmt)
         {
             await Submitted.findOneAndDelete({_id: sbmt._id})
@@ -36,7 +35,7 @@ router.put('/', verifyToken, async (req, res) => {
         }
         const today = new Date()
         const submitted = new Submitted({
-            submitterEmail: email,
+            submitterId: req.userId,
             dateSubmitted: today,
             post: postId
         })

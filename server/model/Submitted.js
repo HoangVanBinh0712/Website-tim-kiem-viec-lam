@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema
 
 const SubmittedSchema = new Schema({
-    submitterEmail: {
-        type: String,
-        require: true
+    submitterId: {
+        type: Schema.Types.ObjectId,
+        ref: 'jobseeker'
     },
     dateSubmitted: {
         type: Date,

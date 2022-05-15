@@ -39,7 +39,7 @@ const AdminSchema = new Schema({
     lastesttoken: {
         type: String
     },
-    timescensored: {
+    timeApproved: {
         type: Number,
         default: 0
     },

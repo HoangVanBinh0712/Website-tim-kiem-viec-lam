@@ -10,7 +10,19 @@ const PostSchema = new Schema({
         type: String,
         require: true,
     },
-    content:{
+    description:{
+        type: String,
+        require: true,
+    },
+    requirement:{
+        type: String,
+        require: true,
+    },
+    salary:{
+        type: Number,
+        require: true,
+    },
+    location:{
         type: String,
         require: true,
     },
@@ -26,7 +38,7 @@ const PostSchema = new Schema({
         type: Date,
         require: true
     },
-    dateAcepted: {
+    dateApproved: {
         type: Date,
     }
     //ref Author và Censor và Category
@@ -35,7 +47,7 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'employer'
     },
-    censor:{
+    approver:{
         type: String
     }
     

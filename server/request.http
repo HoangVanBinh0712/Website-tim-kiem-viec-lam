@@ -181,23 +181,30 @@ Content-Type: application/json
 {
             "category": "626129e3ba08c523d264991a",
             "title": "Cưỡi ngựa",
-            "content":"Cưỡi ngựa trên các quốc lộ",
+            "description":"Cưỡi ngựa trên các quốc lộ",
+            "requirement": "Trình độ Đại Học",
+            "salary": 10000000,
+            "location": "Số 18 đường bình thung",
             "dateEnd":"2022-12-07T00:00:00.000+00:00"
 }
 
 ###
 
-PUT http://localhost:5000/api/post/6271e3b829174de1542b12b6
+PUT http://localhost:5000/api/post/6280c5717345790749d46169
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTE2Mjk5MjJ9.Oyprym-UOZvdF2pO1KZO2yIeeD_fSHlcj_ytHczOTEg
 Content-Type: application/json
 
 {
-    "category": "626130a62f2155f28b353cab",
-    "title":"Cưỡi ngựa giao hàng",
-    "content":"Giao Hàng nhanh 24/7"
+            "category": "626129e3ba08c523d264991a",
+            "title": "Cưỡi ngựa",
+            "description":"Cưỡi ngựa trên các quốc lộ",
+            "requirement": "Trình độ Đại Học",
+            "salary": 9000000,
+            "location": "Số 18 đường bình thung",
+            "dateEnd":"2022-12-07T00:00:00.000+00:00"
 }
 
-###
+###Submitted
 PUT http://localhost:5000/api/submitted
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
 Content-Type: application/json
@@ -206,11 +213,11 @@ Content-Type: application/json
     "postId": "6271e3b829174de1542b12b6"
 }
 
-###
+### Get Submitted
 GET http://localhost:5000/api/submitted
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
 
 
-###
+### Get Post Details
 GET http://localhost:5000/api/postDetail/6271e3b829174de1542b12b6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
