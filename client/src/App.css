@@ -114,8 +114,16 @@ button.post-button.btn:active {
 	display: -webkit-box;
 	-webkit-line-clamp: 1; /* number of lines to show */
 	-webkit-box-orient: vertical;
+	color: black;
+	font-size: 25px;
+	font-weight: 400;
 }
-
+.card-detail{
+	white-space: pre-line;
+	color: black;
+	font-size: 25px;
+	font-weight: 400;
+}
 .post-title{
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -123,5 +131,38 @@ button.post-button.btn:active {
 	-webkit-line-clamp: 1; /* number of lines to show */
 	-webkit-box-orient: vertical;
 	margin-bottom: 0.5rem;
+	color: black;
+	font-size: 25px;
+	font-weight: 500;
+}
 
+.card-detail{
+	white-space: nowrap;
+	margin-top: 20pt;
+}
+.formTimKiem{
+	background: rgba(220, 217, 212, 0.1);
+	padding: 10px 10px 10px 10px;
+}
+
+input, select{
+	border: none;
+	height: 30pt;
+	font-size: 15pt;
+	border-radius: 10px 10px 10px 10px;
+	width: 100%;
+}
+button{
+	border: 0;
+	font-size: 15pt;
+	border-radius: 10px 10px 10px 10px;
+	height: 30pt;
+}
+.format-row{
+	margin: 15px 0 15px 0;
+
+}
+
+a{
+	font-weight: 500;
 }

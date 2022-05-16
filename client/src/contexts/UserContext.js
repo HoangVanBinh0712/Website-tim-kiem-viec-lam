@@ -8,7 +8,6 @@ export const UserContext = createContext()
 const UserContextProvider = ({ children }) => {
 
     const [showModal, setShowModal] = useState(false)
-
     //Change pass word
 
     const changePassword = async newModal =>{

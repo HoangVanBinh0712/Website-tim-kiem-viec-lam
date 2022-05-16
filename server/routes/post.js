@@ -3,6 +3,16 @@ const router = express.Router()
 const Post = require('../model/Post')
 const verifyToken = require('../middleware/auth')
 
+router.get('/EmpPost', verifyToken, async (req,res)=>{
+    try {
+        const posts = await Post.find({author: req.userId})
+        res.json({success: true, post: posts})
+    } catch (error) {
+        res.json({success: false, message:"Internal Server Error"})
+    }
+})
+
+
 router.get('/',async (req, res) => {
     const {cate,title} = req.body
         let posts
@@ -53,7 +63,7 @@ router.post('/', verifyToken,async (req, res) => {
     const author = req.userId
     const dateAcepted=""
     const dateRequest = new Date()
-    const status = false
+    const status = "pending"
     
     if (!category||!title||!description || !requirement || !salary ||!location||!dateEnd ||!author)
         return res.status(401).json({ success: false, message: "Missing information" })

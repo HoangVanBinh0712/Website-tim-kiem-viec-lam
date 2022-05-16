@@ -11,8 +11,9 @@ import PostContextProvider from './contexts/PostContext';
 import InforMation from './views/Information';
 import UserContextProvider from './contexts/UserContext';
 import CategoryContextProvider from './contexts/CategoryContext';
-import PostDetail from './component/category/PostDetail';
+import PostDetail from './component/posts/PostDetail';
 import NavbarMenu from './layouts/NavBarMenu';
+import EmployerPost from './component/posts/employer/EmployerPost';
 //Protected Route là để chuyển trang private sang login đăng nhập mới cho xài
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
 
           {/* <Route exact path='/dashboard' element={<ProtectedRoute component={DashBoard} />} /> */}
           <Route exact path='/dashboard' element={<><NavbarMenu> </NavbarMenu> <DashBoard/></>} />
+          <Route exac path='/posts/yourposts' element={<ProtectedRoute component={EmployerPost} />} />
+
           {/* <Route exac path='/postDetail/:id' element={<ProtectedRoute component={PostDetail}/>}/> */}
           <Route exact path='/postDetail/:id' element={<><NavbarMenu> </NavbarMenu> <PostDetail/></>} />
           <Route

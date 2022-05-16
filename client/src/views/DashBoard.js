@@ -1,140 +1,78 @@
 import { PostContext } from "../contexts/PostContext"
 import { useContext, useEffect, useState } from "react"
 import Spinner from "react-bootstrap/esm/Spinner"
-import { AuthContext } from "../contexts/AuthContext"
 import Card from 'react-bootstrap/Card'
-import Button from "react-bootstrap/esm/Button"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import SinglePost from "../component/category/SinglePost"
-import AddPostModal from "../component/category/AddPostsModal"
-import addIcon from '../assets/plus-circle-fill.svg'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Tooltip from 'react-bootstrap/Tooltip'
+import SinglePost from "../component/posts/SinglePost"
+import AddPostModal from "../component/posts/AddPostsModal"
 import Toast from 'react-bootstrap/Toast'
-import Form from 'react-bootstrap/Form'
-import UpdatePostModal from "../component/category/UpdatePostModal"
+import UpdatePostModal from "../component/posts/UpdatePostModal"
 import { CategoryContext } from "../contexts/CategoryContext"
 
 const DashBoard = () => {
     const { postState: { post, posts, postsLoading }, getPosts,
-        setShowAddPostModal, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
-    const { authState: { user } } = useContext(AuthContext)
+     showToast: { show, message, type }, setShowToast } = useContext(PostContext)
+
     const { categoryState: { categoryLoading, categories }, getCategory } = useContext(CategoryContext)
     const [cateState, setCateState] = useState("")
-    useEffect(() => { getPosts(); getCategory(); }, [])
 
+    useEffect(() => { getPosts(false); getCategory(); }, [])
     let body = null
-
-    if (!user) {
-        if (postsLoading) {
-            body = (
-                <div className="spinner-container"><Spinner animation="border" variant="info" /></div>
-            )
-        } else if (posts.length === 0) {
-            body = (
-                <>
-                    <Card className='text-center mx-5 my-5'>
-                        <Card.Header as='h1'>Wellcome</Card.Header>
-                        <Card.Body>
-                            <Card.Title>Wellcome</Card.Title>
-                            <Card.Text>
-                                Click the button below to do ST
-                            </Card.Text>
-                            <Button variant="primary" onClick={setShowAddPostModal.bind(this, true)}>Add</Button>
-                        </Card.Body>
-                    </Card>
-                </>
-            )
-        } else {
-            body = (<>
-                <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-                    {posts.map(post => (
-                        <Col key={post._id} className='my-2'>
-                            <SinglePost post={post} role={0} />
-                        </Col>
-                    ))}
-                </Row>
-                {/*Open Add , show text when put on button */}
-                <OverlayTrigger placement='left'
-                    overlay={<Tooltip>Add category</Tooltip>}>
-                    <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
-                        <img src={addIcon} alt="add post" width="60" height="60" />
-                    </Button>
-                </OverlayTrigger>
-    
-            </>)
-        }
-    
+    if (postsLoading || categoryLoading) {
+        body = (<div className="spinner-container"><Spinner animation="border" variant="info" /></div>)
     } else {
-        var username = user.name ? user.name : user.companyname
-        if (postsLoading) {
-            body = (
-                <div className="spinner-container"><Spinner animation="border" variant="info" /></div>
-            )
-        } else if (posts.length === 0) {
-            body = (
-                <>
-                    <Card className='text-center mx-5 my-5'>
-                        <Card.Header as='h1'>Hi {username}</Card.Header>
-                        <Card.Body>
-                            <Card.Title>Wellcome</Card.Title>
-                            <Card.Text>
-                                Click the button below to do ST
-                            </Card.Text>
-                            <Button variant="primary" onClick={setShowAddPostModal.bind(this, true)}>Add</Button>
-                        </Card.Body>
-                    </Card>
-                </>
-            )
-        } else {
-            body = (<>
-                <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-                    {posts.map(post => (
-                        <Col key={post._id} className='my-2'>
-                            <SinglePost post={post} role={user.role} />
-                        </Col>
-                    ))}
-                </Row>
-                {/*Open Add , show text when put on button */}
-                <OverlayTrigger placement='left'
-                    overlay={<Tooltip>Add category</Tooltip>}>
-                    <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
-                        <img src={addIcon} alt="add post" width="60" height="60" />
-                    </Button>
-                </OverlayTrigger>
-
-            </>)
-        }
-
-    }
-
+        body = (<>
+            <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3 container'>
+                {posts.map(post => (
+                    <Col key={post._id} className='my-2'>
+                        <SinglePost post={post} />
+                    </Col>
+                ))}
+            </Row>
+        </>)}
     return <>
-        <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-
-            <Form className='white-space: nowrap' border='success'>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control type="text" placeholder="Nhập thông tin tìm kiếm" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Row>
-                        <Col>
-                            <div><Form.Text> Ngành nghề </Form.Text></div>
-                            <div>      <select name='category' onChange={(e) => {
-                                const selected = e.target.value; setCateState(selected);
-                            }} required>
-                                {categories.map(category => (<option value={category._id} >  {category.name}</option>))}
-                            </select>
+        <Row className='row-cols-1'>
+            <Card>
+                <Card.Img src="https://youthclinic.com/wp-content/uploads/2015/01/Job-Opportunities.jpg" alt="Card image" className="container" style={{ height: "300px", padding: "0 0 0 0 " }} />
+                <Card.ImgOverlay>
+                    <form className="formTimKiem col-4" style={{margin:"0px 0 20px 950px"}}>
+                        <Row className="format-row">
+                            <div>
+                                <input type="text" placeholder="Nhập thông tin tìm kiếm" />
                             </div>
-                        </Col>
-                        <Col>
-                        </Col>
-                    </Row>
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+                        </Row>
+                        <Row className="format-row">
+                            <Col className="col-5">
+                                <select name='category' onChange={(e) => {
+                                    const selected = e.target.value; setCateState(selected);
+                                }} required>
+                                    {categories.map(category => (<option value={category._id} >  {category.name}</option>))}
+                                </select>
+                            </Col>
+                            <Col className="col-4">
+                                <input type="text" placeholder="Tỉnh thành" />
+                            </Col>
+                            <Col className="col-3">
+                                <button variant="primary" type="submit">Tìm kiếm</button>
+                            </Col>
+                        </Row>
+                        <Row className="mx-0">
+                            <Col>
+                                <a style={{ color: "white" }}>Công nghệ thông tin</a>
+
+                            </Col>
+                            <Col>
+                                <a style={{ color: "white" }}>Tài chính ngân hàng</a>
+
+                            </Col>
+                            <Col>
+                                <a style={{ color: "white" }}>Giao thông vận tải</a>
+                            </Col>
+                        </Row>
+                    </form>
+                </Card.ImgOverlay>
+            </Card>
         </Row>
         {body}
         <AddPostModal />
@@ -156,8 +94,6 @@ const DashBoard = () => {
         </Toast>
         {post !== null && <UpdatePostModal />}
         {/* After post is added, show toast */}
-
-
     </>
 }
 export default DashBoard

@@ -20,8 +20,15 @@ const PostContextProvider = ({ children }) => {
         type: null
     })
 
-    const getPosts = async () => {
+    const getPosts = async showEmployerPost => {
         try {
+            if (showEmployerPost) {
+                const response = await axios.get(`${apiUrl}/post/EmpPost`);
+                if (response.data.success) {
+                    dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
+                }
+                return response.data
+            }
             const response = await axios.get(`${apiUrl}/post`)
             if (response.data.success) {
                 dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
@@ -58,30 +65,31 @@ const PostContextProvider = ({ children }) => {
         }
     }
     const findPostById = async postId => {
-        try{
+        try {
             const response = await axios.get(`${apiUrl}/postDetail/${postId}`)
             if (response.data.success) {
                 dispatch({ type: "FIND_POST", payload: response.data.post })
             }
-        }catch(error){
+            return response.data.post
+        } catch (error) {
             console.log(error)
+            return error
         }
 
     }
-    
+
     //findPost when user is Updating Post
-    const findPost = postId =>{
+    const findPost = postId => {
         console.log(postState.posts)
         const post = postState.posts.find(post => post._id === postId)
-        dispatch({type: "FIND_POST",payload: post}  )
+        dispatch({ type: "FIND_POST", payload: post })
     }
 
     //Update
     const updatePost = async updatedPost => {
         try {
-            const response = await axios.put(`${apiUrl}/post/${updatedPost._id}`,updatedPost)
-            if(response.data.success)
-            {
+            const response = await axios.put(`${apiUrl}/post/${updatedPost._id}`, updatedPost)
+            if (response.data.success) {
                 dispatch({ type: "UPDATE_POST", payload: response.data.post })
                 return response.data
             }
@@ -89,6 +97,8 @@ const PostContextProvider = ({ children }) => {
             console.log(error)
 
         }
+    }
+    const getEmpPosts = async () => {
     }
     //PostContext data
 
@@ -99,13 +109,14 @@ const PostContextProvider = ({ children }) => {
         setShowAddPostModal,
         showUpdatePostModal,
         setShowUpdatePostModal,
-        addPost, 
-        showToast, 
-        setShowToast, 
+        addPost,
+        showToast,
+        setShowToast,
         deletePost,
         updatePost,
         findPost,
-        findPostById
+        findPostById,
+        getEmpPosts
     }
     return (
         <PostContext.Provider value={PostContextData}>

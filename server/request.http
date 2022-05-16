@@ -89,9 +89,9 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "mode" : 0,
-    "email": "thebest11447@gmail.com",
-    "password": "12345"
+    "mode" : 1,
+    "email": "thebest11446@gmail.com",
+    "password": "123456789"
 }
 
 ### Get category
@@ -175,16 +175,16 @@ GET http://localhost:5000/api/post
 DELETE  http://localhost:5000/api/post/32423423432432
 ###
 POST  http://localhost:5000/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTE2Mjk5MjJ9.Oyprym-UOZvdF2pO1KZO2yIeeD_fSHlcj_ytHczOTEg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTI3MDY3NjB9.wJJXBAUg2NVAwkn1Kl4FrEicXkAEFwYNpvIvn7wGVqg
 Content-Type: application/json
 
 {
             "category": "626129e3ba08c523d264991a",
-            "title": "Cưỡi ngựa",
-            "description":"Cưỡi ngựa trên các quốc lộ",
-            "requirement": "Trình độ Đại Học",
-            "salary": 10000000,
-            "location": "Số 18 đường bình thung",
+            "title": "Giao hàng nhanh FFood",
+            "description":"Giao hàng cấp tốc cho công ty, các loại hàng hóa đa dạng.",
+            "requirement": "Có giấy phép lái xe A1",
+            "salary": 8000000,
+            "location": "Công ty TNHH MTV FFood, Dĩ An, Bình Dương",
             "dateEnd":"2022-12-07T00:00:00.000+00:00"
 }
 
@@ -219,5 +219,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxM
 
 
 ### Get Post Details
-GET http://localhost:5000/api/postDetail/6271e3b829174de1542b12b6
+GET http://localhost:5000/api/postDetail/6280c5717345790749d46169
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
+
+
+### get Emp Post
+GET http://localhost:5000/api/post/EmpPost
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTI2MDk3NjV9.TTMUl1d9RKrbWjrBqElskfaow7rXqZiC6ZPBLYZAjQQ

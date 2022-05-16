@@ -27,8 +27,8 @@ const PostSchema = new Schema({
         require: true,
     },
     status:{
-        type:Boolean,
-        default: false,
+        type:String,
+        enum: ["pending","approved","rejected"],
     },
     dateRequest:{
         type: Date,
