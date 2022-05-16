@@ -3,15 +3,13 @@
 Đăng nhập <br>
 Đăng xuất <br>
 Xem thông tin tài khoản <br> 
-Sửa thông tin tài khoản <br><br>
-Thay đổi mật khẩu<br><br>
-Xem tất cả các Post (Không cần đăng nhập)<br><br>
-Xem chi tiết Post (không cần đăng nhập)<br><br>
-
+Sửa thông tin tài khoản <br>
+Thay đổi mật khẩu<br>
+Xem tất cả các Post (Không cần đăng nhập)<br>
+Xem chi tiết Post (không cần đăng nhập)<br>
 <h3>Employer</h3>
 Xem các post đã đăng -> Xem chi tiết từng post<br>
 Xóa các post<br>
-
 Các chức năng cần hoàn thành:
 <h3>Employer:</h3>
 Sửa thông tin bài post <br>
