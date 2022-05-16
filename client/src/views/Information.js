@@ -52,23 +52,23 @@ const InforMation = () => {
 
             body = (<>
                 <Form onSubmit={onSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email'/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="Text" value={name} onChange={onChangeNewUserForm} name='name'/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Phone</Form.Label>
                         <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber'/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Address</Form.Label>
                         <Form.Control type="Text" value={address} onChange={onChangeNewUserForm} name='address' />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Birthday</Form.Label>
                         <Form.Control type="Text" value={birthday} onChange={onChangeNewUserForm} name='birthday' />
                     </Form.Group>
@@ -94,23 +94,23 @@ const InforMation = () => {
 
             body = (<>
             <Form onSubmit={onSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email'/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="Text" value={companyname} onChange={onChangeNewUserForm} name='companyname'/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Phone</Form.Label>
                         <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber'/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Address</Form.Label>
                         <Form.Control type="Text" value={address} onChange={onChangeNewUserForm} name='address' />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Description</Form.Label>
                         <Form.Control type="Text" value={description} onChange={onChangeNewUserForm} name='description' />
                     </Form.Group>
@@ -123,29 +123,29 @@ const InforMation = () => {
             //Admin
             body = (<>
                 <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" defaultValue={user.email} readOnly/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="Text" defaultValue={username} readOnly/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Phone</Form.Label>
                         <Form.Control type="Text" defaultValue={user.phonenumber}readOnly />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Address</Form.Label>
                         <Form.Control type="Text" defaultValue={user.address} readOnly/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3"  >
                         <Form.Label>Contact</Form.Label>
                         <Form.Control type="Text" defaultValue={user.contact} readOnly/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Time Scensored</Form.Label>
-                        <Form.Control type="Text" defaultValue={user.timescensored} readOnly/>
+                    <Form.Group className="mb-3"  >
+                        <Form.Label>Time Approved</Form.Label>
+                        <Form.Control type="Text" defaultValue={user.timeApproved} readOnly/>
                     </Form.Group>
                 </Form>
             </>)

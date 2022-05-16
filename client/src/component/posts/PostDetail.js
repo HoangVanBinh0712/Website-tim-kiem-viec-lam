@@ -12,7 +12,7 @@ const PostDetail = () => {
     const { postState: { post, postsLoading }, findPostById, } = useContext(PostContext)
     useEffect(() => { findPostById(id) }, [id])
     let body
-    if (postsLoading)
+    if (postsLoading || post === null)
         body = (<div className="spinner-container"><Spinner animation="border" variant="info" /></div>)
     else
         body = <Card className='card-detail container' border='success'>
