@@ -10,7 +10,7 @@ Xem chi tiết Post (không cần đăng nhập)<br>
 <h3>Employer</h3>
 Xem các post đã đăng -> Xem chi tiết từng post<br>
 Xóa các post<br>
-Các chức năng cần hoàn thành:
+<h2>Các chức năng cần hoàn thành:</h2>
 <h3>Employer:</h3>
 Sửa thông tin bài post <br>
 Xem thông tin người nộp hồ sơ cho bài post của họ<br>
