@@ -28,3 +28,4 @@ Chức năng đã hoàn thành trước đó: Account, đổi mật khẩu, đ�
 Sửa lại bảng MarkPost <br>
 Làm BE MarkPost (thêm , xóa, lấy)<br>
 làm FE MarkPOst (đánh dấu bài viết, bỏ đánh dấu, hiện list bài viết đã đánh dấu)<br>
+    <progress max="100" value="85"></progress>
