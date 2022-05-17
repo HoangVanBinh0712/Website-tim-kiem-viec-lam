@@ -15,7 +15,7 @@ Xóa các post<br>
 Sửa thông tin bài post <br>
 Xem thông tin người nộp hồ sơ cho bài post của họ<br>
 <h3>Admin: </h3>
-Xem bài post chưa duyệt và duyệt<br>
+Xem bài post chưa duyệt và duyệt //Bình Đang làm<br>  
 <h3>User: </h3>
 Mark post -> view marked Post (un mark post)<br>
 Tạo hồ sơ -> Sửa hồ sơ<br>
