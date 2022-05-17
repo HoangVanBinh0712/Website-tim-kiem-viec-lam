@@ -1,6 +1,4 @@
 
-<progress max="100" value="70"></progress>
-
 ## Website-find-work
 <b>Add library</b> <br>
 Cd Server <br>
