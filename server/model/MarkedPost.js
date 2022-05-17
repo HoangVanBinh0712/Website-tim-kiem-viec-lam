@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema
 const MarkedPostSchema = new Schema({
     //Email để móc đến bảng Jobseeker và Employer
-    email: {
-        type: String,
-        require: true,
-        
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'jobseeker'
     },
     date: {
         type: Date,
@@ -19,4 +18,4 @@ const MarkedPostSchema = new Schema({
 })
     
 
-module.exports = mongoose.model('employer', MarkedPostSchema)
+module.exports = mongoose.model('markpost', MarkedPostSchema)

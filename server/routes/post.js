@@ -2,38 +2,86 @@ const express = require("express")
 const router = express.Router()
 const Post = require('../model/Post')
 const verifyToken = require('../middleware/auth')
-
-router.get('/EmpPost', verifyToken, async (req,res)=>{
+const Admin = require('../model/Admin')
+//Admin
+router.get('/admin/:type', verifyToken, async (req, res) => {
     try {
-        const posts = await Post.find({author: req.userId})
-        res.json({success: true, post: posts})
+        const admin = await Admin.findById(req.userId)
+        if (!admin)
+            return res.json({ success: false, message: "Admin only" })
+        const type = req.params.type
+        let post
+        if (type == "unapproved")
+            posts = await Post.find({ status: "pending" })
+        else if (type == "rejected")
+            posts = await Post.find({ status: "rejected" })
+        else posts = await Post.find()
+        res.json({ success: true, post: posts })
     } catch (error) {
-        res.json({success: false, message:"Internal Server Error"})
+        res.json({ success: false, message: "Internal Server Error" })
+    }
+})
+router.put('/:type/:id', verifyToken, async (req, res) => {
+    const type = req.params.type
+    const post_id = req.params.id
+    if (type != "approve" && type != "reject")
+        return res.json({ success: false, message: "Unknow" })
+    try {
+        const admin = await Admin.findById(req.userId)
+        if (!admin)
+            return res.json({ success: false, message: "Admin only" })
+    
+        let post = await Post.findById({ _id: post_id })
+        if (!post) {
+            return res.json({ success: false, message: "Post not found" })
+        }
+        let status = "rejected"
+        if (type == "approve")
+            status = "approved"
+        post.status = status
+        post.approver = req.userId
+        post = await Post.findByIdAndUpdate({ _id: post._id }, post, { new: true })
+        if (!post) {
+            return res.json({ success: false, message: "Error" })
+        }
+        return res.json({ success: true, message: `${status} post successfully`, post: post })
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({ success: false, message: "Internal server error" })
+    }
+})
+
+router.get('/EmpPost', verifyToken, async (req, res) => {
+    try {
+        const posts = await Post.find({ author: req.userId })
+        res.json({ success: true, post: posts })
+    } catch (error) {
+        res.json({ success: false, message: "Internal Server Error" })
     }
 })
 
 
-router.get('/',async (req, res) => {
-    const {cate,title} = req.body
-        let posts
+router.get('/', async (req, res) => {
+    const { cate, title } = req.body
+    let posts
     try {
-        if(!cate&!title){
+        if (!cate & !title) {
             posts = await Post.find()
             return res.json({ success: true, post: posts })
         }
-        if(!title){
-            posts = await Post.find({category: cate })
-            return res.json({success: true, post: posts})
+        if (!title) {
+            posts = await Post.find({ category: cate })
+            return res.json({ success: true, post: posts })
         }
-        if(!cate){
-            posts = await Post.find({title:{'$regex': title, '$options' : 'i'}})
-            return res.json({success: true, post: posts})
+        if (!cate) {
+            posts = await Post.find({ title: { '$regex': title, '$options': 'i' } })
+            return res.json({ success: true, post: posts })
         }
-        posts = await Post.find({title:{'$regex': title, '$options' : 'i'}})
+        posts = await Post.find({ title: { '$regex': title, '$options': 'i' } })
 
         var i = 0
-        posts.forEach(async post=> {
-            if(post.category != cate){
+        posts.forEach(async post => {
+            if (post.category != cate) {
                 posts.splice(i, 1);
                 i--
             }
@@ -56,31 +104,30 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ success: false, message: "Post Not Found" })
     }
 })
-router.post('/', verifyToken,async (req, res) => {
-    const { category, title, description,requirement,salary,location, dateEnd} = req.body
-    //, dateAcepted, author, censor
+router.post('/', verifyToken, async (req, res) => {
+    const { category, title, description, requirement, salary, location, dateEnd } = req.body
+    //, dateAcepted, author, approver
     //date req
     const author = req.userId
-    const dateAcepted=""
+    const dateAcepted = ""
     const dateRequest = new Date()
     const status = "pending"
-    
-    if (!category||!title||!description || !requirement || !salary ||!location||!dateEnd ||!author)
+    if (!category || !title || !description || !requirement || !salary || !location || !dateEnd || !author)
         return res.status(401).json({ success: false, message: "Missing information" })
     try {
         const post = new Post({
             category: category,
             title: title,
-            description:description,
+            description: description,
             requirement: requirement,
             salary: salary,
             location: location,
-            status:status,
+            status: status,
             dateRequest: dateRequest,
-            dateEnd:dateEnd,
-            dateAcepted:dateAcepted,
-            author:author,
-            censor:""
+            dateEnd: dateEnd,
+            dateAcepted: dateAcepted,
+            author: author,
+            approver: ""
         })
         post.save()
         return res.json({ success: true, message: "Add new Post successfully", post: post })
@@ -90,14 +137,14 @@ router.post('/', verifyToken,async (req, res) => {
     }
 })
 
-router.put('/:id', verifyToken,async (req, res) => {
-    const { category, title, description,requirement,salary,location, dateEnd} = req.body
+router.put('/:id', verifyToken, async (req, res) => {
+    const { category, title, description, requirement, salary, location, dateEnd } = req.body
     const post_id = req.params.id
 
     try {
-        let post = await Post.findById({_id: post_id})
-        if(!post){
-            return res.json({success: false, message: "Post not found"})
+        let post = await Post.findById({ _id: post_id })
+        if (!post) {
+            return res.json({ success: false, message: "Post not found" })
         }
         post.category = category;
         post.title = title;
@@ -106,10 +153,9 @@ router.put('/:id', verifyToken,async (req, res) => {
         post.salary = salary
         post.location = location
         post.dateEnd = dateEnd
-        post = await Post.findByIdAndUpdate({_id: post._id},post,{new: true})
-        if(!post)
-        {
-            return res.json({success: false, message: "Error"})
+        post = await Post.findByIdAndUpdate({ _id: post._id }, post, { new: true })
+        if (!post) {
+            return res.json({ success: false, message: "Error" })
         }
         return res.json({ success: true, message: "Updated Post successfully", post: post })
     } catch (error) {

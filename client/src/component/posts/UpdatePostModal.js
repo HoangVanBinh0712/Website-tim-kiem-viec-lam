@@ -16,7 +16,7 @@ const UpdatePostModal = () => {
     const [updatedPost, setupdatedPost] = useState(post)
 
     useEffect(() => setupdatedPost(post), [post])
-    const { title, content, dateEnd } = updatedPost
+    const { title, description,salary,requirement,location, dateEnd } = updatedPost
 
     const onChangeUpdatedPostForm = event =>
         setupdatedPost({ ...updatedPost, [event.target.name]: event.target.value })
@@ -31,8 +31,7 @@ const UpdatePostModal = () => {
         const { success, message } = await updatePost(updatedPost)
 
         setShowUpdatePostModal(false)
-
-        //        setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
+        setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
     }
 
 
@@ -55,18 +54,51 @@ const UpdatePostModal = () => {
                             onChange={onChangeUpdatedPostForm}
                         />
                     </Form.Group >
-                    <Form.Text id='title-help' muted> Content  </Form.Text>
+                    <Form.Text id='title-help' muted> Description  </Form.Text>
 
                     <Form.Group className="mb-3">
                         <Form.Control
                             as='textarea'
                             rows={3}
-                            placeholder='Content'
-                            name='content'
-                            value={content}
+                            placeholder='Description'
+                            name='description'
+                            value={description}
                             onChange={onChangeUpdatedPostForm}
                         />
                     </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Text id='title-help' muted> Requirement  </Form.Text>
+                        <Form.Control
+                            type='text'
+                            placeholder='Requirement'
+                            name='requirement'
+                            required
+                            value={requirement}
+                            onChange={onChangeUpdatedPostForm}
+                        />
+                    </Form.Group >
+                    <Form.Group className="mb-3">
+                        <Form.Text id='title-help' muted> Salary  </Form.Text>
+                        <Form.Control
+                            type='number'
+                            placeholder='Salary'
+                            name='salary'
+                            required
+                            value={salary}
+                            onChange={onChangeUpdatedPostForm}
+                        />
+                    </Form.Group >
+                    <Form.Group className="mb-3">
+                        <Form.Text id='title-help' muted> Location  </Form.Text>
+                        <Form.Control
+                            type='text'
+                            placeholder='Location'
+                            name='location'
+                            required
+                            value={location}
+                            onChange={onChangeUpdatedPostForm}
+                        />
+                    </Form.Group >
                     <Form.Text id='title-help' muted> Date End  </Form.Text>
 
                     <Form.Group className="mb-3">

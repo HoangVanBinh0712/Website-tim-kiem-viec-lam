@@ -42,27 +42,31 @@
 .post-button {
 	padding-top: 0;
 	background: transparent;
-	border: none;
+	border: 2px solid #78c2ad;
+	text-align: center;
+	color: black;
+	font-size: 20px;
+	margin: 0 10px 0 10px;
 }
 
 .post-button:hover {
-	background: transparent;
+	background: #78c2ad;
 }
 
 a.post-button.btn:focus,
 a.post-button.btn:active {
-	outline: none;
+	/* outline: none;
 	background: transparent;
 	border: none;
-	box-shadow: none;
+	box-shadow: none; */
 }
 
 button.post-button.btn:focus,
 button.post-button.btn:active {
-	outline: none;
+	/* outline: none;
 	background: transparent;
 	border: none;
-	box-shadow: none;
+	box-shadow: none; */
 }
 
 /* Floating add button */
@@ -146,7 +150,7 @@ button.post-button.btn:active {
 }
 
 input, select{
-	border: none;
+	border: 1px solid black;
 	height: 30pt;
 	font-size: 15pt;
 	border-radius: 10px 10px 10px 10px;
@@ -165,4 +169,16 @@ button{
 
 a{
 	font-weight: 500;
+}
+
+.col-text{
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	font-weight: 500;
+	height: 60px;
+	background-color: #3138b6;
+	border: 5px solid white;
+	
 }

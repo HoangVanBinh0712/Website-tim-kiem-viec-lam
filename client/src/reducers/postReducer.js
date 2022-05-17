@@ -39,7 +39,11 @@ export const postReducer = (state, action) => {
                 ...state,
                 posts: newPosts
             }
-
+        case 'DELETE_MARKED_POST':
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.postId._id !== payload)
+            }
         default:
             return state
     }

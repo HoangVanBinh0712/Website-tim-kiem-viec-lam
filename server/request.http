@@ -89,8 +89,8 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "mode" : 1,
-    "email": "thebest11446@gmail.com",
+    "mode" : 2,
+    "email": "19110170@student.hcmute.edu.vn",
     "password": "123456789"
 }
 
@@ -169,13 +169,14 @@ Content-Type: application/json
     "role": 1
 }
 ### view
-GET http://localhost:5000/api/post
+GET http://localhost:5000/api/post/admin/rejected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNThkMzI2MjAwNzc1NGEyY2UyYTgiLCJpYXQiOjE2NTI3NjM5Nzh9.kU_sAgokgy99f5VbG9ii4DZzSUqu4Lmjtg_wCg7B0To
 
 ### Delete
 DELETE  http://localhost:5000/api/post/32423423432432
 ###
 POST  http://localhost:5000/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTI3MDY3NjB9.wJJXBAUg2NVAwkn1Kl4FrEicXkAEFwYNpvIvn7wGVqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTI3NzE1MzR9.adgE1obrKKrXusi7iE22npmQQno4FdPxEFLy4d-XqW0
 Content-Type: application/json
 
 {
@@ -226,3 +227,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxM
 ### get Emp Post
 GET http://localhost:5000/api/post/EmpPost
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTI2MDk3NjV9.TTMUl1d9RKrbWjrBqElskfaow7rXqZiC6ZPBLYZAjQQ
+
+
+### Approve // Reject
+PUT http://localhost:5000/api/post/approve/6280d4a8e67522e6298c990d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNThkMzI2MjAwNzc1NGEyY2UyYTgiLCJpYXQiOjE2NTI3Njg0OTh9.AII-D7sdB3R0g7Vxr9ovdhkCCOz2OJf97Ato2p0rDQo
+
+### Mark Post
+POST http://localhost:5000/api/markPost/6280d4a8e67522e6298c990d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTI2MDk3NjV9.TTMUl1d9RKrbWjrBqElskfaow7rXqZiC6ZPBLYZAjQQ
+### Mark Post
+GET http://localhost:5000/api/markPost/6280d4a8e67522e6298c990d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxNTc5ODM4YjhmOWIwMzg3YjI4MDgiLCJpYXQiOjE2NTI2MDk3NjV9.TTMUl1d9RKrbWjrBqElskfaow7rXqZiC6ZPBLYZAjQQ
+
+###
+GET http://localhost:5000/api/markPost/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTI3ODExMjJ9.VurtL1jM_HvowGiKISvf09q1OR54cKhgME2wNIPLLvM

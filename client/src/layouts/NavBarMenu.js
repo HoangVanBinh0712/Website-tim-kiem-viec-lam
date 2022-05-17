@@ -72,7 +72,7 @@ const NavbarMenu = () => {
 								</Dropdown.Toggle>
 								<Dropdown.Menu>
 									<Dropdown.Item to="/information" as={Link}>Account</Dropdown.Item>
-									<Dropdown.Item as={Link} to={"/posts/unapproved"}>Unapproved Posts</Dropdown.Item>
+									<Dropdown.Item as={Link} to={"/posts/admin"}>Unapproved Posts</Dropdown.Item>
 									<Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
 								</Dropdown.Menu>
 							</Dropdown>}

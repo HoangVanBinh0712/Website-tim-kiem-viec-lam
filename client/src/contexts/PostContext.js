@@ -20,6 +20,57 @@ const PostContextProvider = ({ children }) => {
         type: null
     })
 
+    const adminGetPosts = async status => {
+        try {
+            const response = await axios.get(`${apiUrl}/post/admin/${status}`)
+            if (response.data.success) {
+                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
+            }
+        } catch (error) {
+            dispatch({ type: "POSTS_LOADED_FAIL" })
+            return error.response.data ? error.response.data : { success: false, message: 'server error' }
+        }
+    }
+
+    const adminPutPost = async (status, post_id) => {
+        try {
+            const response = await axios.put(`${apiUrl}/post/${status}/${post_id}`)
+            if (response.data.success) {
+                dispatch({ type: "UPDATE_POST", payload: response.data.post })
+            }
+            return response.data
+        } catch (error) {
+            return error.response.data ? error.response.data : { success: false, message: 'server error' }
+        }
+    }
+    const getMarkedPosts = async() => {
+        //listPost
+        try {
+            const response = await axios.get(`${apiUrl}/markPost/all`);
+            if (response.data.success) {
+                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.listPost })
+            }
+            return response.data
+        } catch (error) {
+            dispatch({ type: "POSTS_LOADED_FAIL" })
+            return error.response.data ? error.response.data : { success: false, message: 'server error' }
+
+        }
+    }
+
+    const deleteMarkPost = async postId => {
+        try {
+            const response = await axios.post(`${apiUrl}/markPost/${postId}`)
+            if (response.data.success) {
+                dispatch({ type: "DELETE_MARKED_POST", payload: postId })
+            }
+            return (response.data)
+
+        } catch (error) {
+            return error
+        }
+    }
+
     const getPosts = async showEmployerPost => {
         try {
             if (showEmployerPost) {
@@ -116,7 +167,11 @@ const PostContextProvider = ({ children }) => {
         updatePost,
         findPost,
         findPostById,
-        getEmpPosts
+        getEmpPosts,
+        adminGetPosts,
+        adminPutPost,
+        getMarkedPosts,
+        deleteMarkPost
     }
     return (
         <PostContext.Provider value={PostContextData}>
