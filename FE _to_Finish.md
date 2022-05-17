@@ -10,12 +10,12 @@ Xem chi tiết Post (không cần đăng nhập)<br>
 <h3>Employer</h3>
 Xem các post đã đăng -> Xem chi tiết từng post<br>
 Xóa các post<br>
+Xem bài post chưa duyệt và duyệt <br>  
+Sửa thông tin bài post <br>
 <h2>Các chức năng cần hoàn thành:</h2>
 <h3>Employer:</h3>
-Sửa thông tin bài post <br>
 Xem thông tin người nộp hồ sơ cho bài post của họ<br>
 <h3>Admin: </h3>
-Xem bài post chưa duyệt và duyệt //Bình Đang làm<br>  
 <h3>User: </h3>
 Mark post -> view marked Post (un mark post)<br>
 Tạo hồ sơ -> Sửa hồ sơ<br>
