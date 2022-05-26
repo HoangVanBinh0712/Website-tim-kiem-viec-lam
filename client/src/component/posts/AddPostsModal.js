@@ -17,14 +17,14 @@ const AddPostModal = () => {
         dateEnd: ''
     })
     const [cateState, setCateState] = useState("")
-    const { categoryState: { categoryLoading, categories } } = useContext(CategoryContext)
+    const { categoryState: { categories } } = useContext(CategoryContext)
 
-    const { title, content, dateEnd } = newPost
+    const { title, description,salary,requirement,location, dateEnd } = newPost
     const onChangeNewPostForm = event =>
         setNewPost({ ...newPost, [event.target.name]: event.target.value })
 
     const closeDialog = () => {
-        setNewPost({ title: '', content: '', dateEnd: '' })
+        setNewPost({ title: '', description: '', salary: '' ,requirement: '',location: '',dateEnd: ''})
         setShowAddPostModal(false)
     }
 
@@ -41,7 +41,7 @@ const AddPostModal = () => {
     return (
         <Modal show={showAddPostModal} onHide={closeDialog} >
             <Modal.Header closeButton>
-                <Modal.Title>Add new Post</Modal.Title>
+                <Modal.Title>Anything Change ?</Modal.Title>
             </Modal.Header>
             <Form onSubmit={onSubmit}>
                 <Modal.Body>
@@ -57,18 +57,51 @@ const AddPostModal = () => {
                             onChange={onChangeNewPostForm}
                         />
                     </Form.Group >
-                    <Form.Text id='title-help' muted> Content  </Form.Text>
+                    <Form.Text id='title-help' muted> Description  </Form.Text>
 
                     <Form.Group className="mb-3">
                         <Form.Control
                             as='textarea'
                             rows={3}
-                            placeholder='Content'
-                            name='content'
-                            value={content}
+                            placeholder='Description'
+                            name='description'
+                            value={description}
                             onChange={onChangeNewPostForm}
                         />
                     </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Text id='title-help' muted> Requirement  </Form.Text>
+                        <Form.Control
+                            type='text'
+                            placeholder='Requirement'
+                            name='requirement'
+                            required
+                            value={requirement}
+                            onChange={onChangeNewPostForm}
+                        />
+                    </Form.Group >
+                    <Form.Group className="mb-3">
+                        <Form.Text id='title-help' muted> Salary  </Form.Text>
+                        <Form.Control
+                            type='number'
+                            placeholder='Salary'
+                            name='salary'
+                            required
+                            value={salary}
+                            onChange={onChangeNewPostForm}
+                        />
+                    </Form.Group >
+                    <Form.Group className="mb-3">
+                        <Form.Text id='title-help' muted> Location  </Form.Text>
+                        <Form.Control
+                            type='text'
+                            placeholder='Location'
+                            name='location'
+                            required
+                            value={location}
+                            onChange={onChangeNewPostForm}
+                        />
+                    </Form.Group >
                     <Form.Text id='title-help' muted> Date End  </Form.Text>
 
                     <Form.Group className="mb-3">
@@ -77,7 +110,7 @@ const AddPostModal = () => {
                             placeholder='dateEnd'
                             name='dateEnd'
                             required
-                            aria-describedby='title-help'
+                            aria-describedby='title-help'   
                             value={dateEnd}
                             onChange={onChangeNewPostForm}
                         />
@@ -85,9 +118,9 @@ const AddPostModal = () => {
                     <select name='category' onChange={(e) => {
                         const selected = e.target.value;
                         setCateState(selected);
-                    }} required>
+                    }}>
                         {categories.map(category => (
-                            <option value={category._id} >  {category.name}</option>
+                            <option value={category._id}>  {category.name}</option>
                         ))}
 
                     </select>

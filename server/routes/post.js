@@ -30,7 +30,7 @@ router.put('/:type/:id', verifyToken, async (req, res) => {
         const admin = await Admin.findById(req.userId)
         if (!admin)
             return res.json({ success: false, message: "Admin only" })
-    
+
         let post = await Post.findById({ _id: post_id })
         if (!post) {
             return res.json({ success: false, message: "Post not found" })
@@ -59,34 +59,56 @@ router.get('/EmpPost', verifyToken, async (req, res) => {
         res.json({ success: false, message: "Internal Server Error" })
     }
 })
-
-
 router.get('/', async (req, res) => {
-    const { cate, title } = req.body
+    try {
+        const posts = await Post.find({ status: "approved" })
+        return res.json({ success: true, post: posts })
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({ success: false, message: "Internal server error" })
+    }
+})
+
+router.post('/search', async (req, res) => {
+    const { cate, title, location } = req.body
     let posts
     try {
-        if (!cate & !title) {
-            posts = await Post.find()
+        if (!cate & !title & !location) {
+            posts = await Post.find({ status: "approved" })
             return res.json({ success: true, post: posts })
         }
-        if (!title) {
-            posts = await Post.find({ category: cate })
+        if (!title & !location) {
+            if (cate == "all")
+                posts = await Post.find({ status: "approved" })
+            else
+                posts = await Post.find({ category: cate, status: "approved" })
             return res.json({ success: true, post: posts })
         }
         if (!cate) {
-            posts = await Post.find({ title: { '$regex': title, '$options': 'i' } })
+            if (!location) {
+                posts = await Post.find({ status: "approved", title: { '$regex': title, '$options': 'i' } })
+                return res.json({ success: true, post: posts })
+            }
+            if (!title) {
+                posts = await Post.find({ status: "approved", location: { '$regex': location, '$options': 'i' } })
+                return res.json({ success: true, post: posts })
+            }
+            posts = await Post.find({ status: "approved", title: { '$regex': title, '$options': 'i' }, location: { '$regex': location, '$options': 'i' } })
             return res.json({ success: true, post: posts })
         }
-        posts = await Post.find({ title: { '$regex': title, '$options': 'i' } })
-
-        var i = 0
-        posts.forEach(async post => {
-            if (post.category != cate) {
-                posts.splice(i, 1);
-                i--
-            }
-            i++
-        })
+        if (cate == "all")
+            posts = await Post.find({ status: "approved", title: { '$regex': title, '$options': 'i' }, location: { '$regex': location, '$options': 'i' } })
+        else
+            posts = await Post.find({ status: "approved", category: cate, title: { '$regex': title, '$options': 'i' }, location: { '$regex': location, '$options': 'i' } })
+        // var i = 0
+        // posts.forEach(async post => {
+        //     if (post.category != cate) {
+        //         posts.splice(i, 1);
+        //         i--
+        //     }
+        //     i++
+        // })
+        console.log(posts)
         res.json({ success: true, post: posts })
     } catch (error) {
         console.log(error.message)

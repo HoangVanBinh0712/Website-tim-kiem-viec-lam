@@ -1,24 +1,15 @@
 import Card from 'react-bootstrap/Card'
-import Button from "react-bootstrap/esm/Button"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Badge from 'react-bootstrap/Badge'
-import ActionButtons from './ActionButtons'
-import { Link, Navigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
-const SinglePost = ({ post: { _id, title, description,salary }, role }) => (
+const SinglePost = ({ post: { _id, title, description,salary } }) => (
     <Card className='white-space: nowrap' border='success'  >
         <Card.Body>
             <Card.Title>
                 <Row>
-                    <Col className='col-8'>
+                    <Col className='col-12'>
                         <Link className='post-title' to={`/postDetail/${_id}`}>{title}</Link>
-                    </Col>
-                    <Col className='text-right col-4'>
-                        {role > 0 ? <ActionButtons _id={_id} ptitle={title} /> : ""}
-                        {role == 0 ? <Button>
-                            Detail
-                        </Button> : ""}
                     </Col>
                 </Row>
             </Card.Title>

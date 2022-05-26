@@ -2,8 +2,8 @@ import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/esm/Button"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Link } from 'react-router-dom'
 import star from '../../../assets/star.jpg'
-import { UserContext } from '../../../contexts/UserContext'
 import { useContext } from 'react'
 import { PostContext } from '../../../contexts/PostContext'
 const MarkedSinglePost = ({ post: { _id, title, description, salary, status, location } }) => {
@@ -13,12 +13,12 @@ const MarkedSinglePost = ({ post: { _id, title, description, salary, status, loc
         const { success, message } = await deleteMarkPost(postId)
         setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
     }
-    return <><Card className='white-space: nowrap' border={status == "approved" ? 'success' : status == "pending" ? "warning" : 'danger'} >
+    return <><Card className='white-space: nowrap' border={status === "approved" ? 'success' : status === "pending" ? "warning" : 'danger'} >
         <Card.Body>
             <Card.Title>
                 <Row>
                     <Row>
-                        <Col className='col-7 post-title ' style={{ fontSize: "40px", textAlign: "right", fontWeight: "700" }}>{title}  </Col>
+                        <Col as={Link} to={`/postDetail/${_id}`} className='col-7 post-title ' style={{ fontSize: "40px", textAlign: "left", fontWeight: "700" }}>{title}  </Col>
                         <Col className="col-5" style={{ textAlign: "right" }} >
                             <img src={star} style={{ width: "50px", height: "50px" }} />
                         </Col>

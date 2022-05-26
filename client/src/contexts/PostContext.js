@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from 'react'
+import { createContext, useReducer, useState } from 'react'
 import { postReducer } from '../reducers/postReducer'
 import { apiUrl } from './constant'
 import axios from 'axios'
@@ -71,7 +71,7 @@ const PostContextProvider = ({ children }) => {
         }
     }
 
-    const getPosts = async showEmployerPost => {
+    const getPosts = async (showEmployerPost) => {
         try {
             if (showEmployerPost) {
                 const response = await axios.get(`${apiUrl}/post/EmpPost`);
@@ -151,6 +151,17 @@ const PostContextProvider = ({ children }) => {
     }
     const getEmpPosts = async () => {
     }
+    const getSearchPosts = async (formSearch) => {
+        try {
+            const response = await axios.post(`${apiUrl}/post/search`,formSearch)
+            if (response.data.success) {
+                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
+            }
+        } catch (error) {
+            dispatch({ type: "POSTS_LOADED_FAIL" })
+            return error.response.data ? error.response.data : { success: false, message: 'server error' }
+        }
+    }
     //PostContext data
 
     const PostContextData = {
@@ -171,7 +182,8 @@ const PostContextProvider = ({ children }) => {
         adminGetPosts,
         adminPutPost,
         getMarkedPosts,
-        deleteMarkPost
+        deleteMarkPost,
+        getSearchPosts
     }
     return (
         <PostContext.Provider value={PostContextData}>

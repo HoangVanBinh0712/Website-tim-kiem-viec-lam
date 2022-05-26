@@ -1,7 +1,7 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import learnItLogo from '../assets/logo.svg'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
 import { useContext } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -12,7 +12,6 @@ const NavbarMenu = () => {
 	const { authState: { user }, logoutUser } = useContext(AuthContext)
 	const { setShowModal } = useContext(UserContext)
 	let body
-	const location = useLocation()
 	if (user) {
 		var username = user.name ? user.name : user.companyname
 		const logout = () => logoutUser()
@@ -48,6 +47,7 @@ const NavbarMenu = () => {
 										<Dropdown.Item to="/information" as={Link}>Account</Dropdown.Item>
 										<Dropdown.Item onClick={setShowModal.bind(this, true)}>Change Password</Dropdown.Item>
 										<Dropdown.Item as={Link} to={"/posts/markedposts"}>Marked Posts</Dropdown.Item>
+										<Dropdown.Item as={Link} to={"/profile"}>Your Profile</Dropdown.Item>	
 										<Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
 									</Dropdown.Menu>
 								</Dropdown>

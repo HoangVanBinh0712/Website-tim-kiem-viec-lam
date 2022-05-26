@@ -5,22 +5,44 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SinglePost from "../component/posts/SinglePost"
-import AddPostModal from "../component/posts/AddPostsModal"
 import Toast from 'react-bootstrap/Toast'
-import UpdatePostModal from "../component/posts/UpdatePostModal"
 import { CategoryContext } from "../contexts/CategoryContext"
+import Button from "react-bootstrap/esm/Button"
 
 const DashBoard = () => {
-    const { postState: { post, posts, postsLoading }, getPosts,
-     showToast: { show, message, type }, setShowToast } = useContext(PostContext)
+
+    const { postState: { posts, postsLoading }, getPosts,
+        showToast: { show, message, type }, setShowToast, getSearchPosts } = useContext(PostContext)
 
     const { categoryState: { categoryLoading, categories }, getCategory } = useContext(CategoryContext)
-    const [cateState, setCateState] = useState("")
-
+    const [searchForm, setSearchForm] = useState({
+        cate: "",
+        title: "",
+        location: ""
+    })
     useEffect(() => { getPosts(false); getCategory(); }, [])
+    const { title, location } = searchForm
+    const onChangeSearchForm = event =>
+        setSearchForm({ ...searchForm, [event.target.name]: event.target.value })
+
+    const formSeachSubmit = async () => {
+        getSearchPosts(searchForm)
+    }
     let body = null
     if (postsLoading || categoryLoading) {
         body = (<div className="spinner-container"><Spinner animation="border" variant="info" /></div>)
+    } if (posts.length === 0) {
+        body = (
+            <>
+                <Card className='text-center mx-5 my-5'>
+                    <Card.Body>
+                        <Card.Text>
+                            Không tìm thấy bài viết nào phù hợp với nhu cầu của bạn.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </>
+        )
     } else {
         body = (<>
             <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3 container'>
@@ -30,44 +52,47 @@ const DashBoard = () => {
                     </Col>
                 ))}
             </Row>
-        </>)}
+        </>)
+    }
     return <>
         <Row className='row-cols-1'>
             <Card>
-                <Card.Img src="https://youthclinic.com/wp-content/uploads/2015/01/Job-Opportunities.jpg" alt="Card image" className="container" style={{ height: "300px", padding: "0 0 0 0 " }} />
+                <Card.Img src="https://youthclinic.com/wp-content/uploads/2015/01/Job-Opportunities.jpg"
+                    alt="Card image" className="container" style={{ height: "300px", padding: "0 0 0 0 " }} />
                 <Card.ImgOverlay>
-                    <form className="formTimKiem col-4" style={{margin:"0px 0 20px 950px"}}>
+                    <form className="formTimKiem col-4" style={{ margin: "0px 0 20px 950px" }}>
                         <Row className="format-row">
                             <div>
-                                <input type="text" placeholder="Nhập thông tin tìm kiếm" />
+                                <input name="title" value={title} onChange={onChangeSearchForm} type="text" placeholder="Nhập thông tin tìm kiếm" />
                             </div>
                         </Row>
                         <Row className="format-row">
                             <Col className="col-5">
-                                <select name='category' onChange={(e) => {
-                                    const selected = e.target.value; setCateState(selected);
-                                }} required>
+                                <select name='cate' onChange={onChangeSearchForm} required>
+                                    <option value={"all"}> Tất cả ngành nghề</option>
                                     {categories.map(category => (<option value={category._id} >  {category.name}</option>))}
                                 </select>
                             </Col>
                             <Col className="col-4">
-                                <input type="text" placeholder="Tỉnh thành" />
+                                <input type="text" value={location} onChange={onChangeSearchForm} name="location" placeholder="Tỉnh thành" />
                             </Col>
                             <Col className="col-3">
-                                <button variant="primary" type="submit">Tìm kiếm</button>
+                                <Button variant="primary" onClick={() => {
+                                    formSeachSubmit()
+                                }}>Tìm kiếm</Button>
                             </Col>
                         </Row>
                         <Row className="mx-0">
                             <Col>
-                                <a style={{ color: "white" }}>Công nghệ thông tin</a>
+                                <div href="#" style={{ color: "white" }}>Công nghệ thông tin</div>
 
                             </Col>
                             <Col>
-                                <a style={{ color: "white" }}>Tài chính ngân hàng</a>
+                                <div href="#" style={{ color: "white" }}>Tài chính ngân hàng</div>
 
                             </Col>
                             <Col>
-                                <a style={{ color: "white" }}>Giao thông vận tải</a>
+                                <div href="#" style={{ color: "white" }}>Giao thông vận tải</div>
                             </Col>
                         </Row>
                     </form>
@@ -75,7 +100,6 @@ const DashBoard = () => {
             </Card>
         </Row>
         {body}
-        <AddPostModal />
         <Toast
             show={show}
             style={{ position: 'fixed', top: '20%', right: '10px' }}
@@ -92,7 +116,6 @@ const DashBoard = () => {
                 <strong>{message}</strong>
             </Toast.Body>
         </Toast>
-        {post !== null && <UpdatePostModal />}
         {/* After post is added, show toast */}
     </>
 }

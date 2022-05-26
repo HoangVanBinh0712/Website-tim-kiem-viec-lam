@@ -16,6 +16,8 @@ import NavbarMenu from './layouts/NavBarMenu';
 import EmployerPost from './component/posts/employer/EmployerPost';
 import AdminPost from './component/posts/admin/AdminPost'
 import MarkedPosts from './component/posts/jobseeker/MarkedPost';
+import Profile from './component/posts/jobseeker/Profile';
+import ViewSubmmiterProfile from './component/posts/employer/ViewSubmitterProfile';
 //Protected Route là để chuyển trang private sang login đăng nhập mới cho xài
 function App() {
   return (
@@ -28,10 +30,13 @@ function App() {
         <Routes>
 
           {/* <Route exact path='/dashboard' element={<ProtectedRoute component={DashBoard} />} /> */}
-          <Route exact path='/dashboard' element={<><NavbarMenu> </NavbarMenu> <DashBoard/></>} />
           <Route exac path='/posts/yourposts' element={<ProtectedRoute component={EmployerPost} />} />
           <Route exac path='/posts/admin' element={<ProtectedRoute component={AdminPost} />} />
           <Route exac path='/posts/markedposts' element={<ProtectedRoute component={MarkedPosts} />} />
+          <Route exac path='/posts/yourposts/:id/submitted' element={<ProtectedRoute component={ViewSubmmiterProfile} />} />
+          <Route exac path='/profile' element={<ProtectedRoute component={Profile} />} />
+
+          <Route exact path='/dashboard' element={<><NavbarMenu> </NavbarMenu> <DashBoard/></>} />
 
           {/* <Route exac path='/postDetail/:id' element={<ProtectedRoute component={PostDetail}/>}/> */}
           <Route exact path='/postDetail/:id' element={<><NavbarMenu> </NavbarMenu> <PostDetail/></>} />

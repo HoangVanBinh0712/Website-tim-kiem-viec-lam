@@ -1,13 +1,11 @@
 import Button from 'react-bootstrap/Button'
-import playIcon from '../../assets/play-btn.svg'
 import editIcon from '../../assets/pencil.svg'
 import deleteIcon from '../../assets/trash.svg'
 import { PostContext } from '../../contexts/PostContext'
-import { useContext, useState } from 'react'
-import Alert from 'react'
-import { confirmAlert } from 'react-confirm-alert'; // Import
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
-const ActionButtons = ({ url, _id , ptitle }) => {
+const ActionButtons = ({ _id, ptitle }) => {
 	const { deletePost, findPost, setShowUpdatePostModal } = useContext(PostContext)
 	const choosePost = postId => {
 		findPost(postId)
@@ -26,10 +24,13 @@ const ActionButtons = ({ url, _id , ptitle }) => {
 					"Do you really want to delete '" + ptitle + "' ?"
 				)
 				if (confirmBox === true) {
-					{deletePost(_id)}
+					deletePost(_id)
 				}
 			}}>
 				<img src={deleteIcon} alt='delete' width='24' height='24' />
+			</Button>
+			<Button className='post-button' as={Link} to={`/posts/yourposts/${_id}/submitted`}>
+				Xem hồ sơ
 			</Button>
 		</>
 	)

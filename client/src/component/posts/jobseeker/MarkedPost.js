@@ -1,22 +1,14 @@
 import { PostContext } from "../../../contexts/PostContext"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import Spinner from "react-bootstrap/esm/Spinner"
 import { AuthContext } from "../../../contexts/AuthContext"
 import Card from 'react-bootstrap/Card'
-import Button from "react-bootstrap/esm/Button"
 import Row from 'react-bootstrap/Row'
-import AddPostModal from "../AddPostsModal"
-import addIcon from '../../../assets/plus-circle-fill.svg'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Tooltip from 'react-bootstrap/Tooltip'
 import Toast from 'react-bootstrap/Toast'
-import UpdatePostModal from "../UpdatePostModal"
-import EmployerSinglePost from "../employer/EmployerSinglePost"
 import MarkedSinglePost from "./MarkedSinglePost"
 
 const MarkedPosts = () => {
-    const { postState: { post, posts, postsLoading }, getPosts,getMarkedPosts,
-        setShowAddPostModal, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
+    const { postState: { posts, postsLoading }, getMarkedPosts, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
     const { authState: { user } } = useContext(AuthContext)
 
     useEffect(() => { getMarkedPosts() }, [posts])
@@ -41,23 +33,23 @@ const MarkedPosts = () => {
                 </Card>
             </>
         )
-    } else {
+    } else if (posts != null) {
         body = (<>
             <Row className='g-4 mx-auto mt-3 container' >
                 {posts.map(post => (
-                    <Row key={post.postId._id} className='my-2'>
+                    post.postId ? <Row key={post.postId._id} className='my-2'>
                         <MarkedSinglePost post={post.postId} role={user.role} />
-                    </Row>
+                    </Row> : ""
                 ))}
+
             </Row>
         </>)
     }
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px",fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Marked Posts</div>
+        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Marked Posts</div>
         {body}
-        <AddPostModal />
         <Toast
             show={show}
             style={{ position: 'fixed', top: '20%', right: '10px' }}
@@ -74,8 +66,6 @@ const MarkedPosts = () => {
                 <strong>{message}</strong>
             </Toast.Body>
         </Toast>
-        {post !== null && <UpdatePostModal />}
-        {/* After post is added, show toast */}
     </>
 }
 export default MarkedPosts

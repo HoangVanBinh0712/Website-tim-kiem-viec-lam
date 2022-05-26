@@ -1,4 +1,4 @@
-import { useState,createContext, useReducer, useEffect } from "react"
+import { useState, createContext, useReducer, useEffect } from "react"
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./constant"
 import { authReducer } from "../reducers/authReducer"
 import axios from 'axios'
@@ -9,7 +9,10 @@ const AuthContextProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, {
         authLoading: true,
         isAuthenticated: false,
-        user: null
+        user: null,
+        profileLoading: true,
+        profile: null,
+        profiles: []
     })
     const [showToast, setShowToast] = useState({
         show: false,
@@ -110,18 +113,20 @@ const AuthContextProvider = ({ children }) => {
 
 
     //
-    const adjustUser = async updatedUser =>{
+    const adjustUser = async updatedUser => {
         try {
             let type
-            if(updatedUser.role == 0)
+            if (updatedUser.role === 0)
                 type = "jobseeker"
-            else if(updatedUser.role == 1)
+            else if (updatedUser.role === 1)
                 type = "employer"
             else type = "admin"
-            const response = await axios.put(`${apiUrl}/info/${type}`,updatedUser)
-            if(response.data.success){
-                dispatch({ type: "USER_UPDATED_SUCCESS", 
-                payload: { isAuthenticated: true, user: response.data.user }})
+            const response = await axios.put(`${apiUrl}/info/${type}`, updatedUser)
+            if (response.data.success) {
+                dispatch({
+                    type: "USER_UPDATED_SUCCESS",
+                    payload: { isAuthenticated: true, user: response.data.user }
+                })
             }
             return response.data
 
@@ -129,7 +134,66 @@ const AuthContextProvider = ({ children }) => {
             console.log("Error: " + error)
         }
     }
-    const authContextData = { loginUser, registerUser, logoutUser, authState, adjustUser,showToast,setShowToast }
+
+    const getProfile = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/profile`)
+            if (response.data.success) {
+                dispatch({
+                    type: "PROFILE_LOAD_SUCCESS",
+                    payload: { profile: response.data.profile }
+                })
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    const createProfile = async profile => {
+        try {
+            const response = await axios.post(`${apiUrl}/profile`, profile)
+            if (response.data.success) {
+                dispatch({
+                    type: "PROFILE_LOAD_SUCCESS",
+                    payload: { profile: response.data.profile }
+                })
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    const updateProfile = async profile => {
+        try {
+            const response = await axios.put(`${apiUrl}/profile`, profile)
+            if (response.data.success) {
+                dispatch({
+                    type: "PROFILE_LOAD_SUCCESS",
+                    payload: { profile: response.data.profile }
+                })
+            }
+            return response.data
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    const getProfileSubmitted = async postId => {
+        try {
+            const response = await axios.get(`${apiUrl}/submitted/post/${postId}`)
+            if (response.data)
+                dispatch({
+                    type: "PROFILES_LOAD_SUCCESS",
+                    payload: { profiles: response.data.profiles }
+                })
+        } catch (error) {
+
+        }
+    }
+    const authContextData = {
+        loginUser, registerUser,
+        logoutUser, authState, adjustUser,
+        showToast, setShowToast,
+        getProfile, createProfile,
+        updateProfile, getProfileSubmitted
+    }
     return (
         <AuthContext.Provider value={authContextData}>
             {children}

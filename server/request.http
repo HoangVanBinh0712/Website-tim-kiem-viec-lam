@@ -206,17 +206,22 @@ Content-Type: application/json
 }
 
 ###Submitted
-PUT http://localhost:5000/api/submitted
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
-Content-Type: application/json
+PUT http://localhost:5000/api/submitted/6271e3b829174de1542b12b6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTM1NDg0Mzh9.1vU5S117r_LHuaKP6lQuDzU6i5kVun9MBbknPzNnP9U
 
-{
-    "postId": "6271e3b829174de1542b12b6"
-}
 
 ### Get Submitted
-GET http://localhost:5000/api/submitted
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTIzMzgzOTd9.2m9lGBfAkEAXubR9PvLESH4TwjDQHToh2x0T2SSaP0Q
+GET http://localhost:5000/api/submitted/6271e3b829174de1542b12b6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTM1NDg0Mzh9.1vU5S117r_LHuaKP6lQuDzU6i5kVun9MBbknPzNnP9U
+
+
+
+
+### Get All Profile submitted in Post
+GET http://localhost:5000/api/submitted/post/62824e5f0bbc5e4cc7c4e18d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTM1NDg0Mzh9.1vU5S117r_LHuaKP6lQuDzU6i5kVun9MBbknPzNnP9U
+
+
 
 
 ### Get Post Details
@@ -243,3 +248,50 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxN
 ###
 GET http://localhost:5000/api/markPost/all
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTI3ODExMjJ9.VurtL1jM_HvowGiKISvf09q1OR54cKhgME2wNIPLLvM
+
+###
+POST http://localhost:5000/api/profile 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTM1NDg0Mzh9.1vU5S117r_LHuaKP6lQuDzU6i5kVun9MBbknPzNnP9U
+Content-Type: application/json
+
+{
+            "owner_email": "thebest11447@gmail.com",
+            "phonenumber": "0337445596",
+            "name":"Hoàng Văn Bình",
+            "birthday": "2001-12-07T00:00:00.000+00:00",
+            "introduce": "Sinh Vien Dai Hoc Su Pham ky Thuat TP HCM",
+            "experience": "Intern",
+            "degree":"Toeic 790"
+}
+
+
+###
+GET http://localhost:5000/api/profile 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTM1NDg0Mzh9.1vU5S117r_LHuaKP6lQuDzU6i5kVun9MBbknPzNnP9U
+
+
+###
+PUT http://localhost:5000/api/profile 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTM1NDg0Mzh9.1vU5S117r_LHuaKP6lQuDzU6i5kVun9MBbknPzNnP9U
+Content-Type: application/json
+
+{
+            "owner_email": "thebest11447@gmail.com",
+            "phonenumber": "0337445596",
+            "name":"Hoàng Văn Bình",
+            "birthday": "2001-12-07T00:00:00.000+00:00",
+            "introduce": "Sinh Vien Dai Hoc Su Pham ky Thuat TP HCM",
+            "experience": "Intern",
+            "degree":"Toeic 790"
+}
+
+
+###
+POST http://localhost:5000/api/post/search 
+Content-Type: application/json
+
+{
+    "cate":"626129e3ba08c523d264991a",
+    "title":"",
+    "location":""
+}

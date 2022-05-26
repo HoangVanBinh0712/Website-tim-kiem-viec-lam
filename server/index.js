@@ -8,6 +8,7 @@ const postsRouter = require('./routes/post')
 const submittedRouter = require('./routes/submit_post')
 const postDetail = require('./routes/postDetail')
 const markPostRouter = require('./routes/markpost')
+const profileRouter = require('./routes/profile')
 const cors = require('cors')
 const connectDB = async ()=>{
     try {
@@ -34,6 +35,8 @@ app.use('/api/post',postsRouter)
 app.use('/api/submitted',submittedRouter)
 app.use('/api/postDetail', postDetail)
 app.use('/api/markPost',markPostRouter)
+app.use('/api/profile',profileRouter)
+
 app.use(express.json)
 const PORT = process.env.PORT || 5000;
 

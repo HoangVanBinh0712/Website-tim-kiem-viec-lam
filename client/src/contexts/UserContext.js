@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from 'react'
+import { createContext, useState } from 'react'
 import { apiUrl } from './constant'
 import axios from 'axios'
 export const UserContext = createContext()
@@ -7,6 +7,8 @@ const UserContextProvider = ({ children }) => {
 
     const [showModal, setShowModal] = useState(false)
     const [isMarked, setIsMarked] = useState(false)
+    const [isSubmitted, setIsSubmitted] = useState(false)
+
     //Change pass word
 
     const changePassword = async newModal => {
@@ -41,6 +43,23 @@ const UserContextProvider = ({ children }) => {
         }
 
     }
+    const applyJob = async (postId)=>{
+        try {
+            const response = await axios.put(`${apiUrl}/submitted/${postId}`)
+            return response.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const isSubmittedPost = async (postId)=>{
+        try {
+            const response = await axios.get(`${apiUrl}/submitted/${postId}`)
+            setIsSubmitted(response.data.result) 
+        } catch (error) {
+            console.log(error)
+            setIsSubmitted(false) 
+        }
+    }
     const UserContextData = {
         setShowModal,
         showModal,
@@ -48,7 +67,11 @@ const UserContextProvider = ({ children }) => {
         markPost,
         isUserMarkedPost,
         isMarked,
-        setIsMarked
+        setIsMarked,
+        applyJob,
+        isSubmittedPost,
+        isSubmitted,
+        setIsSubmitted
     }
     return (
         <UserContext.Provider value={UserContextData}>

@@ -14,17 +14,30 @@ import { UserContext } from '../../contexts/UserContext'
 const PostDetail = () => {
     let { id } = useParams();
 
-    const { postState: { post, postsLoading }, findPostById, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
-    const { markPost, isUserMarkedPost, isMarked, setIsMarked } = useContext(UserContext)
-    useEffect(() => { findPostById(id); isUserMarkedPost(id) }, [id])
+    const { postState: { post, postsLoading }, findPostById,
+        showToast: { show, message, type }, setShowToast } = useContext(PostContext)
+
+    const { isSubmitted, setIsSubmitted, isSubmittedPost,
+        applyJob, markPost, isUserMarkedPost,
+        isMarked, setIsMarked } = useContext(UserContext)
+
+    useEffect(() => { findPostById(id); isSubmittedPost(id); isUserMarkedPost(id) }, [id])
+
     const savePost = async postId => {
-        const {success,message} = await markPost(postId)
+        const { success, message } = await markPost(postId)
         setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
+    }
+
+    const applyForJob = async postId => {
+        const { success, message } = await applyJob(postId)
+        setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
+        setIsSubmitted(!isSubmitted)
     }
     let body
     if (postsLoading || post === null)
         body = (<div className="spinner-container"><Spinner animation="border" variant="info" /></div>)
     else {
+
         body = <>
             <Card className='card-detail container' border='success'>
                 <Card.Body>
@@ -55,6 +68,7 @@ const PostDetail = () => {
 
                 </Card.Body>
                 <Row>
+
                     <Button as={Col} className="col-2" onClick={() => {
                         const text = isMarked === true ? "Unmark" : "Mark"
                         const confirmBox = window.confirm(
@@ -62,16 +76,24 @@ const PostDetail = () => {
                         )
                         if (confirmBox === true) {
                             savePost(post._id);
-                            if (text == 'Unmark')
+                            if (text === 'Unmark')
                                 setIsMarked(false)
                             else
                                 setIsMarked(true)
-
                         }
-
                     }}
                         style={{ margin: "0 10px 0 10px" }}>Lưu bài viết</Button>
-                    <Button as={Col} className="col-2" style={{ margin: "0 10px 0 10px" }}>Nộp hồ sơ</Button>
+                    {/*isSubmittedPost*/}
+                    <Button as={Col} className="col-2" style={{ margin: "0 10px 0 10px" }}
+                        onClick={() => {
+                            const text = isSubmitted === true ? "rút hồ sơ khỏi" : "nộp hồ sơ vào"
+                            const confirmBox = window.confirm(
+                                `Bạn có muốn ${text} '` + post.title + " không ' ?"
+                            )
+                            if (confirmBox === true) {
+                                applyForJob(post._id)
+                            }
+                        }}> {isSubmitted ? "Rút hồ sơ" : "Nộp hồ sơ"}</Button>
                 </Row>
             </Card>
         </>
