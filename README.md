@@ -33,3 +33,10 @@ làm FE MarkPOst (đánh dấu bài viết, bỏ đánh dấu, hiện list bài 
 Thêm tạo sửa xóa CV cho jobseeker <br>
 Làm chức năng nộp CV hủy nộp CV, xem những CV đã nộp cho bài viết <br>
 Tìm kiếm bài viết <br>
+<h2>Binh 26/5:</h2>
+Chỉnh lại 1 ít giao diện (nhìn chung vẫn còn tệ) <br>
+Chỉnh trang about 1 ít (Không liên quan lắm)<br>
+Tìm kiếm Profile cho Emp và Admin <br>
+Test các chức năng tạm ổn <br>
+------------------------------------------------------------------------------<br>
+Các chức năng đã hoàn thành gần như hết tất cả chờ viết báo cáo.<br>
