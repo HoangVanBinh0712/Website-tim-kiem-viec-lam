@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import Spinner from 'react-bootstrap/Spinner'
@@ -8,6 +8,7 @@ import AlertMessage from '../../layouts/Alert'
 
 const RegisterForm = () => {
     //Context
+    const navigate = useNavigate()
     const [registerForm, setRegisterForm] = useState({
         email: '',
         password: '',
@@ -52,6 +53,9 @@ const RegisterForm = () => {
             const registerData = await registerUser(registerForm)
             if (!registerData.success) {
                 setAlert({ type: 'danger', message: registerData.message })
+                setTimeout(() => setAlert(null), 5000)
+            }else{
+                setAlert({ type: 'success', message: registerData.message })
                 setTimeout(() => setAlert(null), 5000)
             }
         } catch (error) {

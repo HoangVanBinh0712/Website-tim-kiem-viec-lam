@@ -1,20 +1,16 @@
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 const About = () => {
 	return (
-		<Row className='mt-5' style={{ marginRight: 0 }}>
-			<Col className='text-center'>
-				<Button
-					variant='primary'
-					href='https://www.facebook.com/hoang.binh.58958343'
-					size='lg'
-				>
-					Visit my channel for more tutorials
-				</Button>
-			</Col>
-		</Row>
+		<>
+			<div className='container mt-5'>
+				<h2 style={{ textAlign: "center", color: "red" }}>Môn học Công Nghệ Phần Mềm Hướng Đối Tượng</h2>
+				<h2 style={{ textAlign: "center" }}>Giáo viên hướng dẫn: ThS. Mai Anh Thơ</h2>
+				<h3>Nhóm thiết kế website gồm 3 thành viên</h3>
+				<h4><a href="https://www.facebook.com/hoang.binh.58958343">1. Hoàng Văn Bình    : 19110170 </a></h4>
+				<h4><a href='https://www.facebook.com/tomo.quang.0901'>2. Trần Văn Quang    : 19110271</a></h4>
+				<h4><a href='https://www.facebook.com/nguyenhoangthanhbao2801'>3. Nguyễn Thanh Hiền : 19110200</a></h4>
+			</div>
+		</>
 	)
 }
 

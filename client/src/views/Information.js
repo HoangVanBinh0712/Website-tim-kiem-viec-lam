@@ -8,7 +8,7 @@ import Toast from 'react-bootstrap/Toast'
 
 const InforMation = () => {
     const { authLoading, authState: { user }, adjustUser,
-    setShowToast,showToast: {show,message,type} } = useContext(AuthContext)
+        setShowToast, showToast: { show, message, type } } = useContext(AuthContext)
     var username = user.name ? user.name : user.companyname
 
     const [newUser, setNewUser] = useState({
@@ -19,7 +19,7 @@ const InforMation = () => {
         address: user.address,
         birthday: user.birthday
     })
-    const [newEmployer,setNewEmployer] = useState({
+    const [newEmployer, setNewEmployer] = useState({
         companyname: username,
         email: user.email,
         role: user.role,
@@ -43,26 +43,26 @@ const InforMation = () => {
             const { name, email, phonenumber, address, birthday } = newUser
             const onChangeNewUserForm = event =>
                 setNewUser({ ...newUser, [event.target.name]: event.target.value })
-            
+
             const onSubmit = async event => {
                 event.preventDefault()
                 const { success, message } = await adjustUser(newUser)
-                setShowToast({show: true, message: message,type: success ? 'success' : 'danger'})
+                setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
             }
 
             body = (<>
-                <Form onSubmit={onSubmit}>
+                <Form onSubmit={onSubmit} className="container">
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email'/>
+                        <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="Text" value={name} onChange={onChangeNewUserForm} name='name'/>
+                        <Form.Control type="Text" value={name} onChange={onChangeNewUserForm} name='name' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Phone</Form.Label>
-                        <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber'/>
+                        <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Address</Form.Label>
@@ -73,38 +73,38 @@ const InforMation = () => {
                         <Form.Control type="Text" value={birthday} onChange={onChangeNewUserForm} name='birthday' />
                     </Form.Group>
                     <Button variant="primary" type="submit">
-                        Submit
+                        Xác nhận thay đổi
                     </Button>
                 </Form>
             </>)
 
-        } 
+        }
         else if (user.role === 1) {
             //Employer
-            
+
             const { companyname, email, phonenumber, address, description } = newEmployer
             const onChangeNewUserForm = event =>
                 setNewEmployer({ ...newEmployer, [event.target.name]: event.target.value })
-            
+
             const onSubmit = async event => {
                 event.preventDefault()
                 const { success, message } = await adjustUser(newEmployer)
-                setShowToast({show: true, message: message,type: success ? 'success' : 'danger'})
+                setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
             }
 
             body = (<>
-            <Form onSubmit={onSubmit}>
+                <Form onSubmit={onSubmit} className="container">
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email'/>
+                        <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="Text" value={companyname} onChange={onChangeNewUserForm} name='companyname'/>
+                        <Form.Control type="Text" value={companyname} onChange={onChangeNewUserForm} name='companyname' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Phone</Form.Label>
-                        <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber'/>
+                        <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Address</Form.Label>
@@ -115,37 +115,37 @@ const InforMation = () => {
                         <Form.Control type="Text" value={description} onChange={onChangeNewUserForm} name='description' />
                     </Form.Group>
                     <Button variant="primary" type="submit">
-                        Submit
+                        Xác nhận thay đổi
                     </Button>
                 </Form>
             </>)
         } else if (user.role === 2) {
             //Admin
             body = (<>
-                <Form>
+                <Form className="container">
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" defaultValue={user.email} readOnly/>
+                        <Form.Control type="email" defaultValue={user.email} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="Text" defaultValue={username} readOnly/>
+                        <Form.Control type="Text" defaultValue={username} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Phone</Form.Label>
-                        <Form.Control type="Text" defaultValue={user.phonenumber}readOnly />
+                        <Form.Control type="Text" defaultValue={user.phonenumber} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Address</Form.Label>
-                        <Form.Control type="Text" defaultValue={user.address} readOnly/>
+                        <Form.Control type="Text" defaultValue={user.address} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Contact</Form.Label>
-                        <Form.Control type="Text" defaultValue={user.contact} readOnly/>
+                        <Form.Control type="Text" defaultValue={user.contact} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Time Approved</Form.Label>
-                        <Form.Control type="Text" defaultValue={user.timeApproved} readOnly/>
+                        <Form.Control type="Text" defaultValue={user.timeApproved} readOnly />
                     </Form.Group>
                 </Form>
             </>)
@@ -155,23 +155,25 @@ const InforMation = () => {
     }
 
     return <>
+        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Thông tin cá nhân </div>
+
         {body}
         <Toast
-				show={show}
-				style={{ position: 'fixed', top: '20%', right: '10px' }}
-				className={`bg-${type} text-white`}
-				onClose={setShowToast.bind(this, {
-					show: false,
-					message: '',
-					type: null
-				})}
-				delay={3000}
-				autohide
-			>
-				<Toast.Body>
-					<strong>{message}</strong>
-				</Toast.Body>
-			</Toast> 
+            show={show}
+            style={{ position: 'fixed', top: '20%', right: '10px' }}
+            className={`bg-${type} text-white`}
+            onClose={setShowToast.bind(this, {
+                show: false,
+                message: '',
+                type: null
+            })}
+            delay={3000}
+            autohide
+        >
+            <Toast.Body>
+                <strong>{message}</strong>
+            </Toast.Body>
+        </Toast>
     </>
 }
 export default InforMation

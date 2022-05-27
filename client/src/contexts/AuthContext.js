@@ -93,9 +93,6 @@ const AuthContextProvider = ({ children }) => {
             } else {
                 response = await axios.post(`${apiUrl}/auth/employer/register`, userForm)
             }
-            if (response.data.success)
-                localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
-            await loadUser()
             return response.data
         } catch (error) {
             if (error.response.data) return error.response.data
@@ -135,6 +132,20 @@ const AuthContextProvider = ({ children }) => {
         }
     }
 
+    const searchProfile = async (search) => {
+        try {
+            const response = await axios.post(`${apiUrl}/profile/search`, search)
+            if (response.data.success) {
+                dispatch({
+                    type: "PROFILES_LOAD_SUCCESS",
+                    payload: { profiles: response.data.profiles }
+                })
+            }
+            return response.data.message
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
     const getProfile = async () => {
         try {
             const response = await axios.get(`${apiUrl}/profile`)
@@ -192,7 +203,7 @@ const AuthContextProvider = ({ children }) => {
         logoutUser, authState, adjustUser,
         showToast, setShowToast,
         getProfile, createProfile,
-        updateProfile, getProfileSubmitted
+        updateProfile, getProfileSubmitted, searchProfile
     }
     return (
         <AuthContext.Provider value={authContextData}>

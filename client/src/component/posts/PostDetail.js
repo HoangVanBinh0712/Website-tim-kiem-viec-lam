@@ -51,7 +51,8 @@ const PostDetail = () => {
                     </Card.Title>
                     <Row>
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Mô tả công việc</Card.Text>
-                        <Card.Text className='card-text'>{post.description}</Card.Text>
+                        {/* <Card.Text className='card-text' style={{maxLines: "5"}}>{post.description}</Card.Text> */}
+                        <textarea style={{border: "0px"}}>{post.description}</textarea>
 
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }} >Mức Lương</Card.Text>
                         <Card.Text className='card-text'>{post.salary} VNĐ</Card.Text>
@@ -65,36 +66,34 @@ const PostDetail = () => {
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Ngày kết thúc</Card.Text>
                         <Card.Text className='card-text'>{post.dateEnd}</Card.Text>
                     </Row>
+                    <Row>
 
-                </Card.Body>
-                <Row>
 
-                    <Button as={Col} className="col-2" onClick={() => {
-                        const text = isMarked === true ? "Unmark" : "Mark"
-                        const confirmBox = window.confirm(
-                            `Do you really want to ${text} '` + post.title + "' ?"
-                        )
-                        if (confirmBox === true) {
-                            savePost(post._id);
-                            if (text === 'Unmark')
-                                setIsMarked(false)
-                            else
-                                setIsMarked(true)
-                        }
-                    }}
-                        style={{ margin: "0 10px 0 10px" }}>Lưu bài viết</Button>
-                    {/*isSubmittedPost*/}
-                    <Button as={Col} className="col-2" style={{ margin: "0 10px 0 10px" }}
-                        onClick={() => {
-                            const text = isSubmitted === true ? "rút hồ sơ khỏi" : "nộp hồ sơ vào"
+                        <Button as={Col} className="col-2" onClick={() => {
+                            const text = isMarked === true ? "bỏ đánh dấu" : "đánh dấu"
                             const confirmBox = window.confirm(
-                                `Bạn có muốn ${text} '` + post.title + " không ' ?"
+                                `Bạn có muốn ${text} '` + post.title + " không' ?"
                             )
                             if (confirmBox === true) {
-                                applyForJob(post._id)
+                                savePost(post._id);
+                                setIsMarked(!isMarked)
+
                             }
-                        }}> {isSubmitted ? "Rút hồ sơ" : "Nộp hồ sơ"}</Button>
-                </Row>
+                        }}
+                            style={{ margin: "0 10px 0 10px" }}>{isMarked === true ? "Bỏ lưu bài viết" : "Lưu bài viết"}</Button>
+                        {/*isSubmittedPost*/}
+                        <Button as={Col} className="col-2" style={{ margin: "0 10px 0 10px" }}
+                            onClick={() => {
+                                const text = isSubmitted === true ? "rút hồ sơ khỏi" : "nộp hồ sơ vào"
+                                const confirmBox = window.confirm(
+                                    `Bạn có muốn ${text} '` + post.title + " không ' ?"
+                                )
+                                if (confirmBox === true) {
+                                    applyForJob(post._id)
+                                }
+                            }}> {isSubmitted ? "Rút hồ sơ" : "Nộp hồ sơ"}</Button>
+                    </Row>
+                </Card.Body>
             </Card>
         </>
     }

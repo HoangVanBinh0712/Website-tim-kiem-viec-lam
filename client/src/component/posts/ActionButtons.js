@@ -29,7 +29,7 @@ const ActionButtons = ({ _id, ptitle }) => {
 			}}>
 				<img src={deleteIcon} alt='delete' width='24' height='24' />
 			</Button>
-			<Button className='post-button' as={Link} to={`/posts/yourposts/${_id}/submitted`}>
+			<Button style={{marginTop: "2rem"}}className='post-button' as={Link} to={`/posts/yourposts/${_id}/submitted`}>
 				Xem hồ sơ
 			</Button>
 		</>

@@ -9,7 +9,7 @@ import AlertMessage from '../../layouts/Alert'
 const LoginForm = () => {
     const navigate = useNavigate()
     //Context
-    const { authState: { authLoading, isAuthenticated }, loginUser } = useContext(AuthContext)
+    const { authState: { authLoading, isAuthenticated }, loginUser, getProfile } = useContext(AuthContext)
     const [loginForm, setLoginForm] = useState({
         email: '',
         password: '',
@@ -45,10 +45,11 @@ const LoginForm = () => {
             console.log(loginForm)
             const loginData = await loginUser(loginForm)
             if (loginData.success) {
+                getProfile()
                 navigate('/dashboard')
-            }else{
-                setAlert({type: 'danger', message: loginData.message})
-                setTimeout(()=>setAlert(null),5000)
+            } else {
+                setAlert({ type: 'danger', message: loginData.message })
+                setTimeout(() => setAlert(null), 5000)
             }
         } catch (error) {
             console.log(error)
@@ -63,7 +64,7 @@ const LoginForm = () => {
                         <h1>Login</h1>
                         <h4>Help you to find your best comfortable job</h4>
                         <Form className='my-4' onSubmit={login}>
-                            <AlertMessage info={alert}/>
+                            <AlertMessage info={alert} />
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control type='email' placeholder='Email' name='email'
                                     required value={email} onChange={onChangeLoginForm}></Form.Control>

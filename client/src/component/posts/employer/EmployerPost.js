@@ -30,9 +30,8 @@ const EmployerPost = () => {
         body = (
             <>
                 <Card className='text-center mx-5 my-5'>
-                    <Card.Header as='h1'>Hi {username}</Card.Header>
+                    <Card.Header as='h1'>{username}</Card.Header>
                     <Card.Body>
-                        <Card.Title>Wellcome</Card.Title>
                         <Card.Text>
                             Click the button below to Add Post 
                         </Card.Text>

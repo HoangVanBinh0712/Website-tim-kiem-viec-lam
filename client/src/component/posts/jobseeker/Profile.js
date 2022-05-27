@@ -9,20 +9,22 @@ import Toast from 'react-bootstrap/Toast'
 const Profile = () => {
     const { authLoading, authState: { user, profile, profileLoading }, getProfile, createProfile, updateProfile,
         setShowToast, showToast: { show, message, type } } = useContext(AuthContext)
-    useEffect(() => { getProfile() }, [])
 
     const [update, setUpdate] = useState(false)
 
     const [newProfile, setNewProfile] = useState({
-        name: "",
-        owner_email: "",
-        phonenumber: "",
-        birthday: "",
-        introduce: "",
-        experience: "",
-        degree: ""
+        name: profile ? profile.name : "",
+        owner_email: profile ? profile.owner_email : "",
+        phonenumber: profile ? profile.phonenumber : "",
+        birthday: profile ? profile.birthday : "",
+        introduce: profile ? profile.introduce : "",
+        experience: profile ? profile.experience : "",
+        degree: profile ? profile.degree : ""
     })
+    useEffect(() => getProfile, [])
+
     const { name, owner_email, phonenumber, birthday, introduce, experience, degree } = newProfile
+
     const onChangeNewProfileForm = event =>
         setNewProfile({ ...newProfile, [event.target.name]: event.target.value })
     let body = null
@@ -36,8 +38,6 @@ const Profile = () => {
             )
         } else if (profile === null) {
             //Jobseeker
-
-
             const onSubmit = async event => {
                 event.preventDefault()
                 const { success, message } = await createProfile(newProfile)
@@ -45,7 +45,7 @@ const Profile = () => {
             }
 
             body = (<>
-                <div>Create your own a profile </div>
+                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Create profile </div>
                 <Form onSubmit={onSubmit} className="container">
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
@@ -81,13 +81,16 @@ const Profile = () => {
                 </Form>
             </>)
         } else {
-            if (!newProfile.name) setNewProfile(profile)
+            if (!newProfile || !newProfile.name) setNewProfile(profile)
             const onSubmit = async event => {
                 event.preventDefault()
                 const { success, message } = await updateProfile(newProfile)
+                getProfile()
                 setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
             }
             body = (<>
+                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Your profile </div>
+
                 <Form className="container" onSubmit={onSubmit}>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
