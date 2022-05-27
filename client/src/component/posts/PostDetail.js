@@ -11,6 +11,7 @@ import star from '../../assets/star.jpg'
 import Toast from 'react-bootstrap/Toast'
 
 import { UserContext } from '../../contexts/UserContext'
+import { AuthContext } from '../../contexts/AuthContext'
 const PostDetail = () => {
     let { id } = useParams();
 
@@ -20,8 +21,9 @@ const PostDetail = () => {
     const { isSubmitted, setIsSubmitted, isSubmittedPost,
         applyJob, markPost, isUserMarkedPost,
         isMarked, setIsMarked } = useContext(UserContext)
+    const { authState: { user } } = useContext(AuthContext)
 
-    useEffect(() => { findPostById(id); isSubmittedPost(id); isUserMarkedPost(id) }, [id])
+    useEffect(() => { findPostById(id); isSubmittedPost(id); isUserMarkedPost(id); }, [id])
 
     const savePost = async postId => {
         const { success, message } = await markPost(postId)
@@ -31,7 +33,7 @@ const PostDetail = () => {
     const applyForJob = async postId => {
         const { success, message } = await applyJob(postId)
         setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
-        setIsSubmitted(!isSubmitted)
+        if (success) setIsSubmitted(!isSubmitted)
     }
     let body
     if (postsLoading || post === null)
@@ -52,7 +54,7 @@ const PostDetail = () => {
                     <Row>
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Mô tả công việc</Card.Text>
                         {/* <Card.Text className='card-text' style={{maxLines: "5"}}>{post.description}</Card.Text> */}
-                        <textarea style={{border: "0px"}}>{post.description}</textarea>
+                        <textarea style={{ border: "0px" }}>{post.description}</textarea>
 
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }} >Mức Lương</Card.Text>
                         <Card.Text className='card-text'>{post.salary} VNĐ</Card.Text>
@@ -66,8 +68,7 @@ const PostDetail = () => {
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Ngày kết thúc</Card.Text>
                         <Card.Text className='card-text'>{post.dateEnd}</Card.Text>
                     </Row>
-                    <Row>
-
+                    {user ? user.role === 0 && <Row>
 
                         <Button as={Col} className="col-2" onClick={() => {
                             const text = isMarked === true ? "bỏ đánh dấu" : "đánh dấu"
@@ -92,7 +93,7 @@ const PostDetail = () => {
                                     applyForJob(post._id)
                                 }
                             }}> {isSubmitted ? "Rút hồ sơ" : "Nộp hồ sơ"}</Button>
-                    </Row>
+                    </Row> : ""}
                 </Card.Body>
             </Card>
         </>

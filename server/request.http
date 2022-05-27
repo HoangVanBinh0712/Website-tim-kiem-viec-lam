@@ -80,7 +80,7 @@ Content-Type: application/json
 
 {
     "mode" : 0,
-    "email": "thebest11447@gmail.com",
+    "email": "tranduytan@gmail.com",
     "password": "12345"
 }
 
@@ -207,7 +207,7 @@ Content-Type: application/json
 
 ###Submitted
 PUT http://localhost:5000/api/submitted/6271e3b829174de1542b12b6
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjYxMmVhNDg3NTgwNzljMzhjNGFjZjEiLCJpYXQiOjE2NTM1NDg0Mzh9.1vU5S117r_LHuaKP6lQuDzU6i5kVun9MBbknPzNnP9U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjkwYzNiNWMyMmIxYzRkMjhjM2U3ZTMiLCJpYXQiOjE2NTM2NTU5NzR9._2T5pFV6NjoJnamaaSrv85R-ndDnEz7RLCw-UyZ1L0o
 
 
 ### Get Submitted

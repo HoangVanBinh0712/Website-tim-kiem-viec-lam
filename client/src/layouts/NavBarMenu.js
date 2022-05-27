@@ -119,10 +119,9 @@ const NavbarMenu = () => {
 				<Navbar.Toggle aria-controls='basic-navbar-nav' />
 				<Navbar.Collapse id='basic-navbar-nav'>
 					<Nav className='mr-auto'>
-						<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Dashboard</Nav.Link>
-						<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link}>About</Nav.Link>
 						<Nav.Link className='font-weight-bolder text-white' to='/login' as={Link}>Login</Nav.Link>
-
+						<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link}>About</Nav.Link>
+						<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Dashboard</Nav.Link>
 					</Nav>
 					<Nav>
 						<Nav.Link className='font-weight-bolder text-white'></Nav.Link>

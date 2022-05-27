@@ -61,6 +61,9 @@ router.put('/:id', verifyToken, async (req, res) => {
         const jsk = await jobseeker.findById(req.userId)
         if (!jsk)
             return res.json({ success: false, message: "User not found !" })
+        const jProfile = await Profile.findOne({jobseeker: jsk._id})
+        if(!jProfile)
+            return res.json({success: false, message: "Must create profile first !"})
         const sbmt = await Submitted.findOne({ submitterId: req.userId, post: postId })
         if (sbmt) {
             await Submitted.findOneAndDelete({ _id: sbmt._id })
