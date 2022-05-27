@@ -28,4 +28,8 @@ Chức năng đã hoàn thành trước đó: Account, đổi mật khẩu, đ�
 Sửa lại bảng MarkPost <br>
 Làm BE MarkPost (thêm , xóa, lấy)<br>
 làm FE MarkPOst (đánh dấu bài viết, bỏ đánh dấu, hiện list bài viết đã đánh dấu)<br>
-    <progress max="100" value="85"></progress>
+
+<h2>Binh 26/5:</h2>
+Thêm tạo sửa xóa CV cho jobseeker <br>
+Làm chức năng nộp CV hủy nộp CV, xem những CV đã nộp cho bài viết <br>
+Tìm kiếm bài viết <br>
