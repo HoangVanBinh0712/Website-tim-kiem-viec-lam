@@ -147,8 +147,15 @@ button.post-button.btn:active {
 .formTimKiem{
 	background: rgba(220, 217, 212, 0.1);
 	padding: 10px 10px 10px 10px;
+	position: absolute;
+	right: 0;
 }
-
+.img-main{
+	display: flex;
+	position: relative;
+	align-items: center;
+	padding: 0 0 0 0;
+}
 input, select{
 	border: 1px solid black;
 	height: 30pt;
@@ -181,4 +188,8 @@ a{
 	background-color: #3138b6;
 	border: 5px solid white;
 	
+}
+.main-row {
+	border: 1px solid black;
+	background-color: aliceblue;
 }
