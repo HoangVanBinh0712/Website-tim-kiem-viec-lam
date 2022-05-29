@@ -76,6 +76,7 @@ const InforMation = () => {
                         Xác nhận thay đổi
                     </Button>
                 </Form>
+
             </>)
 
         }
@@ -156,8 +157,12 @@ const InforMation = () => {
 
     return <>
         <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Thông tin cá nhân </div>
-
-        {body}
+        <div className="grid-container container">
+            {body}
+            <div>
+                <img src="https://goodluckfurni.com/wp-content/uploads/2019/06/IMG_0473.jpg" width="100%" height="80%" />
+            </div>
+        </div>
         <Toast
             show={show}
             style={{ position: 'fixed', top: '20%', right: '10px' }}

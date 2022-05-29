@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form"
 import Toast from 'react-bootstrap/Toast'
 
 const Profile = () => {
-    const { authLoading, authState: { user, profile, profileLoading }, getProfile, createProfile, updateProfile,
+    const { authState: { user, profile, profileLoading }, getProfile, createProfile, updateProfile,
         setShowToast, showToast: { show, message, type } } = useContext(AuthContext)
 
     const [update, setUpdate] = useState(false)
@@ -21,8 +21,9 @@ const Profile = () => {
         experience: profile ? profile.experience : "",
         degree: profile ? profile.degree : ""
     })
-    useEffect(() => getProfile, [])
+    useEffect(() => {getProfile()}, [])
 
+    console.log(profileLoading)
     const { name, owner_email, phonenumber, birthday, introduce, experience, degree } = newProfile
 
     const onChangeNewProfileForm = event =>
@@ -32,7 +33,7 @@ const Profile = () => {
         return <Navigate to={'/login'} />
     }
     else
-        if (authLoading || profileLoading) {
+        if (profileLoading) {
             body = (
                 <div className="spinner-container"><Spinner animation="border" variant="info" /></div>
             )
@@ -90,45 +91,55 @@ const Profile = () => {
             }
             body = (<>
                 <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Your profile </div>
+                <div className="container grid-container">
+                    <div>
+                        <img src="https://metroheadshots.co.nz/wp-content/uploads/2018/10/Business-Profile-Update-0014.jpg" width="100%" height="100%" />
+                    </div>
+                    <div>
+                        <Form onSubmit={onSubmit}>
+                            <Form.Group className="mb-3"  >
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control readOnly={!update} type="email" value={owner_email} onChange={onChangeNewProfileForm} name='owner_email' />
+                            </Form.Group>
+                            <Form.Group className="mb-3"  >
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control readOnly={!update} type="Text" value={name} onChange={onChangeNewProfileForm} name='name' />
+                            </Form.Group>
+                            <Form.Group className="mb-3"  >
+                                <Form.Label>Phone</Form.Label>
+                                <Form.Control readOnly={!update} type="Text" value={phonenumber} onChange={onChangeNewProfileForm} name='phonenumber' />
+                            </Form.Group>
+                            <Form.Group className="mb-3"  >
+                                <Form.Label>Birthday</Form.Label>
+                                <Form.Control readOnly={!update} type="Text" value={birthday} onChange={onChangeNewProfileForm} name='birthday' />
+                            </Form.Group>
+                            <Form.Group className="mb-3"  >
+                                <Form.Label>Introduce</Form.Label>
+                                <Form.Control readOnly={!update} type="Text" value={introduce} onChange={onChangeNewProfileForm} name='introduce' />
+                            </Form.Group>
+                            <Form.Group className="mb-3"  >
+                                <Form.Label>Experience</Form.Label>
+                                <Form.Control readOnly={!update} type="Text" value={experience} onChange={onChangeNewProfileForm} name='experience' />
+                            </Form.Group>
+                            <Form.Group className="mb-3"  >
+                                <Form.Label>Degree</Form.Label>
+                                <Form.Control readOnly={!update} type="Text" value={degree} onChange={onChangeNewProfileForm} name='degree' />
+                            </Form.Group>
+                            <div className="div-button">
+                                <Button onClick={() => {
+                                    setUpdate(true)
+                                }}>
+                                    Cập nhật hồ sơ
+                                </Button>
+                                <Button variant="primary" type="submit" disabled={!update}>
+                                    Xác nhận cập nhật
+                                </Button>
+                            </div>
 
-                <Form className="container" onSubmit={onSubmit}>
-                    <Form.Group className="mb-3"  >
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control readOnly={!update} type="email" value={owner_email} onChange={onChangeNewProfileForm} name='owner_email' />
-                    </Form.Group>
-                    <Form.Group className="mb-3"  >
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control readOnly={!update} type="Text" value={name} onChange={onChangeNewProfileForm} name='name' />
-                    </Form.Group>
-                    <Form.Group className="mb-3"  >
-                        <Form.Label>Phone</Form.Label>
-                        <Form.Control readOnly={!update} type="Text" value={phonenumber} onChange={onChangeNewProfileForm} name='phonenumber' />
-                    </Form.Group>
-                    <Form.Group className="mb-3"  >
-                        <Form.Label>Birthday</Form.Label>
-                        <Form.Control readOnly={!update} type="Text" value={birthday} onChange={onChangeNewProfileForm} name='birthday' />
-                    </Form.Group>
-                    <Form.Group className="mb-3"  >
-                        <Form.Label>Introduce</Form.Label>
-                        <Form.Control readOnly={!update} type="Text" value={introduce} onChange={onChangeNewProfileForm} name='introduce' />
-                    </Form.Group>
-                    <Form.Group className="mb-3"  >
-                        <Form.Label>Experience</Form.Label>
-                        <Form.Control readOnly={!update} type="Text" value={experience} onChange={onChangeNewProfileForm} name='experience' />
-                    </Form.Group>
-                    <Form.Group className="mb-3"  >
-                        <Form.Label>Degree</Form.Label>
-                        <Form.Control readOnly={!update} type="Text" value={degree} onChange={onChangeNewProfileForm} name='degree' />
-                    </Form.Group>
-                    <Button variant="primary" type="submit" disabled={!update}>
-                        Xác nhận cập nhật
-                    </Button>
-                </Form>
-                <Button onClick={() => {
-                    setUpdate(true)
-                }}>
-                    Cập nhật hồ sơ
-                </Button>
+                        </Form>
+                    </div>
+                </div>
+
 
             </>)
         }

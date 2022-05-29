@@ -112,27 +112,31 @@ button.post-button.btn:active {
 
 
 
-.card-text{
+.card-text {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-line-clamp: 1;
+	/* number of lines to show */
 	-webkit-box-orient: vertical;
 	color: black;
 	font-size: 25px;
 	font-weight: 400;
 }
-.card-detail{
+
+.card-detail {
 	white-space: pre-line;
 	color: black;
 	font-size: 25px;
 	font-weight: 400;
 }
-.post-title{
+
+.post-title {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-line-clamp: 1;
+	/* number of lines to show */
 	-webkit-box-orient: vertical;
 	margin-bottom: 0.5rem;
 	color: black;
@@ -140,40 +144,44 @@ button.post-button.btn:active {
 	font-weight: 500;
 }
 
-.card-detail{
+.card-detail {
 	white-space: nowrap;
 	margin-top: 20pt;
 }
-.formTimKiem{
+
+.formTimKiem {
 	background: rgba(220, 217, 212, 0.1);
 	padding: 10px 10px 10px 10px;
 	position: absolute;
 	right: 0;
 }
 
-input, select{
+input,
+select {
 	border: 1px solid black;
 	height: 30pt;
 	font-size: 15pt;
 	border-radius: 10px 10px 10px 10px;
 	width: 100%;
 }
-button{
+
+button {
 	border: 0;
 	font-size: 15pt;
 	border-radius: 10px 10px 10px 10px;
 	height: 30pt;
 }
-.format-row{
+
+.format-row {
 	margin: 15px 0 15px 0;
 
 }
 
-a{
+a {
 	font-weight: 500;
 }
 
-.col-text{
+.col-text {
 	padding: 10px 0px 10px 0px;
 	text-align: center;
 	color: white;
@@ -182,22 +190,37 @@ a{
 	height: 60px;
 	background-color: #3138b6;
 	border: 5px solid white;
-	
+
 }
+
 .main-row {
 	border: 1px solid black;
 	background-color: rgb(255, 255, 255);
 }
-.nav-search{
+
+.nav-search {
 	position: absolute;
 	right: 0px;
 	display: flex;
 }
-.img-main{
+
+.img-main {
 	margin-left: 10%;
 	margin-right: 10%;
 	display: flex;
 	position: relative;
 	align-items: center;
 	padding: 0 0 0 0;
+}
+
+.grid-container {
+	border-top: none;
+	display: grid;
+	grid: auto / 50% 50%;
+	grid-gap: 10px;
+	padding: 10px;
+}
+.div-button{
+	display: flex;
+	justify-content: space-between;
 }

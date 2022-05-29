@@ -52,21 +52,26 @@ const PostDetail = () => {
                         </Row>
                     </Card.Title>
                     <Row>
-                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Mô tả công việc</Card.Text>
+                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600",textDecoration: "underline" }}>Mô tả công việc</Card.Text>
                         {/* <Card.Text className='card-text' style={{maxLines: "5"}}>{post.description}</Card.Text> */}
                         <textarea style={{ border: "0px" }}>{post.description}</textarea>
-
-                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }} >Mức Lương</Card.Text>
+                        <hr/>
+                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" ,textDecoration: "underline"}} >Mức Lương</Card.Text>
                         <Card.Text className='card-text'>{post.salary} VNĐ</Card.Text>
+                        <hr/>
 
-                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Yêu cầu</Card.Text>
+                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600",textDecoration: "underline" }}>Yêu cầu</Card.Text>
                         <Card.Text className='card-text'>{post.requirement} </Card.Text>
 
-                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Địa điểm</Card.Text>
+                        <hr/>
+                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600",textDecoration: "underline" }}>Địa điểm</Card.Text>
                         <Card.Text className='card-text'>{post.location} </Card.Text>
+                        <hr/>
 
-                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" }}>Ngày kết thúc</Card.Text>
+                        <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600",textDecoration: "underline" }}>Ngày kết thúc</Card.Text>
                         <Card.Text className='card-text'>{post.dateEnd}</Card.Text>
+
+                        <hr/>
                     </Row>
                     {user ? user.role === 0 && <Row>
 

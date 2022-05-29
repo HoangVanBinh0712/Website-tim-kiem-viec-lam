@@ -30,7 +30,7 @@ const NavbarMenu = () => {
 		body = <>
 			<>
 				<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
-					<div className='container' style={{position: "relative"}}>
+					<div className='container' style={{ position: "relative" }}>
 						<Navbar.Brand className='font-weight-bolder text-white'>
 							<img
 								src={learnItLogo}
@@ -90,13 +90,13 @@ const NavbarMenu = () => {
 								</Dropdown>}
 							</Nav >
 							{user.role > 0 && <div className='nav-search'>
-									<input type="text" value={search} name="search" onChange={onChangeInputSearch} placeholder="Tìm kiếm hồ sơ" />
-									<Button style={{ background: "#7f8c8d", marginTop: "-0.5px"}} onClick={() => {
-										searchProfile(profileSearchForm);
-										if (window.location.pathname != "/profile/search")
-											navigate("/profile/search")
-									}
-									}>Search</Button>
+								<input type="text" value={search} name="search" onChange={onChangeInputSearch} placeholder="Tìm kiếm hồ sơ" />
+								<Button style={{ background: "#7f8c8d", marginTop: "-0.5px" }} onClick={() => {
+									searchProfile(profileSearchForm);
+									if (window.location.pathname != "/profile/search")
+										navigate("/profile/search")
+								}
+								}>Search</Button>
 							</div>}
 						</Navbar.Collapse>
 					</div>
@@ -107,21 +107,26 @@ const NavbarMenu = () => {
 		</>
 	} else {
 		body = <>
-			<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
-				<Navbar.Brand className='font-weight-bolder text-white'>
-					<img src={learnItLogo} alt='learnItLogo' width='32' height='32' className='mr-2' />CNPM HĐT</Navbar.Brand>
-				<Navbar.Toggle aria-controls='basic-navbar-nav' />
-				<Navbar.Collapse id='basic-navbar-nav'>
-					<Nav className='mr-auto'>
-						<Nav.Link className='font-weight-bolder text-white' to='/login' as={Link}>Login</Nav.Link>
-						<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link}>About</Nav.Link>
-						<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Dashboard</Nav.Link>
-					</Nav>
-					<Nav>
-						<Nav.Link className='font-weight-bolder text-white'></Nav.Link>
-					</Nav>
 
-				</Navbar.Collapse>
+			<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
+				<div className='container' style={{ position: "relative" }}>
+
+					<Navbar.Brand className='font-weight-bolder text-white'>
+						<img src={learnItLogo} alt='learnItLogo' width='32' height='32' className='mr-2' />CNPM HĐT</Navbar.Brand>
+					<Navbar.Toggle aria-controls='basic-navbar-nav' />
+					<Navbar.Collapse id='basic-navbar-nav'>
+						<Nav className='mr-auto'>
+							<Nav.Link className='font-weight-bolder text-white' to='/login' as={Link}>Login</Nav.Link>
+							<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link}>About</Nav.Link>
+							<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Dashboard</Nav.Link>
+						</Nav>
+						<Nav>
+							<Nav.Link className='font-weight-bolder text-white'></Nav.Link>
+						</Nav>
+
+					</Navbar.Collapse>
+				</div>
+
 			</Navbar>
 		</>
 	}

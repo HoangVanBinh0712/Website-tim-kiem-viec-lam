@@ -11,10 +11,9 @@ const MarkedPosts = () => {
     const { postState: { posts, postsLoading }, getMarkedPosts, showToast: { show, message, type }, setShowToast } = useContext(PostContext)
     const { authState: { user } } = useContext(AuthContext)
 
-    useEffect(() => { getMarkedPosts() }, [posts])
+    useEffect(() => { getMarkedPosts() }, [])
     let body = null
     var username = user.name ? user.name : user.companyname
-
     if (postsLoading) {
         body = (
             <div className="spinner-container"><Spinner animation="border" variant="info" /></div>
