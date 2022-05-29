@@ -99,7 +99,7 @@ const DashBoard = () => {
                 </Card.ImgOverlay>
             </Card>
         </Row> */}
-        <div className="img-main container">
+        <div className="img-main">
             <img src="https://youthclinic.com/wp-content/uploads/2015/01/Job-Opportunities.jpg"
                 style={{ width: "100%", height: "300px", padding: "0 0 0 0 " }} />
             <form className="formTimKiem">

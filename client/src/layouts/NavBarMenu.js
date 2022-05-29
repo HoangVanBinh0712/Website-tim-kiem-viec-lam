@@ -30,7 +30,7 @@ const NavbarMenu = () => {
 		body = <>
 			<>
 				<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
-					<div className='container'>
+					<div className='container' style={{position: "relative"}}>
 						<Navbar.Brand className='font-weight-bolder text-white'>
 							<img
 								src={learnItLogo}
@@ -88,9 +88,8 @@ const NavbarMenu = () => {
 										<Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
 									</Dropdown.Menu>
 								</Dropdown>}
-
 							</Nav >
-							{user.role > 0 && <Nav className='mr-auto' style={{  position: "relative",  float: "right"}}>
+							{user.role > 0 && <div className='nav-search'>
 									<input type="text" value={search} name="search" onChange={onChangeInputSearch} placeholder="Tìm kiếm hồ sơ" />
 									<Button style={{ background: "#7f8c8d", marginTop: "-0.5px"}} onClick={() => {
 										searchProfile(profileSearchForm);
@@ -98,7 +97,7 @@ const NavbarMenu = () => {
 											navigate("/profile/search")
 									}
 									}>Search</Button>
-							</Nav>}
+							</div>}
 						</Navbar.Collapse>
 					</div>
 				</Navbar>

@@ -100,15 +100,6 @@ router.post('/search', async (req, res) => {
             posts = await Post.find({ status: "approved", title: { '$regex': title, '$options': 'i' }, location: { '$regex': location, '$options': 'i' } })
         else
             posts = await Post.find({ status: "approved", category: cate, title: { '$regex': title, '$options': 'i' }, location: { '$regex': location, '$options': 'i' } })
-        // var i = 0
-        // posts.forEach(async post => {
-        //     if (post.category != cate) {
-        //         posts.splice(i, 1);
-        //         i--
-        //     }
-        //     i++
-        // })
-        console.log(posts)
         res.json({ success: true, post: posts })
     } catch (error) {
         console.log(error.message)

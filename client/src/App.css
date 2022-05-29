@@ -150,12 +150,7 @@ button.post-button.btn:active {
 	position: absolute;
 	right: 0;
 }
-.img-main{
-	display: flex;
-	position: relative;
-	align-items: center;
-	padding: 0 0 0 0;
-}
+
 input, select{
 	border: 1px solid black;
 	height: 30pt;
@@ -191,5 +186,18 @@ a{
 }
 .main-row {
 	border: 1px solid black;
-	background-color: aliceblue;
+	background-color: rgb(255, 255, 255);
+}
+.nav-search{
+	position: absolute;
+	right: 0px;
+	display: flex;
+}
+.img-main{
+	margin-left: 10%;
+	margin-right: 10%;
+	display: flex;
+	position: relative;
+	align-items: center;
+	padding: 0 0 0 0;
 }
