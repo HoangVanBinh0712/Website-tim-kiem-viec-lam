@@ -31,15 +31,17 @@ const NavbarMenu = () => {
 			<>
 				<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
 					<div className='container' style={{ position: "relative" }}>
-						<Navbar.Brand className='font-weight-bolder text-white'>
-							<img
-								src={learnItLogo}
-								alt='learnItLogo'
-								width='32'
-								height='32'
-								className='mr-2'
-							/>
-							CNPM HĐT
+						<Navbar.Brand className='font-weight-bolder text-white' as={Link} to='/'>
+							<div className='div-button'>
+								<img
+									src={learnItLogo}
+									alt='learnItLogo'
+									width='32'
+									height='32'
+									className='mr-2'
+								/>
+								<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>CNPM HĐT</Nav.Link>
+							</div>
 						</Navbar.Brand>
 
 						<Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -111,7 +113,8 @@ const NavbarMenu = () => {
 			<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
 				<div className='container' style={{ position: "relative" }}>
 
-					<Navbar.Brand className='font-weight-bolder text-white'>
+					<Navbar.Brand className='font-weight-bolder text-white'
+						as={Link} to='/dashboard'>
 						<img src={learnItLogo} alt='learnItLogo' width='32' height='32' className='mr-2' />CNPM HĐT</Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>

@@ -56,7 +56,7 @@ function App() {
             element={<EmpRegisterForm />} />
           <Route exact path='/about' element={<><NavbarMenu> </NavbarMenu> <About/></>} />
           <Route exac path='/information' element={<ProtectedRoute component={InforMation}/>}/>
-          <Route exact path='/' element={<Navigate to='/login' replace />} />
+          <Route exact path='/' element={<Navigate to='/dashboard' replace />} />
 
         </Routes>
         </UserContextProvider>
