@@ -25,10 +25,10 @@ A Web application that helps searching and applying for job vacancies for job se
 1. Pull project to your computer. <br>
 2. Open Vscode terminal, direct to /server: cd server<br>
 3. Create file .env in folder server and paste the following code: ACCESS_TOKEN_SECRET=asldksajkdjlkasjkzxlkckjlas12jal123 <br>
-4. Install necessary modules. <br>
+4. Install necessary modules: npm install <br>
 5. Run server: npm start <br>
 6. Open another Vscode terminal, direct to /client: cd client <br>
-7. Install necessary modules. <br>
+7. Install necessary modules: npm install  <br>
 8. Run client: npm start <br>
 9. Open browser and access the url: http://localhost:3000 <br>
 <hr>
