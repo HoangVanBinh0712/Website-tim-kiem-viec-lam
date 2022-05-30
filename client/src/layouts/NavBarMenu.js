@@ -29,7 +29,7 @@ const NavbarMenu = () => {
 		const logout = () => logoutUser()
 		body = <>
 			<>
-				<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
+				<Navbar expand='lg' bg='primary' variant='dark' className='shadow' style={{padding:"0px"}}>
 					<div className='container' style={{ position: "relative"}}>
 						<Navbar.Brand className='font-weight-bolder text-white' as={Link} to='/'>
 							<div className='div-button'>
@@ -49,12 +49,12 @@ const NavbarMenu = () => {
 
 						<Navbar.Collapse id='basic-navbar-nav'>
 							<Nav className='mr-auto'>
-								<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Dashboard</Nav.Link>
-								<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link}>About</Nav.Link>
+								<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Việc Làm</Nav.Link>
+								<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link}>Công Ty BHQ</Nav.Link>
 							</Nav>
 							<Nav>
 								{user.role === 0 && <>
-									<Dropdown>
+									<Dropdown style={{marginLeft:'650px'}}>
 										<Dropdown.Toggle id="dropdown-basic">
 											{username}
 										</Dropdown.Toggle>
@@ -99,7 +99,7 @@ const NavbarMenu = () => {
 									if (window.location.pathname != "/profile/search")
 										navigate("/profile/search")
 								}
-								}>Search</Button>
+								}><img src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png' style={{maxHeight:"20px",maxWidth:"20px"}}/></Button>
 							</div>}
 						</Navbar.Collapse>
 					</div>
@@ -111,7 +111,7 @@ const NavbarMenu = () => {
 	} else {
 		body = <>
 
-			<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
+			<Navbar expand='lg' bg='primary' variant='dark' className='shadow' style={{padding:"0px"}}>
 				<div className='container' style={{ position: "relative" }}>
 
 					<Navbar.Brand className='font-weight-bolder text-white'
@@ -120,9 +120,9 @@ const NavbarMenu = () => {
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='mr-auto'>
-							<Nav.Link className='font-weight-bolder text-white' to='/login' as={Link}>Login</Nav.Link>
-							<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link}>About</Nav.Link>
-							<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Dashboard</Nav.Link>
+							<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>Việc Làm</Nav.Link>
+							<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link} style={{marginLeft:'10px'}}>Giới Thiệu BHQ</Nav.Link>
+							<Nav.Link className='font-weight-bolder text-white ' to='/login' as={Link} style={{marginLeft:'760px',border:'1px solid white'}}>Đăng Nhập</Nav.Link>
 						</Nav>
 						<Nav>
 							<Nav.Link className='font-weight-bolder text-white'></Nav.Link>

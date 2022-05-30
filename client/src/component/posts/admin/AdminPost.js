@@ -43,12 +43,12 @@ const AdminPost = () => {
     } else if (posts.length === 0) {
         body = (
             <>
-                <Card className='text-center mx-5 my-5'>
-                    <Card.Header as='h1'>{username}</Card.Header>
+                <Card className='text-center mx-5 my-5'style={{width:"1235px", left:"85px"}}>
+                    <Card.Header as='h1' style={{fontSize:"25px"}}>{username}</Card.Header>
                     <Card.Body>
-                        <Card.Title>Wellcome</Card.Title>
+                        <Card.Title>Xin Chào Admin</Card.Title>
                         <Card.Text>
-                            We do not have Post
+                            Không có bài đăng!
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -69,7 +69,7 @@ const AdminPost = () => {
 
     return <>
         <div className="container">
-            <div style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Admin Mode</div>
+            <div style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1240px",marginLeft:"17px" }}>Quản Trị Viên</div>
             <Row className="container">
                 <Col className="col-4 col-text" onClick={setUnapproved} style={pageMode === "unapproved" ? {textDecoration: "underline"}: {} }>Bài viết chờ duyệt</Col>
                 <Col className="col-4 col-text"onClick={setRejected} style={pageMode === "rejected" ? {textDecoration: "underline"}: {} }>Bài viết đã bị từ chối</Col>

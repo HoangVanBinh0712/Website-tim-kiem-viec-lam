@@ -19,8 +19,8 @@ const ProfileSearch = () => {
     } else if (profiles.length === 0) {
         body = (
             <>
-                <Card className='text-center mx-5 my-5'>
-                    <Card.Header as='h1'>Hi {username}</Card.Header>
+                <Card className='text-center mx-5 my-5' style={{width:"1250px", left:"72px"}}>
+                    <Card.Header as='h1' style={{fontSize:"25px"}}>Hi {username}</Card.Header>
                     <Card.Body>
                         <Card.Text>
                             No profile found !
@@ -43,7 +43,7 @@ const ProfileSearch = () => {
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Search profile </div>
+        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", marginLeft:"120px" }}>Tìm kiếm hồ sơ </div>
         {body}
     </>
 }

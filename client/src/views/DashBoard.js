@@ -8,6 +8,7 @@ import SinglePost from "../component/posts/SinglePost"
 import Toast from 'react-bootstrap/Toast'
 import { CategoryContext } from "../contexts/CategoryContext"
 import Button from "react-bootstrap/esm/Button"
+import mainimage from '../assets/main-image.jpg'
 
 const DashBoard = () => {
 
@@ -100,7 +101,7 @@ const DashBoard = () => {
             </Card>
         </Row> */}
         <div className="img-main">
-            <img src="https://youthclinic.com/wp-content/uploads/2015/01/Job-Opportunities.jpg"
+            <img src={mainimage}
                 style={{ width: "100%", height: "300px", padding: "0 0 0 0 " }} />
             <form className="formTimKiem">
                 <Row className="format-row">
@@ -124,12 +125,13 @@ const DashBoard = () => {
                         }}>Tìm kiếm</Button>
                     </Col>
                 </Row>
-                <h4 style={{color:"black",fontFamily:"inherit"}}>Các công ty tuyển dụng hàng đầu trên website </h4>
+                <h4 style={{color:"white",fontFamily:"inherit",textShadow: "6px 2px 10px black"}}>Các công ty tuyển dụng hàng đầu trên website </h4>
                 <div>
                     <div style={{maxHeight:"50px",maxWidth:"70"}}>
-                    <img src="https://www.topcv.vn/v4/image/welcome/companies/fpt.png" style={{maxHeight:"50px",maxWidth:"70"}}></img>
-                    <img src="https://www.topcv.vn/v4/image/welcome/companies/viettel.png"></img>
-                    <img src="https://www.topcv.vn/v4/image/welcome/companies/tiki.png"></img>
+                    <img src="https://www.topcv.vn/v4/image/welcome/companies/teachcombank.png" style={{maxHeight:"100px",maxWidth:"60px"}}/>
+                    <img src="https://baothuathienhue.vn/image/fckeditor/upload/2017/20170803/images/amazon_logo_500500.png" style={{maxHeight:"100px",maxWidth:"60px"}}></img>
+                    <img src="https://www.topcv.vn/v4/image/welcome/companies/fpt.png" style={{maxHeight:"100px",maxWidth:"60px"}}></img>
+                    <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fvingroup_416x416.jpg" style={{maxHeight:"100px",maxWidth:"60px"}}></img>
                     </div>
                 </div>
             </form>

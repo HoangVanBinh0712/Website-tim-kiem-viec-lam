@@ -62,7 +62,7 @@ const EmployerPost = () => {
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px",fontSize: '40px', textAlign: "center", background: "#2ecc71", color: "white" }}>Employer Posts</div>
+        <div className="container" style={{ marginTop: "20px",fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", marginLeft:"120px"}}>Bài Đăng Tuyển Dụng</div>
         {body}
         <AddPostModal />
         <Toast
