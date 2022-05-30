@@ -5,7 +5,7 @@ const About = () => {
 <div className='container text-center'>
   <h3 style={{marginTop:'18px'}}>Find Job Team</h3>
   <p>OOAD-UML</p>
-  <p>Team có ba thành viên và đang trên đà tìm việc, website hỗ trợ tìm kiếm việc làm là 1 phần hỗ trợ tìm việc cho chúng tôi! Thank you for Visit</p>
+  <p>Team có ba thành viên và đang trên đà tìm việc, website hỗ trợ tìm kiếm việc làm là 1 phần hỗ trợ tìm việc cho chúng tôi! Thank you for Visiting</p>
   <div class="row">
     <div className='col-sm-4'>
       <p><strong>Nguyễn Thanh Hiền</strong></p>
