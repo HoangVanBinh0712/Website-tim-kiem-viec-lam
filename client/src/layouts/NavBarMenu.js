@@ -2,7 +2,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import learnItLogo from '../assets/logo.svg'
+import learnItLogo from '../assets/BHQ.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
 import { useContext, useState } from 'react'
@@ -30,17 +30,18 @@ const NavbarMenu = () => {
 		body = <>
 			<>
 				<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
-					<div className='container' style={{ position: "relative" }}>
+					<div className='container' style={{ position: "relative"}}>
 						<Navbar.Brand className='font-weight-bolder text-white' as={Link} to='/'>
 							<div className='div-button'>
 								<img
 									src={learnItLogo}
 									alt='learnItLogo'
-									width='32'
-									height='32'
+									width='170'
+									height='60'
 									className='mr-2'
+									style={{padding:"0 0 0 0"}}
 								/>
-								<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}>CNPM HĐT</Nav.Link>
+								<Nav.Link className='font-weight-bolder text-white' to='/dashboard' as={Link}></Nav.Link>
 							</div>
 						</Navbar.Brand>
 
@@ -115,7 +116,7 @@ const NavbarMenu = () => {
 
 					<Navbar.Brand className='font-weight-bolder text-white'
 						as={Link} to='/dashboard'>
-						<img src={learnItLogo} alt='learnItLogo' width='32' height='32' className='mr-2' />CNPM HĐT</Navbar.Brand>
+						<img src={learnItLogo} alt='learnItLogo' width='150' height='60' className='mr-2' /></Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='mr-auto'>

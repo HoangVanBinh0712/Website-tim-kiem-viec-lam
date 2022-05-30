@@ -194,8 +194,9 @@ a {
 }
 
 .main-row {
-	border: 1px solid black;
 	background-color: rgb(255, 255, 255);
+	background: transparent linear-gradient(179deg,#edfff5,#fff) 0 0 no-repeat padding-box;
+    padding-top: 40px;
 }
 
 .nav-search {
@@ -205,8 +206,6 @@ a {
 }
 
 .img-main {
-	margin-left: 10%;
-	margin-right: 10%;
 	display: flex;
 	position: relative;
 	align-items: center;

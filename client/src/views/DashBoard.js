@@ -124,19 +124,14 @@ const DashBoard = () => {
                         }}>Tìm kiếm</Button>
                     </Col>
                 </Row>
-                <Row className="mx-0">
-                    <Col>
-                        <div href="#" style={{ color: "white" }}>Công nghệ thông tin</div>
-
-                    </Col>
-                    <Col>
-                        <div href="#" style={{ color: "white" }}>Tài chính ngân hàng</div>
-
-                    </Col>
-                    <Col>
-                        <div href="#" style={{ color: "white" }}>Giao thông vận tải</div>
-                    </Col>
-                </Row>
+                <h4 style={{color:"black",fontFamily:"inherit"}}>Các công ty tuyển dụng hàng đầu trên website </h4>
+                <div>
+                    <div style={{maxHeight:"50px",maxWidth:"70"}}>
+                    <img src="https://www.topcv.vn/v4/image/welcome/companies/fpt.png" style={{maxHeight:"50px",maxWidth:"70"}}></img>
+                    <img src="https://www.topcv.vn/v4/image/welcome/companies/viettel.png"></img>
+                    <img src="https://www.topcv.vn/v4/image/welcome/companies/tiki.png"></img>
+                    </div>
+                </div>
             </form>
         </div>
         {body}
