@@ -31,7 +31,7 @@ const NavbarMenu = () => {
 			<>
 				<Navbar expand='lg' bg='primary' variant='dark' className='shadow' style={{padding:"0px"}}>
 					<div className='container' style={{ position: "relative"}}>
-						<Navbar.Brand className='font-weight-bolder text-white' as={Link} to='/'>
+						<Navbar.Brand className='font-weight-bolder text-white' as={Link} to='/dashboard'>
 							<div className='div-button'>
 								<img
 									src={learnItLogo}
