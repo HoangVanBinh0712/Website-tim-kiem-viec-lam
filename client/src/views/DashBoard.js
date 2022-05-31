@@ -32,7 +32,7 @@ const DashBoard = () => {
     let body = null
     if (postsLoading || categoryLoading) {
         body = (<div className="spinner-container"><Spinner animation="border" variant="info" /></div>)
-    } if (posts.length === 0) {
+    }else if (posts.length === 0) {
         body = (
             <>
                 <Card className='text-center mx-5 my-5'>
