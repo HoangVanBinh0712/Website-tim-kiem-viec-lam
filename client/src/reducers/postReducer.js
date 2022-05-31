@@ -54,7 +54,7 @@ export const postReducer = (state, action) => {
             return {
                 ...state,
                 page: payload,
-                posts: state.allPosts.slice(3 * (payload - 1), 3 * (payload - 1) + 3)
+                posts: state.allPosts.slice(6 * (payload - 1), 6 * (payload - 1) + 6)
             }
         default:
             return state

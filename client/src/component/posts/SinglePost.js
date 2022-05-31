@@ -14,7 +14,7 @@ const SinglePost = ({ post: { _id, title, description,salary } }) => (
                 </Row>
             </Card.Title>
             <Card.Text className='card-text'>{description}</Card.Text>
-            <Card.Text className='card-text'>{salary} VNĐ</Card.Text>
+            <Card.Text className='card-text'><img src="https://www.pngitem.com/pimgs/m/90-907567_transparent-cash-cow-png-money-icon-png-image.png" width="40px" height="30px" style={{marginRight: "10px"}}/>{salary} Triệu</Card.Text>
         </Card.Body>
     </Card>
 )

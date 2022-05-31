@@ -5,14 +5,16 @@ import { AuthContext } from "../../../contexts/AuthContext"
 import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Toast from 'react-bootstrap/Toast'
+import Button from "react-bootstrap/esm/Button"
 import AdminSinglePost from "./AdminSinglePost"
 
 const AdminPost = () => {
-    const { postState: { posts, postsLoading }, adminGetPosts,
+    const { postState: { posts, postsLoading,max_page }, adminGetPosts,pageingPost,
         showToast: { show, message, type }, setShowToast } = useContext(PostContext)
     const { authState: { user } } = useContext(AuthContext)
     const [pageMode, setPageMode] = useState("unapproved")
     useEffect(() => { adminGetPosts(pageMode) }, [pageMode])
+    const [currentPage, setCurrentPage] = useState(1)
 
     const setRejected = () => {
         setPageMode("rejected")
@@ -55,6 +57,22 @@ const AdminPost = () => {
                         <AdminSinglePost post={post} role={user.role} />
                     </Row>
                 ))}
+            </div>
+            <div className="paging-block">
+                <Button onClick={() => {
+                    if (currentPage > 1) {
+                        pageingPost(currentPage - 1)
+                        setCurrentPage(currentPage - 1)
+                    }
+                }}>Prev</Button>
+                <div style={{ textAlign: "center", fontSize: "1.5rem", marginLeft: "20px",
+                 marginRight: "20px", height: "2.5rem", width: "5rem" }}>{currentPage} / {max_page}</div>
+                <Button onClick={() => {
+                    if (currentPage + 1 <= max_page) {
+                        pageingPost(currentPage + 1)
+                        setCurrentPage(currentPage + 1)
+                    }
+                }}>Next</Button>
             </div>
         </>)
     }

@@ -27,7 +27,11 @@ const PostContextProvider = ({ children }) => {
         try {
             const response = await axios.get(`${apiUrl}/post/admin/${status}`)
             if (response.data.success) {
-                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
+                var du = response.data.post.length % 6
+                var nguyen = parseInt(response.data.post.length / 6)
+                if (du !== 0) nguyen++
+                dispatch({ type: "POSTS_PAGING_LOADED_SUCCESS", payload: { posts: response.data.post, max_page: nguyen } })
+                dispatch({ type: "PAGING_POSTS", payload: 1 })
             }
         } catch (error) {
             dispatch({ type: "POSTS_LOADED_FAIL" })
@@ -89,8 +93,8 @@ const PostContextProvider = ({ children }) => {
             const response = await axios.get(`${apiUrl}/post`)
             if (response.data.success) {
                 //Tinh max page
-                var du = response.data.post.length % 3
-                var nguyen = parseInt(response.data.post.length / 3)
+                var du = response.data.post.length % 6
+                var nguyen = parseInt(response.data.post.length / 6)
                 if (du !== 0) nguyen++
                 dispatch({ type: "POSTS_PAGING_LOADED_SUCCESS", payload: { posts: response.data.post, max_page: nguyen } })
                 dispatch({ type: "PAGING_POSTS", payload: 1 })
@@ -166,8 +170,8 @@ const PostContextProvider = ({ children }) => {
         try {
             const response = await axios.post(`${apiUrl}/post/search`, formSearch)
             if (response.data.success) {
-                var du = response.data.post.length % 3
-                var nguyen = parseInt(response.data.post.length / 3)
+                var du = response.data.post.length % 6
+                var nguyen = parseInt(response.data.post.length / 6)
                 if (du !== 0) nguyen++
                 dispatch({ type: "POSTS_PAGING_LOADED_SUCCESS", payload: { posts: response.data.post, max_page: nguyen } })
                 dispatch({ type: "PAGING_POSTS", payload: 1 })

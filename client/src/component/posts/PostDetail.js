@@ -57,7 +57,8 @@ const PostDetail = () => {
                         <textarea style={{ border: "0px" }}>{post.description}</textarea>
                         <hr/>
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600" ,textDecoration: "underline"}} >Mức Lương</Card.Text>
-                        <Card.Text className='card-text'>{post.salary} VNĐ</Card.Text>
+                        <Card.Text className='card-text'><img src="https://www.pngitem.com/pimgs/m/90-907567_transparent-cash-cow-png-money-icon-png-image.png" width="40px" height="30px" style={{marginRight: "10px"}}/>{post.salary} triệu</Card.Text>
+
                         <hr/>
 
                         <Card.Text className='card-text' style={{ fontSize: "30px", fontWeight: "600",textDecoration: "underline" }}>Yêu cầu</Card.Text>
