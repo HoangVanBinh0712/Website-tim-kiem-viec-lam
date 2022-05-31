@@ -13,7 +13,7 @@ const About = () => {
     </div>
     <div className='col-sm-4'>
       <p><strong>Hoàng Văn Bình</strong></p>
-      <a href="https://www.facebook.com/hoang.binh.58958343"><img src='https://scontent.fsgn5-15.fna.fbcdn.net/v/t31.18172-8/14917286_356889497993516_6584905443046973026_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=174925&_nc_ohc=90ue7FKUWUUAX9vziDL&_nc_ht=scontent.fsgn5-15.fna&oh=00_AT-5gN0JE6BaRv_MPBAUEGnW0hH5uejJA6j1gCImykk0jw&oe=62B90450' alt="learnItLogo " style={{maxHeight:"360px",maxWidth:"200px"}}/></a>
+      <a href="https://www.facebook.com/hoang.binh.58958343"><img src='https://scontent.fsgn16-1.fna.fbcdn.net/v/t31.18172-8/18839822_460759074273224_5112445143152378029_o.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=OFIPhumkWGsAX_CzSbf&_nc_ht=scontent.fsgn16-1.fna&oh=00_AT8x3IYCm7N0n9OeRIn099PcbDBJh-zom0rSgwxC0tf8WQ&oe=62B9A24C' alt="learnItLogo " style={{maxHeight:"360px",maxWidth:"200px"}}/></a>
     </div>
     <div className='col-sm-4'>
       <p><strong>Trần Văn Quang</strong></p>
