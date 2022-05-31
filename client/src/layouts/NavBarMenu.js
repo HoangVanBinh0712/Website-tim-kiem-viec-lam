@@ -59,11 +59,11 @@ const NavbarMenu = () => {
 											{username}
 										</Dropdown.Toggle>
 										<Dropdown.Menu>
-											<Dropdown.Item to="/information" as={Link}>Account</Dropdown.Item>
-											<Dropdown.Item onClick={setShowModal.bind(this, true)}>Change Password</Dropdown.Item>
-											<Dropdown.Item as={Link} to={"/posts/markedposts"}>Marked Posts</Dropdown.Item>
-											<Dropdown.Item as={Link} to={"/profile"}>Your Profile</Dropdown.Item>
-											<Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
+											<Dropdown.Item to="/information" as={Link}>Tài Khoản</Dropdown.Item>
+											<Dropdown.Item onClick={setShowModal.bind(this, true)}>Đổi Mật Khẩu</Dropdown.Item>
+											<Dropdown.Item as={Link} to={"/posts/markedposts"}>Đánh Dấu</Dropdown.Item>
+											<Dropdown.Item as={Link} to={"/profile"}>Hồ Sơ Của Tôi</Dropdown.Item>
+											<Dropdown.Item onClick={logout}>Đăng Xuất</Dropdown.Item>
 										</Dropdown.Menu>
 									</Dropdown>
 								</>}
@@ -73,10 +73,10 @@ const NavbarMenu = () => {
 											{username}
 										</Dropdown.Toggle>
 										<Dropdown.Menu>
-											<Dropdown.Item to="/information" as={Link}>Account</Dropdown.Item>
-											<Dropdown.Item onClick={setShowModal.bind(this, true)}>Change Password</Dropdown.Item>
-											<Dropdown.Item as={Link} to={"/posts/yourposts"}>Your Posts</Dropdown.Item>
-											<Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
+											<Dropdown.Item to="/information" as={Link}>Tài Khoản</Dropdown.Item>
+											<Dropdown.Item onClick={setShowModal.bind(this, true)}>Đổi Mật Khẩu</Dropdown.Item>
+											<Dropdown.Item as={Link} to={"/posts/yourposts"}>Bài Đăng Của Tôi</Dropdown.Item>
+											<Dropdown.Item onClick={logout}>Đăng Xuất</Dropdown.Item>
 
 										</Dropdown.Menu>
 									</Dropdown>}
@@ -86,9 +86,9 @@ const NavbarMenu = () => {
 										{username}
 									</Dropdown.Toggle>
 									<Dropdown.Menu>
-										<Dropdown.Item to="/information" as={Link}>Account</Dropdown.Item>
-										<Dropdown.Item as={Link} to={"/posts/admin"}>Unapproved Posts</Dropdown.Item>
-										<Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
+										<Dropdown.Item to="/information" as={Link}>Tài Khoản</Dropdown.Item>
+										<Dropdown.Item as={Link} to={"/posts/admin"}>Quản Lý Bài Đăng</Dropdown.Item>
+										<Dropdown.Item onClick={logout}>Đăng Xuất</Dropdown.Item>
 									</Dropdown.Menu>
 								</Dropdown>}
 							</Nav >

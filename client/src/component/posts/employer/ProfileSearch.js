@@ -43,7 +43,7 @@ const ProfileSearch = () => {
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", marginLeft:"120px" }}>Tìm kiếm hồ sơ </div>
+        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", margin:"20px auto",marginLeft: "123px" }}>Tìm kiếm hồ sơ </div>
         {body}
     </>
 }

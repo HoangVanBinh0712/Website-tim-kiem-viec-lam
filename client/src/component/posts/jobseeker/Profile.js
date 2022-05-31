@@ -46,7 +46,7 @@ const Profile = () => {
             }
 
             body = (<>
-                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px" }}>Create profile </div>
+                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px" }}>Tạo Hồ Sơ</div>
                 <Form onSubmit={onSubmit} className="container">
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
@@ -90,7 +90,7 @@ const Profile = () => {
                 setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
             }
             body = (<>
-                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px", marginLeft:"110px"  }}>Hồ Sơ Của Tôi </div>
+                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px", margin:"20px auto",marginLeft: "110px" }}>Hồ Sơ Của Tôi </div>
                 <div className="container grid-container">
                     <div>
                         <img src="https://metroheadshots.co.nz/wp-content/uploads/2018/10/Business-Profile-Update-0014.jpg" width="100%" height="100%" />

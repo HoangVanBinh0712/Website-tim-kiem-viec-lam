@@ -69,8 +69,8 @@ const RegisterForm = () => {
             <div className='landing'>
                 <div className='dark-overlay'>
                     <div className='landing-inner'>
-                        <h1>Register</h1>
-                        <h4>Help you to find your best comfortable job</h4>
+                        <h1>Đăng Ký Tìm Việc</h1>
+                        <h4>Website Hỗ Trợ Tìm Kiếm Việc Làm Cho Sinh Viên</h4>
                         <Form className='my-4' onSubmit={register}>
                             <AlertMessage info={alert} />
                             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -94,14 +94,14 @@ const RegisterForm = () => {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control type='password' placeholder='Cofirm Password' name='confirmPassword' value={confirmPassword} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Button variant='success' type='submit'>Register</Button>
+                            <Button variant='success' type='submit'>Đăng Ký</Button>
                         </Form>
-                        <p>Already have an account ?
-                            <Link to={'/login'}>Login</Link>
+                        <p>Bạn Đã Có Tài Khoản ?
+                            <Link to={'/login'}>Đăng Nhập</Link>
                         </p>
                         <p>
-                            Are you Employer ?
-                            <Link to={'/registerEmp'}>Register as Employer</Link>
+                            Bạn Là Nhà Tuyển Dụng ?
+                            <Link to={'/registerEmp'}>Đăng Ký Tuyển Dụng</Link>
                         </p>
                     </div>
                 </div>

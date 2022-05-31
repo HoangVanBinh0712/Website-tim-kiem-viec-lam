@@ -21,12 +21,12 @@ const MarkedPosts = () => {
     } else if (posts.length === 0) {
         body = (
             <>
-                <Card className='text-center mx-5 my-5'style={{width:"1250px", left:"72px"}}>
-                    <Card.Header as='h1'style={{fontSize:"25px"}}>Hi {username}</Card.Header>
+                <Card className='text-center mx-5 my-5'style={{width:"1250px", left:"82px"}}>
+                    <Card.Header as='h1'style={{fontSize:"25px"}}>{username}</Card.Header>
                     <Card.Body>
-                        <Card.Title>Wellcome</Card.Title>
+                        <Card.Title>Xin chào</Card.Title>
                         <Card.Text>
-                            You do not have saved Post
+                            Không có bài viết đánh dấu
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -47,7 +47,7 @@ const MarkedPosts = () => {
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", marginLeft:"120px" }}>Đánh Dấu Bài Viết</div>
+        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", margin:"20px auto",marginLeft: "130px" }}>Đánh Dấu Bài Viết</div>
         {body}
         <Toast
             show={show}

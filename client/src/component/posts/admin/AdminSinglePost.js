@@ -5,7 +5,11 @@ import Col from 'react-bootstrap/Col'
 import ActionButtons from '../ActionButtons'
 import { Link } from 'react-router-dom'
 import AdminPostButton from '../AdminPostButton'
-
+function formatCash(str) {
+    return str.split('').reverse().reduce((prev, next, index) => {
+        return ((index % 3) ? next : (next + ',')) + prev
+    })
+}
 const AdminSinglePost = ({ post: { _id, title, description,salary,status,location }, role }) => (
     <Card className='white-space: nowrap' border={status=="approved"?'success' : status == "pending"? "warning": 'danger'} >
         <Card.Body>

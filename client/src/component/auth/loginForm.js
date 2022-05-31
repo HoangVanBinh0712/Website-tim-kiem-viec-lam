@@ -61,8 +61,8 @@ const LoginForm = () => {
             <div className='landing'>
                 <div className='dark-overlay'>
                     <div className='landing-inner'>
-                        <h1>Login</h1>
-                        <h4>Help you to find your best comfortable job</h4>
+                        <h1>Đăng Nhập</h1>
+                        <h4>Website Hỗ Trợ Tìm Kiếm Việc Làm Cho Sinh Viên</h4>
                         <Form className='my-4' onSubmit={login}>
                             <AlertMessage info={alert} />
                             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -82,12 +82,12 @@ const LoginForm = () => {
                                 </Form.Select>
                             </Form.Group>
                             <Button variant='success' type='submit'>
-                                Login
+                                Đăng Nhập
                             </Button>
                         </Form>
                         <p>
-                            Don't have an account?
-                            <Link to={'/register'}>Register</Link>
+                            Bạn Chưa Có Tài Khoản?
+                            <Link to={'/register'}>Đăng Ký</Link>
                         </p>
                     </div>
                 </div>

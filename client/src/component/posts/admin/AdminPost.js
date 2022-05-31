@@ -69,7 +69,7 @@ const AdminPost = () => {
 
     return <>
         <div className="container">
-            <div style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1240px",marginLeft:"17px" }}>Quản Trị Viên</div>
+            <div style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1240px",margin:"20px auto", marginLeft: "18px"}}>Quản Trị Viên</div>
             <Row className="container">
                 <Col className="col-4 col-text" onClick={setUnapproved} style={pageMode === "unapproved" ? {textDecoration: "underline"}: {} }>Bài viết chờ duyệt</Col>
                 <Col className="col-4 col-text"onClick={setRejected} style={pageMode === "rejected" ? {textDecoration: "underline"}: {} }>Bài viết đã bị từ chối</Col>

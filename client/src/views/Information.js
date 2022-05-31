@@ -51,7 +51,7 @@ const InforMation = () => {
             }
 
             body = (<>
-                <Form onSubmit={onSubmit} className="container">
+                <Form onSubmit={onSubmit} className="container" style={{marginLeft: "-20px"}}>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email' />
@@ -94,7 +94,7 @@ const InforMation = () => {
             }
 
             body = (<>
-                <Form onSubmit={onSubmit} className="container">
+                <Form onSubmit={onSubmit} className="container" style={{marginLeft: "-20px"}}>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email' />
@@ -123,7 +123,7 @@ const InforMation = () => {
         } else if (user.role === 2) {
             //Admin
             body = (<>
-                <Form className="container">
+                <Form className="container" style={{marginLeft: "-20px"}}>
                     <Form.Group className="mb-3"  >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" defaultValue={user.email} readOnly />
