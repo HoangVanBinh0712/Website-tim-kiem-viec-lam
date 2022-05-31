@@ -38,6 +38,10 @@ const LoginForm = () => {
     const onChangeLoginForm = event => setLoginForm({
         ...loginForm, [event.target.name]: event.target.value
     })
+    const onClick = () =>{
+        setAlert({ type: 'info', message: "Đang đăng nhập..." })
+        setTimeout(() => setAlert(null), 3000)
+    }
     const login = async event => {
         event.preventDefault()
         try {
@@ -63,6 +67,7 @@ const LoginForm = () => {
                     <div className='landing-inner'>
                         <h1>Đăng Nhập</h1>
                         <h4>Website Hỗ Trợ Tìm Kiếm Việc Làm Cho Sinh Viên</h4>
+                        
                         <Form className='my-4' onSubmit={login}>
                             <AlertMessage info={alert} />
                             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -81,7 +86,9 @@ const LoginForm = () => {
                                     <option value="2" >Admin</option>
                                 </Form.Select>
                             </Form.Group>
-                            <Button variant='success' type='submit'>
+                            <Button variant='success' type='submit' onClick={()=>{
+                                onClick();
+                            }}>
                                 Đăng Nhập
                             </Button>
                         </Form>

@@ -1,7 +1,5 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import learnItLogo from '../assets/BHQ.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
@@ -96,10 +94,10 @@ const NavbarMenu = () => {
 								<input type="text" value={search} name="search" onChange={onChangeInputSearch} placeholder="Tìm kiếm hồ sơ" />
 								<Button style={{ background: "#7f8c8d", marginTop: "-0.5px" }} onClick={() => {
 									searchProfile(profileSearchForm);
-									if (window.location.pathname != "/profile/search")
+									if (window.location.pathname !== "/profile/search")
 										navigate("/profile/search")
 								}
-								}><img src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png' style={{maxHeight:"20px",maxWidth:"20px"}}/></Button>
+								}><img alt='' src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png' style={{maxHeight:"20px",maxWidth:"20px"}}/></Button>
 							</div>}
 						</Navbar.Collapse>
 					</div>

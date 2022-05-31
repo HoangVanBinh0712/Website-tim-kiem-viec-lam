@@ -20,7 +20,7 @@ const MarkedSinglePost = ({ post: { _id, title, description, salary, status, loc
                     <Row>
                         <Col as={Link} to={`/postDetail/${_id}`} className='col-7 post-title ' style={{ fontSize: "40px", textAlign: "left", fontWeight: "700" }}>{title}  </Col>
                         <Col className="col-5" style={{ textAlign: "right" }} >
-                            <img src={star} style={{ width: "50px", height: "50px" }} />
+                            <img src={star} style={{ width: "50px", height: "50px" }} alt=''/>
                         </Col>
                     </Row>
                 </Row>

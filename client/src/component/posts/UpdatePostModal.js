@@ -4,13 +4,12 @@ import Form from 'react-bootstrap/Form'
 import { useContext, useEffect, useState } from 'react'
 import { PostContext } from '../../contexts/PostContext'
 import { CategoryContext } from '../../contexts/CategoryContext'
-import Select from 'react-select'
 import Spinner from 'react-bootstrap/esm/Spinner'
 const UpdatePostModal = () => {
     // Contexts
 
     const { postState: { post }, showUpdatePostModal, setShowUpdatePostModal, updatePost, setShowToast } = useContext(PostContext)
-    const { categoryState: { categoryLoading, categories }, getCategory } = useContext(CategoryContext)
+    const { categoryState: { categories }, getCategory } = useContext(CategoryContext)
 
     // State
     const [cateState, setCateState] = useState("")
@@ -123,17 +122,17 @@ const UpdatePostModal = () => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant='secondary' onClick={closeDialog}>
-                    Cancel
+                    Hủy
                 </Button>
                 <Button variant='primary' type='submit'>
-                    Add!
+                    Cập nhật!
                 </Button>
             </Modal.Footer>
         </Form>)
     }
     return <Modal show={showUpdatePostModal} onHide={closeDialog} >
         <Modal.Header closeButton>
-            <Modal.Title>Anything Change ?</Modal.Title>
+            <Modal.Title>Cập nhật bài viết ?</Modal.Title>
         </Modal.Header>
         {body}
     </Modal>

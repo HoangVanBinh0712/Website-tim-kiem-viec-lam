@@ -19,7 +19,7 @@ const ProfileSearch = () => {
     } else if (profiles.length === 0) {
         body = (
             <>
-                <Card className='text-center mx-5 my-5' style={{width:"1250px", left:"72px"}}>
+                <Card className='text-center mx-auto my-5 container'>
                     <Card.Header as='h1' style={{fontSize:"25px"}}>Hi {username}</Card.Header>
                     <Card.Body>
                         <Card.Text>
@@ -31,19 +31,19 @@ const ProfileSearch = () => {
         )
     } else {
         body = (<>
-            <Row className='g-4 mx-auto mt-3 container' >
+            <div className='g-4 mx-auto mt-3 container' >
                 {profiles.map(profile => (
-                    <Row key={profile._id} className='my-2'>
+                    <Row key={profile._id} className='my-2 mt-3'>
                         <SingleProfile profile={profile} />
                     </Row>
                 ))}
-            </Row>
+            </div>
         </>)
     }
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", margin:"20px auto",marginLeft: "123px" }}>Tìm kiếm hồ sơ </div>
+        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px", margin:"20px auto"}}>Tìm kiếm hồ sơ </div>
         {body}
     </>
 }

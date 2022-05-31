@@ -21,7 +21,7 @@ const MarkedPosts = () => {
     } else if (posts.length === 0) {
         body = (
             <>
-                <Card className='text-center mx-5 my-5'style={{width:"1250px", left:"82px"}}>
+                <Card className='container text-center mx-auto my-5 'style={{width:"1250px", left:"82px"}}>
                     <Card.Header as='h1'style={{fontSize:"25px"}}>{username}</Card.Header>
                     <Card.Body>
                         <Card.Title>Xin chào</Card.Title>
@@ -34,20 +34,19 @@ const MarkedPosts = () => {
         )
     } else if (posts != null) {
         body = (<>
-            <Row className='g-4 mx-auto mt-3 container' >
+            <div className='mx-auto container'>
                 {posts.map(post => (
                     post.postId ? <Row key={post.postId._id} className='my-2'>
                         <MarkedSinglePost post={post.postId} role={user.role} />
                     </Row> : ""
                 ))}
-
-            </Row>
+            </div>
         </>)
     }
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", margin:"20px auto",marginLeft: "130px" }}>Đánh Dấu Bài Viết</div>
+        <div className="container mx-auto" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px"}}>Đánh Dấu Bài Viết</div>
         {body}
         <Toast
             show={show}

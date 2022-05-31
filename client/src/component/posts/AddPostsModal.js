@@ -41,7 +41,7 @@ const AddPostModal = () => {
     return (
         <Modal show={showAddPostModal} onHide={closeDialog} >
             <Modal.Header closeButton>
-                <Modal.Title>Anything Change ?</Modal.Title>
+                <Modal.Title>Thêm mới bài viết</Modal.Title>
             </Modal.Header>
             <Form onSubmit={onSubmit}>
                 <Modal.Body>
@@ -127,10 +127,10 @@ const AddPostModal = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={closeDialog}>
-                        Cancel
+                        Hủy
                     </Button>
                     <Button variant='primary' type='submit'>
-                        Add!
+                        Xác nhận!
                     </Button>
                 </Modal.Footer>
             </Form>

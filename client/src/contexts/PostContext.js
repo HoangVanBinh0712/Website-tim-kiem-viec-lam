@@ -9,7 +9,10 @@ const PostContextProvider = ({ children }) => {
     const [postState, dispatch] = useReducer(postReducer, {
         post: null,
         posts: [],
-        postsLoading: true
+        postsLoading: true,
+        allPosts: [],
+        page: 1,
+        max_page: 1
     })
 
     const [showAddPostModal, setShowAddPostModal] = useState(false)
@@ -43,7 +46,7 @@ const PostContextProvider = ({ children }) => {
             return error.response.data ? error.response.data : { success: false, message: 'server error' }
         }
     }
-    const getMarkedPosts = async() => {
+    const getMarkedPosts = async () => {
         //listPost
         try {
             const response = await axios.get(`${apiUrl}/markPost/all`);
@@ -70,7 +73,10 @@ const PostContextProvider = ({ children }) => {
             return error
         }
     }
-
+    const pageingPost = async (currentPage) => {
+        //Get string after ? in url
+        dispatch({ type: "PAGING_POSTS", payload: currentPage })
+    }
     const getPosts = async (showEmployerPost) => {
         try {
             if (showEmployerPost) {
@@ -82,7 +88,12 @@ const PostContextProvider = ({ children }) => {
             }
             const response = await axios.get(`${apiUrl}/post`)
             if (response.data.success) {
-                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
+                //Tinh max page
+                var du = response.data.post.length % 3
+                var nguyen = parseInt(response.data.post.length / 3)
+                if (du !== 0) nguyen++
+                dispatch({ type: "POSTS_PAGING_LOADED_SUCCESS", payload: { posts: response.data.post, max_page: nguyen } })
+                dispatch({ type: "PAGING_POSTS", payload: 1 })
             }
         } catch (error) {
             dispatch({ type: "POSTS_LOADED_FAIL" })
@@ -153,9 +164,13 @@ const PostContextProvider = ({ children }) => {
     }
     const getSearchPosts = async (formSearch) => {
         try {
-            const response = await axios.post(`${apiUrl}/post/search`,formSearch)
+            const response = await axios.post(`${apiUrl}/post/search`, formSearch)
             if (response.data.success) {
-                dispatch({ type: "POSTS_LOADED_SUCCESS", payload: response.data.post })
+                var du = response.data.post.length % 3
+                var nguyen = parseInt(response.data.post.length / 3)
+                if (du !== 0) nguyen++
+                dispatch({ type: "POSTS_PAGING_LOADED_SUCCESS", payload: { posts: response.data.post, max_page: nguyen } })
+                dispatch({ type: "PAGING_POSTS", payload: 1 })
             }
         } catch (error) {
             dispatch({ type: "POSTS_LOADED_FAIL" })
@@ -183,7 +198,8 @@ const PostContextProvider = ({ children }) => {
         adminPutPost,
         getMarkedPosts,
         deleteMarkPost,
-        getSearchPosts
+        getSearchPosts,
+        pageingPost
     }
     return (
         <PostContext.Provider value={PostContextData}>

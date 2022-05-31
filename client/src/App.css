@@ -189,8 +189,6 @@ a {
 	font-weight: 500;
 	height: 60px;
 	background-color: #6690af;
-	border: 5px solid white;
-
 }
 
 .main-row {
@@ -222,4 +220,8 @@ a {
 .div-button{
 	display: flex;
 	justify-content: space-between;
+}
+.paging-block{
+	display: flex;
+	justify-content: center;
 }

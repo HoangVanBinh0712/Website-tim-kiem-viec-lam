@@ -35,19 +35,20 @@ const ViewSubmmiterProfile = () => {
         )
     } else {
         body = (<>
-            <Row className='g-4 mx-auto mt-3 container' >
+            <div className='g-4 mx-auto mt-3 container' >
                 {profiles.map(profile => (
-                    <Row key={profile._id} className='my-2'>
+                    <Row key={profile._id} className='my-2 mt-3'>
                         <SingleProfile profile={profile}/>
                     </Row>
                 ))}
-            </Row>
+            </div>
         </>)
     }
 
 
     return <>
-        <div className="container" style={{ marginTop: "20px",fontSize: '40px', textAlign: "center",  background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px",width: "1250px", margin:"20px auto" }}>Hồ sơ ứng tuyển</div>
+        <div className="container" style={{ marginTop: "20px",fontSize: '40px', textAlign: "center",  background: "#78c2ad", 
+        color: "white", borderRadius:"20px 20px 0px 0px", margin:"20px auto" }}>Hồ sơ ứng tuyển</div>
         {body}
     </>
 }

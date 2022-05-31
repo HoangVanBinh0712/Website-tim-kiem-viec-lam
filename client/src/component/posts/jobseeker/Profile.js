@@ -90,10 +90,10 @@ const Profile = () => {
                 setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })
             }
             body = (<>
-                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px", margin:"20px auto",marginLeft: "110px" }}>Hồ Sơ Của Tôi </div>
+                <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px", margin:"20px auto"}}>Hồ Sơ Của Tôi </div>
                 <div className="container grid-container">
                     <div>
-                        <img src="https://metroheadshots.co.nz/wp-content/uploads/2018/10/Business-Profile-Update-0014.jpg" width="100%" height="100%" />
+                        <img src="https://metroheadshots.co.nz/wp-content/uploads/2018/10/Business-Profile-Update-0014.jpg" width="100%" height="100%" alt=''/>
                     </div>
                     <div>
                         <Form onSubmit={onSubmit}>

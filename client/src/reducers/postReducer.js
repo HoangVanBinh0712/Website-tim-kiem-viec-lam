@@ -1,17 +1,23 @@
 export const postReducer = (state, action) => {
     const { type, payload } = action
     switch (type) {
-        case 'POSTS_LOADED_SUCCESS':
+        case 'POSTS_PAGING_LOADED_SUCCESS':
             return {
                 ...state,
-                posts: payload,
+                allPosts: payload.posts,
                 postsLoading: false,
-
+                max_page: payload.max_page
             }
         case 'POSTS_LOADED_FAIL':
             return {
                 ...state,
                 posts: [],
+                postsLoading: false
+            }
+        case 'POSTS_LOADED_SUCCESS':
+            return {
+                ...state,
+                posts: payload,
                 postsLoading: false
             }
         case 'ADD_POST':
@@ -43,6 +49,12 @@ export const postReducer = (state, action) => {
             return {
                 ...state,
                 posts: state.posts.filter(post => post.postId._id !== payload)
+            }
+        case "PAGING_POSTS":
+            return {
+                ...state,
+                page: payload,
+                posts: state.allPosts.slice(3 * (payload - 1), 3 * (payload - 1) + 3)
             }
         default:
             return state
