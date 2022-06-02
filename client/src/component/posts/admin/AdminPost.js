@@ -41,7 +41,7 @@ const AdminPost = () => {
                 <Card className='container text-center mx-auto my-5'>
                     <Card.Header as='h1' style={{fontSize:"25px"}}>{username}</Card.Header>
                     <Card.Body>
-                        <Card.Title>Xin Chào Admin</Card.Title>
+                        <Card.Title>Xin Chào Quản Trị Viên</Card.Title>
                         <Card.Text>
                             Không có bài đăng!
                         </Card.Text>

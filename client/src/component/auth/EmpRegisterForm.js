@@ -23,8 +23,8 @@ const RegisterForm = () => {
             <div className='landing'>
                 <div className='dark-overlay'>
                     <div className='landing-inner'>
-                        <h1>Login</h1>
-                        <h4>Help you to find your best comfortable job</h4>
+                        <h1>Đăng nhập</h1>
+                        <h4>Giúp bạn tìm công việc phù hợp nhất với bạn.</h4>
                         <div className='d-flex justify-content-center mt-2'>
                             <Spinner animation='border' variant='info' />
                         </div>
@@ -44,7 +44,7 @@ const RegisterForm = () => {
         event.preventDefault()
         if (!registerForm.mode) registerForm.mode = '1'
         if (password !== confirmPassword) {
-            setAlert({ type: 'danger', message: 'Password do not match' })
+            setAlert({ type: 'danger', message: 'Mật khẩu không khớp !' })
             setTimeout(() => setAlert(null), 5000)
             return
         }
@@ -54,7 +54,7 @@ const RegisterForm = () => {
             if (!registerData.success) {
                 setAlert({ type: 'danger', message: registerData.message })
                 setTimeout(() => setAlert(null), 5000)
-            }else{
+            } else {
                 setAlert({ type: 'success', message: registerData.message })
                 setTimeout(() => setAlert(null), 5000)
             }
@@ -73,28 +73,28 @@ const RegisterForm = () => {
                         <h4>Website Hỗ Trợ Tìm Kiếm Việc Làm Cho Sinh Viên</h4>
                         <Form className='my-4' onSubmit={register}>
                             <AlertMessage info={alert} />
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='email' placeholder='Email' name='email' value={email} required onChange={onChangeRegisterForm} />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='email' placeholder='Địa chỉ email' name='email' value={email} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='text' placeholder='Phone' name='phonenumber' value={phonenumber} required onChange={onChangeRegisterForm} />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='text' placeholder='Số điện thoại' name='phonenumber' value={phonenumber} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='text' placeholder='Address' name='address' value={address} required onChange={onChangeRegisterForm} />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='text' placeholder='Địa chỉ' name='address' value={address} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='text' placeholder='CompanyName' name='companyname' value={companyname} required onChange={onChangeRegisterForm} />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='text' placeholder='Tên công ty' name='companyname' value={companyname} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='text' placeholder='Description' name='description' value={description} required onChange={onChangeRegisterForm} />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='text' placeholder='Mô tả công ty' name='description' value={description} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='password' placeholder='Password' name='password' value={password} required onChange={onChangeRegisterForm} />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='password' placeholder='Mật khẩu' name='password' value={password} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='password' placeholder='Cofirm Password' name='confirmPassword' value={confirmPassword} required onChange={onChangeRegisterForm} />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='password' placeholder='Xác nhận mật khẩu' name='confirmPassword' value={confirmPassword} required onChange={onChangeRegisterForm} />
                             </Form.Group>
-                            <Button variant='success' type='submit'>Register</Button>
+                            <Button variant='success' type='submit'>Đăng ký</Button>
                         </Form>
                         <p>Bạn Đã Có Tài Khoản ?
                             <Link to={'/login'}>Đăng Nhập</Link>

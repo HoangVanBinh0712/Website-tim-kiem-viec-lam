@@ -21,7 +21,7 @@ const ActionButtons = ({ _id, ptitle }) => {
 			{/* Message box */}
 			<Button className='post-button' onClick={() => {
 				const confirmBox = window.confirm(
-					"Do you really want to delete '" + ptitle + "' ?"
+					"Bạn có muốn xóa bài viết '" + ptitle + "' không ?"
 				)
 				if (confirmBox === true) {
 					deletePost(_id)

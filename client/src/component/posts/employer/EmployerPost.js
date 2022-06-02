@@ -33,9 +33,9 @@ const EmployerPost = () => {
                     <Card.Header as='h1'>{username}</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            Click the button below to Add Post 
+                            Nhấn vào nút dưới đây để tạo bài viết. 
                         </Card.Text>
-                        <Button variant="primary" onClick={setShowAddPostModal.bind(this, true)}>Add</Button>
+                        <Button variant="primary" onClick={setShowAddPostModal.bind(this, true)}>Tạo bài viết</Button>
                     </Card.Body>
                 </Card>
             </>
@@ -51,9 +51,9 @@ const EmployerPost = () => {
             </div>
             {/*Open Add , show text when put on button */}
             <OverlayTrigger placement='left'
-                overlay={<Tooltip>Add category</Tooltip>}>
+                overlay={<Tooltip>Tạo bài viết</Tooltip>}>
                 <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
-                    <img src={addIcon} alt="add post" width="60" height="60" />
+                    <img src={addIcon} alt="Tạo bài viết" width="60" height="60" />
                 </Button>
             </OverlayTrigger>
 

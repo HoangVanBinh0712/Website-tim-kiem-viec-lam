@@ -21,8 +21,8 @@ const LoginForm = () => {
             <div className='landing'>
                 <div className='dark-overlay'>
                     <div className='landing-inner'>
-                        <h1>Login</h1>
-                        <h4>Help you to find your best comfortable job</h4>
+                        <h1>Đăng nhập</h1>
+                        <h4>Giúp bạn tìm công việc phù hợp nhất với bạn.</h4>
                         <div className='d-flex justify-content-center mt-2'>
                             <Spinner animation='border' variant='info' />
                         </div>
@@ -38,7 +38,7 @@ const LoginForm = () => {
     const onChangeLoginForm = event => setLoginForm({
         ...loginForm, [event.target.name]: event.target.value
     })
-    const onClick = () =>{
+    const onClick = () => {
         setAlert({ type: 'info', message: "Đang đăng nhập..." })
         setTimeout(() => setAlert(null), 3000)
     }
@@ -67,26 +67,26 @@ const LoginForm = () => {
                     <div className='landing-inner'>
                         <h1>Đăng Nhập</h1>
                         <h4>Website Hỗ Trợ Tìm Kiếm Việc Làm Cho Sinh Viên</h4>
-                        
+
                         <Form className='my-4' onSubmit={login}>
                             <AlertMessage info={alert} />
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type='email' placeholder='Email' name='email'
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type='email' placeholder='Địa chỉ Email' name='email'
                                     required value={email} onChange={onChangeLoginForm}></Form.Control>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Control type='password' placeholder='Password' name='password'
+                                <Form.Control type='password' placeholder='Mật khẩu' name='password'
                                     required value={password} onChange={onChangeLoginForm} />
                             </Form.Group>
-                            <Form.Label type='text' className="mb-3" controlId="formBasicLable" >Select Mode</Form.Label>
+                            <Form.Label type='text' className="mb-3" controlId="formBasicLable" >Chọn chế độ</Form.Label>
                             <Form.Group className="mb-3" controlId="formBasicSelection">
                                 <Form.Select name='mode' value={mode} onChange={onChangeLoginForm}>
-                                    <option value="0" >Jobseeker</option>
-                                    <option value="1" >Employer</option>
-                                    <option value="2" >Admin</option>
+                                    <option value="0" >Người tìm việc</option>
+                                    <option value="1" >Nhà tuyển dụng</option>
+                                    <option value="2" >Quản trị viên</option>
                                 </Form.Select>
                             </Form.Group>
-                            <Button variant='success' type='submit' onClick={()=>{
+                            <Button variant='success' type='submit' onClick={() => {
                                 onClick();
                             }}>
                                 Đăng Nhập

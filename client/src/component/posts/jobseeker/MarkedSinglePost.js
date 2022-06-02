@@ -32,7 +32,7 @@ const MarkedSinglePost = ({ post: { _id, title, description, salary, status, loc
                 <Button as={Col} className='col-2' style={{ background: "#e74c3c", textAlign: 'center', fontSize: "25px", marginTop: "5px" }}
                     onClick={() => {
                         const confirmBox = window.confirm(
-                            `Do you really want to Unmark '` + title + "' ?"
+                            `Bạn có muốn bỏ đánh dấu bài viết '` + title + "' không ?"
                         )
                         if (confirmBox === true) {
                             savePost(_id);

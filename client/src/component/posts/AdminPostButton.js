@@ -17,7 +17,7 @@ const AdminPostButton = ({ _id, ptitle }) => {
         <>
             <Button className='post-button' onClick={() => {
                 const confirmBox = window.confirm(
-                    "Do you really want to approve '" + ptitle + "' ?"
+                    "Xác nhận duyệt bài viết '" + ptitle + "' ?"
                 )
                 if (confirmBox === true) {
                     { approvePost(_id) }
@@ -28,7 +28,7 @@ const AdminPostButton = ({ _id, ptitle }) => {
             {/* Message box */}
             <Button className='post-button' onClick={() => {
                 const confirmBox = window.confirm(
-                    "Do you really want to reject '" + ptitle + "' ?"
+                    "Xác nhận từ chối duyệt bài viết '" + ptitle + "' ?"
                 )
                 if (confirmBox === true) {
                     { rejectPost(_id) }

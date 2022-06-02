@@ -26,7 +26,7 @@ const MarkedPosts = () => {
                     <Card.Body>
                         <Card.Title>Xin chào</Card.Title>
                         <Card.Text>
-                            Không có bài viết đánh dấu
+                            Không có bài viết đánh dấu !
                         </Card.Text>
                     </Card.Body>
                 </Card>

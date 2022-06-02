@@ -20,10 +20,10 @@ const ProfileSearch = () => {
         body = (
             <>
                 <Card className='text-center mx-auto my-5 container'>
-                    <Card.Header as='h1' style={{fontSize:"25px"}}>Hi {username}</Card.Header>
+                    <Card.Header as='h1' style={{fontSize:"25px"}}>Chào {username}</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            No profile found !
+                            Không tìm thấy hồ sơ phù hợp !
                         </Card.Text>
                     </Card.Body>
                 </Card>

@@ -53,23 +53,23 @@ const InforMation = () => {
             body = (<>
                 <Form onSubmit={onSubmit} className="container" style={{marginLeft: "-20px"}}>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Địa chỉ email</Form.Label>
                         <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Họ và tên</Form.Label>
                         <Form.Control type="Text" value={name} onChange={onChangeNewUserForm} name='name' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Phone</Form.Label>
+                        <Form.Label>Số điện thoại</Form.Label>
                         <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Address</Form.Label>
+                        <Form.Label>Địa chỉ</Form.Label>
                         <Form.Control type="Text" value={address} onChange={onChangeNewUserForm} name='address' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Birthday</Form.Label>
+                        <Form.Label>Ngày sinh</Form.Label>
                         <Form.Control type="Text" value={birthday} onChange={onChangeNewUserForm} name='birthday' />
                     </Form.Group>
                     <Button variant="primary" type="submit">
@@ -96,23 +96,23 @@ const InforMation = () => {
             body = (<>
                 <Form onSubmit={onSubmit} className="container" style={{marginLeft: "-20px"}}>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Địa chỉ email</Form.Label>
                         <Form.Control type="email" value={email} onChange={onChangeNewUserForm} name='email' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Tên công ty</Form.Label>
                         <Form.Control type="Text" value={companyname} onChange={onChangeNewUserForm} name='companyname' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Phone</Form.Label>
+                        <Form.Label>Số điện thoại</Form.Label>
                         <Form.Control type="Text" value={phonenumber} onChange={onChangeNewUserForm} name='phonenumber' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Address</Form.Label>
+                        <Form.Label>Địa chỉ</Form.Label>
                         <Form.Control type="Text" value={address} onChange={onChangeNewUserForm} name='address' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>Mô tả</Form.Label>
                         <Form.Control type="Text" value={description} onChange={onChangeNewUserForm} name='description' />
                     </Form.Group>
                     <Button variant="primary" type="submit">
@@ -125,27 +125,27 @@ const InforMation = () => {
             body = (<>
                 <Form className="container" style={{marginLeft: "-20px"}}>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Địa chỉ email</Form.Label>
                         <Form.Control type="email" defaultValue={user.email} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Họ và tên</Form.Label>
                         <Form.Control type="Text" defaultValue={username} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Phone</Form.Label>
+                        <Form.Label>Số điện thoại</Form.Label>
                         <Form.Control type="Text" defaultValue={user.phonenumber} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Address</Form.Label>
+                        <Form.Label>Địa chỉ</Form.Label>
                         <Form.Control type="Text" defaultValue={user.address} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Contact</Form.Label>
+                        <Form.Label>Liên hệ</Form.Label>
                         <Form.Control type="Text" defaultValue={user.contact} readOnly />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Time Approved</Form.Label>
+                        <Form.Label>Số lần duyệt</Form.Label>
                         <Form.Control type="Text" defaultValue={user.timeApproved} readOnly />
                     </Form.Group>
                 </Form>

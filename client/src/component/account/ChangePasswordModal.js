@@ -50,13 +50,13 @@ const ChangePasswordModal = () => {
     return (
         <Modal show={showModal} onHide={closeDialog} >
             <Modal.Header closeButton>
-                <Modal.Title>Change Password</Modal.Title>
+                <Modal.Title>Đổi mật khẩu</Modal.Title>
             </Modal.Header>
             <AlertMessage info={alert} />
             <Form onSubmit={onSubmit}>
                 <Modal.Body>
                     <Form.Group className="mb-3">
-                        <Form.Text id='title-help' muted> Old Password  </Form.Text>
+                        <Form.Text id='title-help' muted> Mật khẩu cũ </Form.Text>
                         <Form.Control
                             type='Password'
                             name='oldpassword'
@@ -67,7 +67,7 @@ const ChangePasswordModal = () => {
                         />
                     </Form.Group >
                     <Form.Group className="mb-3">
-                        <Form.Text id='title-help' muted> New Password  </Form.Text>
+                        <Form.Text id='title-help' muted> Mật khẩu mới  </Form.Text>
                         <Form.Control
                             type='Password'
                             name='newpassword'
@@ -79,7 +79,7 @@ const ChangePasswordModal = () => {
                         />
                     </Form.Group >
                     <Form.Group className="mb-3">
-                        <Form.Text id='title-help' muted> Confirm Password </Form.Text>
+                        <Form.Text id='title-help' muted> Xác nhận mật khẩu mới </Form.Text>
                         <Form.Control
                             type='Password'
                             name='confirmnewpassword'
@@ -92,10 +92,10 @@ const ChangePasswordModal = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={closeDialog}>
-                        Cancel
+                        Hủy
                     </Button>
                     <Button variant='primary' type='submit'>
-                        Apply
+                        Cập nhật
                     </Button>
                 </Modal.Footer>
             </Form>

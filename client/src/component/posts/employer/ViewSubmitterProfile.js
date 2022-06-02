@@ -25,9 +25,9 @@ const ViewSubmmiterProfile = () => {
                 <Card className='text-center mx-5 my-5'>
                     <Card.Header as='h1'>Hi {username}</Card.Header>
                     <Card.Body>
-                        <Card.Title>Wellcome</Card.Title>
+                        <Card.Title>Xin Chào</Card.Title>
                         <Card.Text>
-                            No profile has been submitted to your post !.
+                            Không có hồ sơ ứng tuyển cho bài viết này !
                         </Card.Text>
                     </Card.Body>
                 </Card>

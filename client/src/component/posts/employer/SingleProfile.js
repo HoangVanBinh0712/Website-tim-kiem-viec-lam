@@ -10,7 +10,7 @@ const SingleProfile = ({ profile: {name, owner_email, phonenumber, birthday, int
             <Card.Text className='card-detail'>{owner_email}</Card.Text>
             <Row>
                 <Card.Text as={Col} className='card-detail col-5'>{phonenumber}</Card.Text>
-                <Card.Text as={Col} className='card-detail col-5'>Birthday: {birthday}</Card.Text>
+                <Card.Text as={Col} className='card-detail col-5'>Ngày Sinh: {birthday}</Card.Text>
             </Row>
             <Card.Text className='card-detail'>{introduce}</Card.Text>
             <Card.Text className='card-detail'>{experience}</Card.Text>

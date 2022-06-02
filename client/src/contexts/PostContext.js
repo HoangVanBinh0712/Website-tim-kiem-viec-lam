@@ -125,6 +125,7 @@ const PostContextProvider = ({ children }) => {
             const response = await axios.delete(`${apiUrl}/post/${postId}`)
             if (response.data.success) {
                 dispatch({ type: "DELETE_POST", payload: postId })
+                setShowToast({ show: true, message: response.data.message, type: response.data.success ? 'success' : 'danger' })
             }
         } catch (error) {
             console.log(error)

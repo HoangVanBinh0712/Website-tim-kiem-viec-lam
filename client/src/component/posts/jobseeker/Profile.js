@@ -48,31 +48,31 @@ const Profile = () => {
                 <div className="container" style={{ marginTop: "20px", fontSize: '40px', textAlign: "center", background: "#78c2ad", color: "white", borderRadius:"20px 20px 0px 0px" }}>Tạo Hồ Sơ</div>
                 <Form onSubmit={onSubmit} className="container">
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Địa chỉ email</Form.Label>
                         <Form.Control type="email" value={owner_email} onChange={onChangeNewProfileForm} name='owner_email' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Họ và tên</Form.Label>
                         <Form.Control type="Text" value={name} onChange={onChangeNewProfileForm} name='name' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Phone</Form.Label>
+                        <Form.Label>Số điện thoại</Form.Label>
                         <Form.Control type="Text" value={phonenumber} onChange={onChangeNewProfileForm} name='phonenumber' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Birthday</Form.Label>
+                        <Form.Label>Ngày sinh</Form.Label>
                         <Form.Control type="Date" value={birthday} onChange={onChangeNewProfileForm} name='birthday' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Introduce</Form.Label>
+                        <Form.Label>Giới thiệu bản thân</Form.Label>
                         <Form.Control type="Text" value={introduce} onChange={onChangeNewProfileForm} name='introduce' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Experience</Form.Label>
+                        <Form.Label>Kinh nghiệm</Form.Label>
                         <Form.Control type="Text" value={experience} onChange={onChangeNewProfileForm} name='experience' />
                     </Form.Group>
                     <Form.Group className="mb-3"  >
-                        <Form.Label>Degree</Form.Label>
+                        <Form.Label>Bằng cấp</Form.Label>
                         <Form.Control type="Text" value={degree} onChange={onChangeNewProfileForm} name='degree' />
                     </Form.Group>
                     <Button variant="primary" type="submit">
@@ -97,31 +97,31 @@ const Profile = () => {
                     <div>
                         <Form onSubmit={onSubmit}>
                             <Form.Group className="mb-3"  >
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label>Địa chỉ email</Form.Label>
                                 <Form.Control readOnly={!update} type="email" value={owner_email} onChange={onChangeNewProfileForm} name='owner_email' />
                             </Form.Group>
                             <Form.Group className="mb-3"  >
-                                <Form.Label>Name</Form.Label>
+                                <Form.Label>Họ và tên</Form.Label>
                                 <Form.Control readOnly={!update} type="Text" value={name} onChange={onChangeNewProfileForm} name='name' />
                             </Form.Group>
                             <Form.Group className="mb-3"  >
-                                <Form.Label>Phone</Form.Label>
+                                <Form.Label>Số điện thoại</Form.Label>
                                 <Form.Control readOnly={!update} type="Text" value={phonenumber} onChange={onChangeNewProfileForm} name='phonenumber' />
                             </Form.Group>
                             <Form.Group className="mb-3"  >
-                                <Form.Label>Birthday</Form.Label>
+                                <Form.Label>Ngày sinh</Form.Label>
                                 <Form.Control readOnly={!update} type="Text" value={birthday} onChange={onChangeNewProfileForm} name='birthday' />
                             </Form.Group>
                             <Form.Group className="mb-3"  >
-                                <Form.Label>Introduce</Form.Label>
+                                <Form.Label>Giới thiệu bản thân</Form.Label>
                                 <Form.Control readOnly={!update} type="Text" value={introduce} onChange={onChangeNewProfileForm} name='introduce' />
                             </Form.Group>
                             <Form.Group className="mb-3"  >
-                                <Form.Label>Experience</Form.Label>
+                                <Form.Label>Kinh nghiệm</Form.Label>
                                 <Form.Control readOnly={!update} type="Text" value={experience} onChange={onChangeNewProfileForm} name='experience' />
                             </Form.Group>
                             <Form.Group className="mb-3"  >
-                                <Form.Label>Degree</Form.Label>
+                                <Form.Label>Bằng cấp</Form.Label>
                                 <Form.Control readOnly={!update} type="Text" value={degree} onChange={onChangeNewProfileForm} name='degree' />
                             </Form.Group>
                             <div className="div-button">
