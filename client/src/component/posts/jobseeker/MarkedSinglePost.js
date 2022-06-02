@@ -28,7 +28,7 @@ const MarkedSinglePost = ({ post: { _id, title, description, salary, status, loc
             <Card.Text as={Col} className='card-detail col-8'>{description}</Card.Text>
             <Row>
                 <Card.Text as={Col} className='card-detail col-6'>{location}</Card.Text>
-                <Card.Text as={Col} className='card-detail col-4'>Lương: {salary} VNĐ</Card.Text>
+                <Card.Text as={Col} className='card-detail col-4'>Lương: {salary} Triệu</Card.Text>
                 <Button as={Col} className='col-2' style={{ background: "#e74c3c", textAlign: 'center', fontSize: "25px", marginTop: "5px" }}
                     onClick={() => {
                         const confirmBox = window.confirm(
