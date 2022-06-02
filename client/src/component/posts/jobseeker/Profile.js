@@ -23,7 +23,6 @@ const Profile = () => {
     })
     useEffect(() => {getProfile()}, [])
 
-    console.log(profileLoading)
     const { name, owner_email, phonenumber, birthday, introduce, experience, degree } = newProfile
 
     const onChangeNewProfileForm = event =>

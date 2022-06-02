@@ -23,8 +23,7 @@ const PostDetail = () => {
         isMarked, setIsMarked } = useContext(UserContext)
     const { authState: { user } } = useContext(AuthContext)
 
-    useEffect(() => { findPostById(id); isSubmittedPost(id); isUserMarkedPost(id); }, [id])
-
+    useEffect(() => { isSubmittedPost(id); isUserMarkedPost(id);findPostById(id);  }, [id])
     const savePost = async postId => {
         const { success, message } = await markPost(postId)
         setShowToast({ show: true, message: message, type: success ? 'success' : 'danger' })

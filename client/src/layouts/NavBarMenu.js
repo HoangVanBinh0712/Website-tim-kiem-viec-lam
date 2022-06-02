@@ -122,10 +122,6 @@ const NavbarMenu = () => {
 							<Nav.Link className='font-weight-bolder text-white' to='/about' as={Link} style={{marginLeft:'10px'}}>Giới Thiệu BHQ</Nav.Link>
 							<Nav.Link className='font-weight-bolder text-white ' to='/login' as={Link} style={{marginLeft:'760px',border:'1px solid white'}}>Đăng Nhập</Nav.Link>
 						</Nav>
-						<Nav>
-							<Nav.Link className='font-weight-bolder text-white'></Nav.Link>
-						</Nav>
-
 					</Navbar.Collapse>
 				</div>
 

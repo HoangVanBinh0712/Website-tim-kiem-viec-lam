@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react'
-import { apiUrl } from './constant'
+import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from './constant'
 import axios from 'axios'
+import setAuthToken from '../utils/setAuthToken'
 export const UserContext = createContext()
 //state
 const UserContextProvider = ({ children }) => {
@@ -32,18 +33,22 @@ const UserContextProvider = ({ children }) => {
             return error
         }
     }
- 
+
     const isUserMarkedPost = async (postId) => {
         //userMarkPost
         try {
+            if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
+                setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
+            }
             const response = await axios.get(`${apiUrl}/markPost/${postId}`)
             setIsMarked(response.data.success)
         } catch (error) {
+            console.log(error)
             setIsMarked(false)
         }
 
     }
-    const applyJob = async (postId)=>{
+    const applyJob = async (postId) => {
         try {
             const response = await axios.put(`${apiUrl}/submitted/${postId}`)
             return response.data
@@ -51,13 +56,16 @@ const UserContextProvider = ({ children }) => {
             console.log(error)
         }
     }
-    const isSubmittedPost = async (postId)=>{
+    const isSubmittedPost = async (postId) => {
         try {
+            if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
+                setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
+            }
             const response = await axios.get(`${apiUrl}/submitted/${postId}`)
-            setIsSubmitted(response.data.result) 
+            setIsSubmitted(response.data.result)
         } catch (error) {
             console.log(error)
-            setIsSubmitted(false) 
+            setIsSubmitted(false)
         }
     }
     const UserContextData = {

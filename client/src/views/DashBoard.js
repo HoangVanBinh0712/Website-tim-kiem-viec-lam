@@ -26,9 +26,9 @@ const DashBoard = () => {
     const { title, location } = searchForm
     const onChangeSearchForm = event =>
         setSearchForm({ ...searchForm, [event.target.name]: event.target.value })
-
     const formSeachSubmit = async () => {
-        getSearchPosts(searchForm)
+        await getSearchPosts(searchForm)
+        setCurrentPage(1)
     }
     let body = null
     if (postsLoading || categoryLoading) {
@@ -61,8 +61,10 @@ const DashBoard = () => {
                         setCurrentPage(currentPage - 1)
                     }
                 }}>Prev</Button>
-                <div style={{ textAlign: "center", fontSize: "1.5rem", marginLeft: "20px",
-                 marginRight: "20px", height: "2.5rem", width: "5rem" }}>{currentPage} / {max_page}</div>
+                <div style={{
+                    textAlign: "center", fontSize: "1.5rem", marginLeft: "20px",
+                    marginRight: "20px", height: "2.5rem", width: "5rem"
+                }}>{currentPage} / {max_page}</div>
                 <Button onClick={() => {
                     if (currentPage + 1 <= max_page) {
                         pageingPost(currentPage + 1)
@@ -85,8 +87,8 @@ const DashBoard = () => {
                 <Row className="format-row">
                     <Col className="col-5">
                         <select name='cate' onChange={onChangeSearchForm} required>
-                            <option value={"all"}> Tất cả ngành nghề</option>
-                            {categories.map(category => (<option value={category._id} >  {category.name}</option>))}
+                            <option id="all" value={"all"}> Tất cả ngành nghề</option>
+                            {categories.map(category => (<option id={category._id} value={category._id} >  {category.name}</option>))}
                         </select>
                     </Col>
                     <Col className="col-4">
@@ -101,10 +103,10 @@ const DashBoard = () => {
                 <h4 style={{ color: "white", fontFamily: "inherit", textShadow: "6px 2px 10px black" }}>Các công ty tuyển dụng hàng đầu trên website </h4>
                 <div>
                     <div style={{ maxHeight: "50px", maxWidth: "70" }}>
-                        <img src="https://www.topcv.vn/v4/image/welcome/companies/teachcombank.png" style={{ maxHeight: "100px", maxWidth: "60px" }} alt=''/>
-                        <img src="https://baothuathienhue.vn/image/fckeditor/upload/2017/20170803/images/amazon_logo_500500.png" style={{ maxHeight: "100px", maxWidth: "60px" }}alt=''></img>
+                        <img src="https://www.topcv.vn/v4/image/welcome/companies/teachcombank.png" style={{ maxHeight: "100px", maxWidth: "60px" }} alt='' />
+                        <img src="https://baothuathienhue.vn/image/fckeditor/upload/2017/20170803/images/amazon_logo_500500.png" style={{ maxHeight: "100px", maxWidth: "60px" }} alt=''></img>
                         <img src="https://www.topcv.vn/v4/image/welcome/companies/fpt.png" style={{ maxHeight: "100px", maxWidth: "60px" }} alt=''></img>
-                        <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fvingroup_416x416.jpg"alt='' style={{ maxHeight: "100px", maxWidth: "60px" }}></img>
+                        <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fvingroup_416x416.jpg" alt='' style={{ maxHeight: "100px", maxWidth: "60px" }}></img>
                     </div>
                 </div>
             </form>
