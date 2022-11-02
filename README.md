@@ -4,7 +4,7 @@
 <img src='https://cdn.iconscout.com/icon/free/png-256/mongodb-3-1175138.png' width="48" height="42"/>
 <img src='https://tse2.mm.bing.net/th?id=OIP.qOQkcVriHaFX8zjpjyLFzwHaHa&pid=Api&P=0&w=173&h=173' width="48" height="42"/>
 <img src='https://pluspng.com/img-png/react-logo-png-img-react-logo-png-react-js-logo-png-transparent-png-1142x1027.png' width="48" height="42"/>
-<img src='https://www.technoscore.com/images/services/node-js-icon.png' width="48" height="42"/>
+<img src='https://1.bp.blogspot.com/-mzw13XQJPYM/XgzNHXSUdXI/AAAAAAAAAYY/xeIhLBEpTQUn8huUCnWXdUX6vIR_T4UCQCPcBGAYYCw/s1600/http___pluspng.com_img-png_nodejs-png-nodejs-icon-png-50-px-1600.png' width="48" height="42"/>
 <img src='https://www.nicepng.com/png/detail/141-1415492_bootstrap-bootstrap-4-icon-png.png' width="48" height="42"/>
 </h1>
 </div>
